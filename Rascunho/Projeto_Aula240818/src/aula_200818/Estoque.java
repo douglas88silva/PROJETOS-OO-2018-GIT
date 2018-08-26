@@ -37,14 +37,14 @@ public class Estoque {
     public void reporEstoque(int quantidade)
     {
         System.out.println("");
-        System.out.println("############# INSERINDO EM ESTOQUE "+quantidade+" do produto "+this.nome+" #############");
+        System.out.println("############# INSERINDO EM ESTOQUE "+quantidade+" itens do produto "+this.nome+" #############");
         this.quantidadeAtual+=quantidade;
     }
     
     public void baixarEstoque(int quantidade)
     {
         System.out.println("");
-        System.out.println("############# RETIRANDO DO ESTOQUE "+quantidade+" do produto "+this.nome+" #############");
+        System.out.println("############# RETIRANDO DO ESTOQUE "+quantidade+"  itens do produto "+this.nome+" #############");
         if(this.quantidadeAtual-quantidade>0)
         {   
             this.quantidadeAtual-=quantidade;
