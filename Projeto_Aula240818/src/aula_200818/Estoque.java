@@ -6,8 +6,10 @@
 package aula_200818;
 
 /**
- *
- * @author HomeNot
+ * Projeto implementado na aula do dia 20/08/2018.
+ * Foi desenvolvido uma classe estoque.
+ * @author Douglas
+ * @version 1.1
  */
 public class Estoque {
     private String nome;
