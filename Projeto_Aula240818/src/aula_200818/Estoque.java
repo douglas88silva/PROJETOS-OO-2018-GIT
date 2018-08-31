@@ -7,7 +7,7 @@ package aula_200818;
 
 /**
  *
- * @author HomeNo
+ * @author HomeNot
  */
 public class Estoque {
     private String nome;
