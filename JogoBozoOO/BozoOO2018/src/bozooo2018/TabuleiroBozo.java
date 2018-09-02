@@ -54,11 +54,7 @@ public class TabuleiroBozo {
         this.tabuleiro.add(QUADRADA);
         this.tabuleiro.add(GENERAL);
         
-        this.tabuleiroMarcado = new int[this.tabuleiro.size()+1];
-        for(int i=1;i<this.tabuleiro.size()+1;i++)
-        {
-            this.tabuleiroMarcado[i]=0;
-        }
+        
     }
     public void marcarNoTabuleiro(int id,Dado d1,int quantidade)
     {

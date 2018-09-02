@@ -11,4 +11,7 @@ package bozooo2018;
  */
 public class Jogador {
     
+    private String nome;
+  
+    
 }

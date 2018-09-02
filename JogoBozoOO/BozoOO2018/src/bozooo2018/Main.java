@@ -17,6 +17,22 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
+
+        
+            
+        
+        
+        Jogador x1 = new Jogador();
+        Jogador x2 = new Jogador();
+        
+        Jogo Bozo = new Jogo();
+        
+        Bozo.addJogador(x1);
+        Bozo.addJogador(x2);
+        
+        Bozo.iniciaJogo();
+        Bozo.mostrarDados();
+        
         
        
     }
