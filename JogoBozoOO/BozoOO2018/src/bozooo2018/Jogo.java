@@ -120,6 +120,7 @@ public class Jogo {
     
     public int verificaVencedor(ArrayList jogadores)
     {
+        //DETERMINA A PONTUACAO DE TODOS E RETORNA A POSICAO DO VENCEDOR NO VETOR
         this.finalizaJogo = 1;
         
         return 1;
