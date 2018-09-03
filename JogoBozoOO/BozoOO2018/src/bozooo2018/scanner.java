@@ -9,19 +9,6 @@ package bozooo2018;
  *
  * @author HomeNot
  */
-public class Jogadas {
-    
-    
-    private int id;
-    private String nome;
-    private int pontuacao;
-
-    public Jogadas(int id, String nome,int pontuacao) {
-        this.id = id;
-        this.nome = nome;
-    }
-    
-    
-    
+class scanner {
     
 }
