@@ -18,10 +18,6 @@ public class Main {
         // TODO code application logic here
         
 
-        
-            
-        
-        
         Jogador x1 = new Jogador();
         Jogador x2 = new Jogador();
         
