@@ -12,6 +12,25 @@ package bozooo2018;
 public class Jogador {
     
     private String nome;
+    TabuleiroBozo tabuleiro;
+
+    public Jogador() {
+        
+        this.tabuleiro = new TabuleiroBozo();
+    }
+    
+    public void marcarTabuleiro(int id,Dado d1[])
+    {
+    
+    
+    }
+    
+    public void jogarDados(Dado d1)
+    {
+        d1.rolarDados();
+    }
+    
+    
   
     
 }

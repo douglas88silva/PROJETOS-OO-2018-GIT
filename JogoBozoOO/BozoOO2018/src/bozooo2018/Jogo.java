@@ -6,6 +6,7 @@
 package bozooo2018;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -14,9 +15,10 @@ import java.util.ArrayList;
 public class Jogo {
     
     private ArrayList <Jogador> jogadores= new ArrayList <Jogador>();
-    private ArrayList <TabuleiroBozo> tabuleiros= new ArrayList <TabuleiroBozo>();
     private Dado d1[] = new Dado[5];
+    private Jogador Vencedor;
     private int maxRodada = 2;
+    private int finalizaJogo = 0;
 
     public Jogo() {
         
@@ -25,13 +27,10 @@ public class Jogo {
             this.d1[i] = new Dado();
         
     }
-    
-    
+
     public void addJogador(Jogador x)
     {
-        this.jogadores.add(x);
-        TabuleiroBozo tab = new TabuleiroBozo();
-        this.tabuleiros.add(tab);
+        this.jogadores.add(x);   
     }
     
     public void iniciaJogo()
@@ -43,8 +42,9 @@ public class Jogo {
         }
         else
         {
+           // 1º TOTAL DE RODADAS PARA O JOGO
+            Scanner ler = new Scanner(System.in);
             
-           // 1º TOTAL DE RODADAS PARA O JOGO 
             for(int i=0;i<this.maxRodada;i++)
             {
                 //2º RODADAS PARA OS JOGADORES
@@ -65,9 +65,38 @@ public class Jogo {
                           else
                           {
                               //ESCOLHER OS DADOS QUE SERAO ARREMESSADOS NOVAMENTE
-                          }                            
+                              mostrarDados();
+                              int opcao;
+                              System.out.println("Quantos dados você deseja jogar outra vez");
+                              opcao =  ler.nextInt();
+                              
+                              for(int l=0;l<opcao;l++)
+                              {   
+                                  //mostrarDados();
+                                  int escolha;
+                                  System.out.println("Escolha o dado:");
+                                  escolha = ler.nextInt();
+                                  
+                                  if(escolha<5 && escolha>1)
+                                     j.jogarDados(this.d1[escolha-1]);
+                                                                    
+                                  else
+                                  {   
+                                      System.out.println("Opção invalida, digite outra vez");
+                                      l--;
+                                  }
+                              }
+                              
+                              //MARCAR NO TABULEIRO A POSICAO CORRESPONDENTE DA JOGADA
+                              mostrarDados();
+                              int marcarTabuleiro;
+                              System.out.println("Qual posicao do tabuleiro voce deseja marcar");
+                              marcarTabuleiro = ler.nextInt();
+                              j.marcarTabuleiro(marcarTabuleiro, this.d1);
+                          }  
                       }    
-                     //APOS CADA JOGADA DO JOGADOR VERIFICA SE ELE NÃO VENCEU FAZENDO UM GENERAL;                   
+                     //APOS CADA JOGADA DO JOGADOR VERIFICA SE ELE NÃO VENCEU FAZENDO UM GENERAL;
+                     this.finalizaJogo=verificaVencedor(this.jogadores);
                 }
             }       
         }
@@ -87,6 +116,14 @@ public class Jogo {
         System.out.print(" - RESULTADO");
         System.out.println("");
 
+    }
+    
+    public int verificaVencedor(ArrayList jogadores)
+    {
+        //DETERMINA A PONTUACAO DE TODOS E RETORNA A POSICAO DO VENCEDOR NO VETOR
+        this.finalizaJogo = 1;
+        
+        return 1;
     }
 
     
