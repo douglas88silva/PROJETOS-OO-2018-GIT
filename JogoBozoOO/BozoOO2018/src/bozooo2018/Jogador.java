@@ -14,14 +14,19 @@ public class Jogador {
     private String nome;
     TabuleiroBozo tabuleiro;
 
+    
     public Jogador() {
         
         this.tabuleiro = new TabuleiroBozo();
     }
+    public Jogador(String nome) {
+        this.nome=nome;
+        this.tabuleiro = new TabuleiroBozo();
+    }
     
-    public void marcarTabuleiro(int id,Dado d1[])
+    public void marcarTabuleiro(int id,Dado []d1)
     {
-    
+        tabuleiro.marcarNoTabuleiro(id, d1);
     
     }
     
@@ -29,6 +34,11 @@ public class Jogador {
     {
         d1.rolarDados();
     }
+
+    public String getNome() {
+        return nome;
+    }
+    
     
     
   

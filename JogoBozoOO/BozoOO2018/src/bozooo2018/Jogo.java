@@ -50,7 +50,9 @@ public class Jogo {
                 //2º RODADAS PARA OS JOGADORESs
                 for(Jogador j :jogadores)
                 {
+                    int Rodada = i+1;
                      //CADA JOGADOR TEM DIREITO A TRÊS JOGADAS
+                      System.out.println("Rodada "+Rodada+":" + j.getNome());
                       for(int k=0;k<3;k++)
                       {
                           //rolar 5 dados;
@@ -70,30 +72,53 @@ public class Jogo {
                               System.out.println("Quantos dados você deseja jogar outra vez");
                               opcao =  ler.nextInt();
                               
-                              for(int l=0;l<opcao;l++)
-                              {   
-                                  //mostrarDados();
-                                  int escolha;
-                                  System.out.println("Escolha o dado:");
-                                  escolha = ler.nextInt();
-                                  
-                                  if(escolha>0  && escolha<6 )
-                                     j.jogarDados(this.d1[escolha-1]);
-                                                                    
-                                  else
-                                  {   
-                                      System.out.println("Opção invalida, digite outra vez");
-                                      l--;
-                                  }
+                              if(opcao>0)
+                              {
+                                for(int l=0;l<opcao;l++)
+                                {   
+                                    //mostrarDados();
+                                    int escolha;
+                                    System.out.println("Escolha o dado:");
+                                    escolha = ler.nextInt();
+
+                                    if(escolha>0  && escolha<6 )
+                                       j.jogarDados(this.d1[escolha-1]);
+
+                                    else
+                                    {   
+                                        System.out.println("Opção invalida, digite outra vez");
+                                        l--;
+                                    }
+                                }
                               }
-                              
+                              else
+                              {
+                                  k=3;
+                              }
                               //MARCAR NO TABULEIRO A POSICAO CORRESPONDENTE DA JOGADA
                               mostrarDados();
                               mostrarTabuleiro(j);
                               int marcarTabuleiro;
                               System.out.println("Qual posicao do tabuleiro voce deseja marcar");
                               marcarTabuleiro = ler.nextInt();
-                              j.marcarTabuleiro(marcarTabuleiro, this.d1);
+                              
+                              //VERIFICA SE A POSICAO ESTA OCUPADA
+                              if(j.tabuleiro.VericaTabuleiroMarcado(marcarTabuleiro)==0)
+                              {
+                                  j.marcarTabuleiro(marcarTabuleiro, this.d1);
+                              }
+                              
+                              else
+                              {     
+                                  while(j.tabuleiro.VericaTabuleiroMarcado(marcarTabuleiro)==1)
+                                  {
+                                      System.out.println("Posicao ja ocupada, escolha outra");
+                                      System.out.println("Qual posicao do tabuleiro voce deseja marcar");
+                                      marcarTabuleiro = ler.nextInt();
+                                  }
+                                  
+                                  j.marcarTabuleiro(marcarTabuleiro, this.d1);
+                              }
                           }  
                       }    
                      //APOS CADA JOGADA DO JOGADOR VERIFICA SE ELE NÃO VENCEU FAZENDO UM GENERAL;

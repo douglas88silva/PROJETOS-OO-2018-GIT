@@ -57,16 +57,146 @@ public class TabuleiroBozo {
         this.tabuleiroMarcado = new int[this.tabuleiro.size()];
         
         for(int i=0;i<this.tabuleiro.size();i++)
-            this.tabuleiroMarcado[i]=0;
+            this.tabuleiroMarcado[i]=-1;
         
         
     }
-    public void marcarNoTabuleiro(int id,Dado d1[],int quantidade)
+
+    public int VericaTabuleiroMarcado(int id) {
+        
+        if (tabuleiroMarcado[id]==-1)
+            return 0;
+            
+        else    
+        return 1;
+    }
+    public void marcarNoTabuleiro(int id,Dado d1[])
     {
-        if(this.tabuleiroMarcado[id]!=0)
-            this.tabuleiroMarcado[id]=1;
+         //CALCULANDO A PONTUACAO DA JOGADA
+        int dadosIguais=0;
+        
+        if(this.tabuleiroMarcado[id]==-1)
+        {   
+            //A POSICAO VEZES A QUANTIDADE DE DADOS DA POSICAO
+            if(id<7)
+            {   
+                //VALIDANDO AS JOGADAS
+                for(int i=0;i<d1.length;i++)
+                    if(d1[i].getDado()==id)
+                        dadosIguais++;
+                
+                this.tabuleiroMarcado[id]=dadosIguais*id;
+            }
+            else
+            {
+                //5 faces seguidas
+                if(id == 8)
+                {
+                    int soma=0;
+                    
+                    for(int i=0;i<d1.length;i++)
+                    {
+                        soma+=d1[i].getDado();
+                    }
+                    if(soma==15 || soma==20)
+                    {
+                        if((d1[0].getDado()==1 && d1[5].getDado()==5) || (d1[0].getDado()==2 && d1[5].getDado()==6))
+                        {
+                            this.tabuleiroMarcado[id]= 30;
+                        }
+                    
+                    }
+                    else
+                    {
+                        this.tabuleiroMarcado[id]=0;
+                    }
+                }
+                //4 face iguais e uma diferente
+                if(id==9)
+                {
+                    //COLOCANDO OS DADOS DIFERENTES EM A E B;
+                    
+                    int a,b,valida=0;
+                    int totalA = 0,totalB=0;
+                    
+                    a = d1[0].getDado();
+                    //ENCONTRANDO O DADO DIFERENTE
+                    for(int i = 0;i<d1.length;i++)
+                    {
+                        if(d1[i].getDado()!=a)
+                        { 
+                            b=d1[i].getDado();
+                            valida++;
+                        }
+                    }
+                    
+                    if(valida==1)
+                    {
+                        //QUER DIZER QUE TEM APENAS DOIS DADOS DIFERENTES
+                        //PRECISA TESTAR SE SAO 4 A OU 4 B
+                        
+                        for(int j = 0;j<d1.length;j++)
+                        {
+                            if(d1[j].getDado()==a)
+                                totalA++;
+                            else
+                             totalB++;
+                        }
+                        
+                        if(totalA == 4 || totalB==4)
+                        {
+                            this.tabuleiroMarcado[id]=40;
+                        }
+                        else
+                        {
+                            this.tabuleiroMarcado[id]=0;
+                        }
+                        
+                    }
+                    else
+                    {
+                        this.tabuleiroMarcado[id]=0;
+                    }
+                            
+                
+                }
+                //5 faces iguais 
+                if(id == 10)
+                {
+                    int a=d1[0].getDado();
+                    
+                    for(int i=0;i<d1.length;i++)
+                    {   
+                        if(a==d1[i].getDado())
+                        dadosIguais++;
+                    }
+                    
+                    if(dadosIguais==5)
+                    {
+                        this.tabuleiroMarcado[id]=50;
+                    }
+                    else
+                    {
+                        this.tabuleiroMarcado[id]=0;
+                    }
+                }
+                
+                else
+                {
+                  this.tabuleiroMarcado[id]=0;
+                }
+            }
+        }
+        
+        else
+        {
+            System.out.println("Posicao do tabuleiro já marcada, Favor escolher outra");
+            
+        }
 
     }
+    
+    
     
     public void mostrar_Tabuleiro()
     {
@@ -84,5 +214,8 @@ public class TabuleiroBozo {
     {
         return 0;
     }
+
+
+    
     
 }

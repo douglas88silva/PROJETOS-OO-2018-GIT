@@ -18,8 +18,8 @@ public class Main {
         // TODO code application logic here
         
 
-        Jogador x1 = new Jogador();
-        Jogador x2 = new Jogador();
+        Jogador x1 = new Jogador("Jogador 1");
+        Jogador x2 = new Jogador("Jogador 2");
         
         Jogo Bozo = new Jogo();
         
@@ -27,7 +27,7 @@ public class Main {
         Bozo.addJogador(x2);
         
         Bozo.iniciaJogo();
-        Bozo.mostrarDados();
+        //Bozo.mostrarDados();
         
         
        
