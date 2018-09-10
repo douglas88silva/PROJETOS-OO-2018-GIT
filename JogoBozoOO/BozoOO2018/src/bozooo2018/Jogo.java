@@ -77,7 +77,7 @@ public class Jogo {
                                   System.out.println("Escolha o dado:");
                                   escolha = ler.nextInt();
                                   
-                                  if(escolha<5 && escolha>1)
+                                  if(escolha>0  && escolha<6 )
                                      j.jogarDados(this.d1[escolha-1]);
                                                                     
                                   else
@@ -89,6 +89,7 @@ public class Jogo {
                               
                               //MARCAR NO TABULEIRO A POSICAO CORRESPONDENTE DA JOGADA
                               mostrarDados();
+                              mostrarTabuleiro(j);
                               int marcarTabuleiro;
                               System.out.println("Qual posicao do tabuleiro voce deseja marcar");
                               marcarTabuleiro = ler.nextInt();
@@ -116,6 +117,12 @@ public class Jogo {
         System.out.print(" - RESULTADO");
         System.out.println("");
 
+    }
+    
+    public void mostrarTabuleiro(Jogador j1)
+    {
+       j1.tabuleiro.mostrar_Tabuleiro();     
+      
     }
     
     public int verificaVencedor(ArrayList jogadores)

@@ -65,9 +65,19 @@ public class TabuleiroBozo {
     {
         if(this.tabuleiroMarcado[id]!=0)
             this.tabuleiroMarcado[id]=1;
-        
-        
- 
+
+    }
+    
+    public void mostrar_Tabuleiro()
+    {
+        //MOSTRAR UMA COLUNA COM O NOME DA JOGADA E OUTRA COM SE ESTA MARCADA OU NÃO
+        System.out.println();
+        System.out.println("[X]Jogadas");
+        for(int i=0;i<tabuleiro.size();i++)
+        {   
+            System.out.println("["+tabuleiroMarcado[i]+"]"+tabuleiro.get(i).getNome());         
+        }
+        System.out.println();
     }
     
     public int getPontuacaoJogada(int face,int quantidade)
