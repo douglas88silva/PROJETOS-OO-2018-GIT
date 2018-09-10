@@ -47,7 +47,7 @@ public class Jogo {
             
             for(int i=0;i<this.maxRodada;i++)
             {
-                //2º RODADAS PARA OS JOGADORES
+                //2º RODADAS PARA OS JOGADORESs
                 for(Jogador j :jogadores)
                 {
                      //CADA JOGADOR TEM DIREITO A TRÊS JOGADAS
