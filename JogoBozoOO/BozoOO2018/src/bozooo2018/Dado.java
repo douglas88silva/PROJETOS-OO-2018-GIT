@@ -35,8 +35,30 @@ public class Dado {
         this.resultado = random.nextInt(this.totalFaces)+1;    
     }
     public int getDado()
-    {
+    {   
+              
         return this.resultado;
+    }
+    public String getDadoSimbolo()
+    {   
+        
+        if(this.resultado == 1)
+            return ".";
+        
+        if(this.resultado == 2)
+            return ":";
+                
+        if(this.resultado == 3)
+          return ":.";
+                            
+        if(this.resultado == 4)
+          return "::";
+        
+        if(this.resultado == 5)
+          return ":::";
+            
+        
+        return " ";
     }
     
     

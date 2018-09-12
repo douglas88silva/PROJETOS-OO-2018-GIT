@@ -204,15 +204,23 @@ public class TabuleiroBozo {
         System.out.println();
         System.out.println("[X]Jogadas");
         for(int i=0;i<tabuleiro.size();i++)
-        {   
-            System.out.println("["+tabuleiroMarcado[i]+"]"+tabuleiro.get(i).getNome());         
+        {   int j = i+1;
+            System.out.println(j+" - "+"["+tabuleiroMarcado[i]+"]"+tabuleiro.get(i).getNome());         
         }
         System.out.println();
     }
     
-    public int getPontuacaoJogada(int face,int quantidade)
-    {
-        return 0;
+    public int getPontuacaoJogada()
+    {   
+        int somaPontuacao = 0;
+        
+        for(int i=0;i<this.tabuleiroMarcado.length;i++)
+        {
+            if(this.tabuleiroMarcado[i] != -1)
+                somaPontuacao+=this.tabuleiroMarcado[i];
+        }
+        
+        return somaPontuacao;
     }
 
 

@@ -13,20 +13,24 @@ public class Jogador {
     
     private String nome;
     TabuleiroBozo tabuleiro;
+    private int Pontuacao;
 
     
     public Jogador() {
         
         this.tabuleiro = new TabuleiroBozo();
+        this.Pontuacao = 0;
     }
     public Jogador(String nome) {
         this.nome=nome;
         this.tabuleiro = new TabuleiroBozo();
+        this.Pontuacao=0;
     }
     
     public void marcarTabuleiro(int id,Dado []d1)
     {
-        tabuleiro.marcarNoTabuleiro(id, d1);
+        int id2 =id-1;
+        tabuleiro.marcarNoTabuleiro(id2, d1);
     
     }
     
@@ -38,6 +42,21 @@ public class Jogador {
     public String getNome() {
         return nome;
     }
+    
+    public void ImprimePontuacao()
+    {   
+        System.out.println("A pontuação total do jogador "+ this.nome +": "+this.tabuleiro.getPontuacaoJogada()); 
+         
+    }
+
+    public int getPontuacao() {
+        
+        this.Pontuacao = this.tabuleiro.getPontuacaoJogada();
+        
+        return this.Pontuacao;
+    }
+    
+
     
     
     

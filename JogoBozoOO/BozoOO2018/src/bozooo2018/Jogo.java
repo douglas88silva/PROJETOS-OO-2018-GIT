@@ -17,7 +17,7 @@ public class Jogo {
     private ArrayList <Jogador> jogadores= new ArrayList <Jogador>();
     private Dado d1[] = new Dado[5];
     private Jogador Vencedor;
-    private int maxRodada = 2;
+    private int maxRodada = 10;
     private int finalizaJogo = 0;
 
     public Jogo() {
@@ -34,7 +34,8 @@ public class Jogo {
     }
     
     public void iniciaJogo()
-    {
+    {   
+        
         if(this.jogadores.size()<2)
         {
             System.out.println("Não é possivel iniciar o jogo com menos de 2 jogadores");
@@ -46,10 +47,12 @@ public class Jogo {
             Scanner ler = new Scanner(System.in);
             
             for(int i=0;i<this.maxRodada;i++)
-            {
+            {   
                 //2º RODADAS PARA OS JOGADORESs
                 for(Jogador j :jogadores)
-                {
+                {   
+                    limparTela();
+                    
                     int Rodada = i+1;
                      //CADA JOGADOR TEM DIREITO A TRÊS JOGADAS
                       System.out.println("Rodada "+Rodada+":" + j.getNome());
@@ -91,39 +94,69 @@ public class Jogo {
                                     }
                                 }
                               }
+                              //ENCERRANDO A VEZ DO JOGADOR
                               else
                               {
-                                  k=3;
+                                k=3;
                               }
-                              //MARCAR NO TABULEIRO A POSICAO CORRESPONDENTE DA JOGADA
-                              mostrarDados();
-                              mostrarTabuleiro(j);
-                              int marcarTabuleiro;
-                              System.out.println("Qual posicao do tabuleiro voce deseja marcar");
-                              marcarTabuleiro = ler.nextInt();
-                              
-                              //VERIFICA SE A POSICAO ESTA OCUPADA
-                              if(j.tabuleiro.VericaTabuleiroMarcado(marcarTabuleiro)==0)
+                              //APENAS MARCA NO TABULEIRO QUANDO O JOGADOR NAO TIVER MAIS CHANCES
+                              //DE ROLAR O DADOS OU NAO QUISER MAIS ROLAR OS DADOS
+                              if(k == 3)
                               {
-                                  j.marcarTabuleiro(marcarTabuleiro, this.d1);
-                              }
-                              
-                              else
-                              {     
-                                  while(j.tabuleiro.VericaTabuleiroMarcado(marcarTabuleiro)==1)
-                                  {
-                                      System.out.println("Posicao ja ocupada, escolha outra");
-                                      System.out.println("Qual posicao do tabuleiro voce deseja marcar");
-                                      marcarTabuleiro = ler.nextInt();
-                                  }
-                                  
-                                  j.marcarTabuleiro(marcarTabuleiro, this.d1);
-                              }
+                                    
+                                    //MARCAR NO TABULEIRO A POSICAO CORRESPONDENTE DA JOGADA
+                                    limparTela();
+                                    mostrarDados();
+                                    mostrarTabuleiro(j);
+                                    int marcarTabuleiro;
+                                    System.out.println("Qual posicao do tabuleiro voce deseja marcar");
+                                    marcarTabuleiro = ler.nextInt();
+                                    
+                                                                         
+                                    //VERIFICA SE A POSICAO ESTA OCUPADA
+                                    if(j.tabuleiro.VericaTabuleiroMarcado(marcarTabuleiro)==0)
+                                    {
+                                        j.marcarTabuleiro(marcarTabuleiro, this.d1);
+                                    }
+
+                                    else
+                                    {     
+                                        while(j.tabuleiro.VericaTabuleiroMarcado(marcarTabuleiro)==1)
+                                        {
+                                            System.out.println("Posicao ja ocupada, escolha outra");
+                                            System.out.println("Qual posicao do tabuleiro voce deseja marcar");
+                                            marcarTabuleiro = ler.nextInt();
+                                        }
+
+                                        j.marcarTabuleiro(marcarTabuleiro, this.d1);
+                                    }
+                                    System.out.println("Voce escolheu a posicao "+marcarTabuleiro);
+                                    mostrarTabuleiro(j);
+                                    pausarAplicacao();
+                               }
                           }  
                       }    
                      //APOS CADA JOGADA DO JOGADOR VERIFICA SE ELE NÃO VENCEU FAZENDO UM GENERAL;
                      this.finalizaJogo=verificaVencedor(this.jogadores);
+                     
+                     if(Rodada>=2)
+                     {
+                        //EXIBINDO OS TABULEIROS E A PONTUAÇÃO DE CADA JOGADOR
+                            for(Jogador x:jogadores)
+                            {
+                                limparTela();
+                                System.out.println();
+                                System.out.println("Visualizando os tabuleiros dos jogadores");
+                                mostrarTabuleiro(x);
+
+                                pausarAplicacao();
+
+                            }
+                     }
+                     
                 }
+                
+
             }       
         }
     }
@@ -131,13 +164,13 @@ public class Jogo {
     public void mostrarDados()
     {
         for(int j=0;j<5;j++)
-         System.out.print((j+1)+" ");
+         System.out.print(" "+(j+1)+" ");
         
         System.out.print(" - DADOS");
         System.out.println("");
         
         for(int i=0;i<5;i++)
-         System.out.print(this.d1[i].getDado()+" ");
+         System.out.print("|"+this.d1[i].getDado()+"|");
         
         System.out.print(" - RESULTADO");
         System.out.println("");
@@ -156,6 +189,19 @@ public class Jogo {
         this.finalizaJogo = 1;
         
         return 1;
+    }
+    
+    public void limparTela()
+    {
+        for(int i=0;i<70;i++)
+            System.out.println();
+    }
+    
+    public void pausarAplicacao()
+    {
+        Scanner Pause = new Scanner (System.in);
+        System.out.println("Press Enter to continue...");
+        Pause.nextLine();
     }
 
     
