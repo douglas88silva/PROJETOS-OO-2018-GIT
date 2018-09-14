@@ -74,23 +74,24 @@ public class TabuleiroBozo {
     {
          //CALCULANDO A PONTUACAO DA JOGADA
         int dadosIguais=0;
-        
+        int id2 = id+1;
         if(this.tabuleiroMarcado[id]==-1)
         {   
             //A POSICAO VEZES A QUANTIDADE DE DADOS DA POSICAO
-            if(id<7)
+            if(id<6)
             {   
                 //VALIDANDO AS JOGADAS
                 for(int i=0;i<d1.length;i++)
-                    if(d1[i].getDado()==id)
+                    if(d1[i].getDado()==id2)
                         dadosIguais++;
                 
-                this.tabuleiroMarcado[id]=dadosIguais*id;
+                
+                this.tabuleiroMarcado[id]=dadosIguais*id2;
             }
             else
             {
                 //5 faces seguidas
-                if(id == 8)
+                if(id == 7)
                 {
                     int soma=0;
                     
@@ -112,7 +113,7 @@ public class TabuleiroBozo {
                     }
                 }
                 //4 face iguais e uma diferente
-                if(id==9)
+                if(id==8)
                 {
                     //COLOCANDO OS DADOS DIFERENTES EM A E B;
                     
@@ -161,7 +162,7 @@ public class TabuleiroBozo {
                 
                 }
                 //5 faces iguais 
-                if(id == 10)
+                if(id == 9)
                 {
                     int a=d1[0].getDado();
                     

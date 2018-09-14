@@ -17,8 +17,9 @@ public class Jogo {
     private ArrayList <Jogador> jogadores= new ArrayList <Jogador>();
     private Dado d1[] = new Dado[5];
     private Jogador Vencedor;
-    private int maxRodada = 10;
+    private int maxRodada = 2;
     private int finalizaJogo = 0;
+    
 
     public Jogo() {
         
@@ -48,11 +49,13 @@ public class Jogo {
             
             for(int i=0;i<this.maxRodada;i++)
             {   
-                //2º RODADAS PARA OS JOGADORESs
+                //2º RODADAS PARA OS JOGADORES
+                
                 for(Jogador j :jogadores)
                 {   
                     limparTela();
-                    
+                   
+                    System.out.println("Jogo em andamento...");
                     int Rodada = i+1;
                      //CADA JOGADOR TEM DIREITO A TRÊS JOGADAS
                       System.out.println("Rodada "+Rodada+":" + j.getNome());
@@ -60,7 +63,8 @@ public class Jogo {
                       {
                           //rolar 5 dados;
                           if(k == 0)
-                          {
+                          {   
+                              
                               this.d1[0].rolarDados();
                               this.d1[1].rolarDados();
                               this.d1[2].rolarDados();
@@ -70,6 +74,7 @@ public class Jogo {
                           else
                           {
                               //ESCOLHER OS DADOS QUE SERAO ARREMESSADOS NOVAMENTE
+                              
                               mostrarDados();
                               int opcao;
                               System.out.println("Quantos dados você deseja jogar outra vez");
@@ -110,7 +115,19 @@ public class Jogo {
                                     mostrarTabuleiro(j);
                                     int marcarTabuleiro;
                                     System.out.println("Qual posicao do tabuleiro voce deseja marcar");
-                                    marcarTabuleiro = ler.nextInt();
+                                    marcarTabuleiro = ler.nextInt();   
+                                    
+                                    while(marcarTabuleiro<0 || marcarTabuleiro>10)
+                                    {
+                                        limparTela();
+                                        mostrarDados();
+                                        mostrarTabuleiro(j);
+                                        System.out.println("Opção invalida, por favor escolha outra");
+                                        System.out.println("Qual posicao do tabuleiro voce deseja marcar");
+                                        marcarTabuleiro = ler.nextInt(); 
+                                        marcarTabuleiro = ler.nextInt();
+
+                                    }
                                     
                                                                          
                                     //VERIFICA SE A POSICAO ESTA OCUPADA
@@ -130,14 +147,16 @@ public class Jogo {
 
                                         j.marcarTabuleiro(marcarTabuleiro, this.d1);
                                     }
-                                    System.out.println("Voce escolheu a posicao "+marcarTabuleiro);
+                                    System.out.println("Voce escolheu a posicao "+marcarTabuleiro+"!");
+                                    System.out.println("PONTUACAO TOTAL ["+j.getPontuacao()+"]");
                                     mostrarTabuleiro(j);
                                     pausarAplicacao();
                                }
                           }  
                       }    
                      //APOS CADA JOGADA DO JOGADOR VERIFICA SE ELE NÃO VENCEU FAZENDO UM GENERAL;
-                     this.finalizaJogo=verificaVencedor(this.jogadores);
+                     this.finalizaJogo=verificaVencedor(Rodada);
+                     
                      
                      if(Rodada>=2)
                      {
@@ -147,6 +166,8 @@ public class Jogo {
                                 limparTela();
                                 System.out.println();
                                 System.out.println("Visualizando os tabuleiros dos jogadores");
+                                System.out.println("Jogador: "+x.getNome());
+                                System.out.println("PONTUACAO TOTAL ["+x.getPontuacao()+"]");
                                 mostrarTabuleiro(x);
 
                                 pausarAplicacao();
@@ -154,15 +175,22 @@ public class Jogo {
                             }
                      }
                      
+                     if(this.finalizaJogo !=0)
+                         Rodada = this.maxRodada;
+                     
                 }
                 
 
             }       
         }
+        limparTela();
+        verificaVencedor(this.maxRodada);
+        System.out.println("Jogo finalizado, o vencedor foi o jogador "+this.Vencedor+" pontuacao "+this.Vencedor.getPontuacao());
     }
     
     public void mostrarDados()
     {
+        System.out.println("Rolando os dados...");
         for(int j=0;j<5;j++)
          System.out.print(" "+(j+1)+" ");
         
@@ -183,18 +211,41 @@ public class Jogo {
       
     }
     
-    public int verificaVencedor(ArrayList jogadores)
+    public int verificaVencedor(int rodada)
     {
         //DETERMINA A PONTUACAO DE TODOS E RETORNA A POSICAO DO VENCEDOR NO VETOR
-        this.finalizaJogo = 1;
         
-        return 1;
+        this.Vencedor = this.jogadores.get(0);
+        
+        for(Jogador j :jogadores)
+        {
+           //TESTA A MAIOR PONTUACAO 
+           if(rodada == this.maxRodada)
+           {   this.finalizaJogo = 1;
+               if (j.getPontuacao()>this.Vencedor.getPontuacao())
+               {
+                   this.Vencedor = j;
+               }
+           }
+           //TESTA SE ALGUEM FEZ GENERAL
+           else
+           {
+               
+              
+           }
+                
+        }
+        
+                
+        return this.finalizaJogo;
     }
     
     public void limparTela()
     {
-        for(int i=0;i<70;i++)
+        for(int i=0;i<100;i++)
             System.out.println();
+        
+        System.out.println("#############################################################");
     }
     
     public void pausarAplicacao()
