@@ -21,7 +21,7 @@ public class Cachorro extends Animal{
     public void emitirSom()
     {
        
-              super.emitirSom();
+              //super.emitirSom();
               System.out.println("Auauuuu!!!");
       //System.out.println("O "+super.getNome()+" está latindo!");
 

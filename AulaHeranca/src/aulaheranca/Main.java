@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package aulaheranca;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,13 +18,25 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Animal a = new Animal("Animal");
-        Gato g = new Gato("Gatinho");
-        Cachorro c = new Cachorro("Cachorrinho");
-        
-        a.emitirSom();
-        g.emitirSom();
-        c.emitirSom();
+         ArrayList <Animal> a = new ArrayList();
+         
+         
+         a.add(new Gato("Gato"));
+         a.add(new Gato("Gato"));
+         a.add(new Cachorro("Cachorro"));
+         
+         
+         
+         
+         if(a.get(0).equals(a.get(1)))
+             System.out.println("Verdadeiro");
+         
+//         for(Animal x: a)
+//         {
+//             System.out.println(x.getNome());;
+//             x.emitirSom();   
+//         }
+
         
         
     }

@@ -9,17 +9,29 @@ package aulaheranca;
  *
  * @author HomeNot
  */
-public class Animal {
+public abstract class Animal {
     
-    private String nome;
-    private String raca;
-    private String idade;
-
+    protected String nome;
+    protected String raca;
+    protected String idade;
+    
+    
+    
     
     public Animal(String nome) {
         this.nome = nome;
     }
     
+    
+    @Override
+    public String toString()
+    {   
+       return this.nome;
+    }
+    public boolean equals(Animal a)
+    {
+        return this.nome.equals(a.nome);
+    }
     
 
     public String getNome() {
@@ -59,9 +71,7 @@ public class Animal {
         
     }
     
-    public void emitirSom()
-    {
-        System.out.println("O "+this.nome+" está emitindo um som!");
-    }
-    
+    abstract public  void emitirSom();
+    //System.out.println("O "+this.nome+" está emitindo um som!");
+
 }

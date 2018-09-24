@@ -19,7 +19,7 @@ public class Gato extends Animal{
     @Override
     public void emitirSom()
     {
-              super.emitirSom();
+              //super.emitirSom();
               System.out.println("Miauuuu!!!");
       //System.out.println("O "+super.getNome()+" está miando!");
 
