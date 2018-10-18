@@ -14,6 +14,7 @@ public class Pokemon {
     private String nome;
     private String apelido;
     private int dust;
+    
     private int id;
     
     public Pokemon(String nome,int dust){
