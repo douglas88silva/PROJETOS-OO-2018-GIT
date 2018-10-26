@@ -5,9 +5,6 @@
  */
 package pokedexjavaoo;
 
-import java.util.List;
-import java.util.ArrayList;
-
 /**
  *
  * @author ice
