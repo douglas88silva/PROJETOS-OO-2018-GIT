@@ -9,7 +9,7 @@ package pokedexjavaoo;
  *
  * @author ice
  */
-public interface AtaquesTipo {
+public interface Ataques {
     
     public void setAtaque(String tipo);
 }

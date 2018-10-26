@@ -9,7 +9,7 @@ package pokedexjavaoo;
  *
  * @author ice
  */
-public class TipoPokemon implements AtaquesTipo{
+public class TipoPokemon implements Ataques{
     
    private String tipo1 = null;
    private String tipo2 = null;
@@ -30,13 +30,12 @@ public class TipoPokemon implements AtaquesTipo{
     }
    
     @Override
-    public void setAtaque(String tipo) {
+    public final void setAtaque(String tipo) {
         
         if(tipo != null)
         {
           //busca os melhores ataques na base
-            
-            
+                       
             this.ataqueRapido = " ";
             this.AtaqueCarregado = " ";
             
