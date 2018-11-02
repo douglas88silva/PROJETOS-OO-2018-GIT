@@ -27,7 +27,14 @@ public class Main {
 	//Carregando arquivo especifico
 		PlanilhaDAO excel = new PlanilhaDAO();
 		//Apenas mostrando os valores
-		excel.processAll();
+		     // System.out.println(excel.getStringColuna(0,"MALTA"));
+                      
+                      
+                      if(excel.getIntColuna(1,90) !=0)
+                      {  int a = excel.getIntColuna(1,90);
+                         System.out.println(a);
+                      }
+                    
     }
     
 }
