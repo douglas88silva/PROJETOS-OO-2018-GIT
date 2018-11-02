@@ -23,10 +23,11 @@ public class Main {
         //PARA ISSO VOU UTILIZAR UMA BASE DE DADOS DE POKEMON (PLANILHA EXCEL) PARA CALCULAR OS STATUS DO POKEMON DO USUÁRIO
         //O USUÁRIO PODERÁ FILTRAR DE MANEIRA FACIL OS POKEMONS PELA FORÇA TIPO E ATAQUE PARA PODER ESCOLHER QUAIS POKEMONS DEVE
         //UTILIZAR EM UMA BATALHA QUALQUER.(PROGRAMA BASEADO NA ESTRUTURA DO JOGO POKEMON GO)
-        
-        PlanilhaDAO p = new PlanilhaDAO();
-        
-        p.iniciar();
+//        
+	//Carregando arquivo especifico
+		PlanilhaDAO excel = new PlanilhaDAO();
+		//Apenas mostrando os valores
+		excel.processAll();
     }
     
 }

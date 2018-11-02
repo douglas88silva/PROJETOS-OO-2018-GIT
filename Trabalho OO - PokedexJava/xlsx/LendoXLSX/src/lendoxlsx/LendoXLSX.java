@@ -31,7 +31,7 @@ public class LendoXLSX {
         FileInputStream fisPlanilha = null;
 
         try {
-            File file = new File("/ice//teste.xlsx");
+            File file = new File("C:\\Users\\jessi\\Desktop\\Douglas\\DESENVOLVIMENTO\\PROJETOS-OO-2018-GIT\\Trabalho OO - PokedexJava\\xlsx\\planilhas\\planilhaDaAula.xlsx");
             fisPlanilha = new FileInputStream(file);
 
             //cria um workbook = planilha toda com todas as abas

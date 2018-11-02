@@ -54,13 +54,6 @@ public class PokedeX {
 
         return null;
     }
-
-    public void setAgendaPokemon(ArrayList<Pokemon> agendaPokemon) {
-        this.agendaPokemon = agendaPokemon;
-    }
-    
-    
-
    
     
 }
