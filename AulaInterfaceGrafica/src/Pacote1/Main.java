@@ -1,9 +1,15 @@
+package Pacote1;
+
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JWindow;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,8 +37,9 @@ public class Main {
         JButton botao3 = new JButton("Botao3");
         JButton botao4 = new JButton("Botao4");
         JButton botao5 = new JButton("Botao5");
-         painel.setLayout(new BorderLayout());
         
+        painel.setLayout(new BorderLayout());
+        janela.setSize(600, 600);
         
         painel.add(botao1,BorderLayout.NORTH);
         painel.add(botao2,BorderLayout.SOUTH);
@@ -42,12 +49,29 @@ public class Main {
         
        
         janela.getContentPane().add(painel);
-
-        janela.pack();
+        //janela.pack();
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
+        
+        
+        
+        
+        botao1.addActionListener(new ActionListener() {
+            Object [] opcao = {"Não","Acho que nao"};            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(
+                        janela
+                        ,"Voce apertou o botao 1"
+                        ,"Info"
+                        ,JOptionPane.YES_NO_CANCEL_OPTION
+                );
+                 
+            }
+        });
+                
     }
     
 }
