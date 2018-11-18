@@ -19,7 +19,7 @@ public class Duelo {
     
     private Jogador player;
     private Jogador adversario;
-    private static int tempo = 30;
+    private static int tempo;
     
     private int vencedor = -1;
     
@@ -48,38 +48,51 @@ public class Duelo {
     
     public int duelar(){
         
-        Pokemon pokemonPlayer = this.player.deckPokemon.get(0).getPk();
-        Pokemon pokemonAdversario = this.adversario.deckPokemon.get(0).getPk();
+        Pokemon pokemonPlayer = this.player.getPokemonPrincipal();
+        Pokemon pokemonAdversario = this.adversario.getPokemonPrincipal();
         
         pokemonPlayer.duelar();
         pokemonAdversario.duelar();
         
         Random r = new Random();
+        Duelo.resetarContador();
         
+        System.out.println("####Duracao da partida: "+Duelo.tempo+" ####");
         while((Duelo.tempo=Duelo.tempo-3)>0 && pokemonPlayer.getVida()>0 && pokemonAdversario.getVida()>0){
             
-           System.out.println("Duracao da partida: "+Duelo.tempo);
+           
             
             try {
+                
                 T.sleep(1000);
 
             if(r.nextInt(2)==1)//taxa de acerto
-                this.player.deckPokemon.get(0).getPk().atacar(pokemonAdversario);
+            {
+                pokemonPlayer.atacar(pokemonAdversario);
+                if(pokemonAdversario.getVida()==0)
+                    break;
+            }
             else{
-                
-                System.out.println("O "+pokemonPlayer.getNome()+" errou o golpe");
+               System.out.println("O "+pokemonPlayer.getNome()+" errou o golpe");
             }
             T.sleep(1000);
             if(r.nextInt(2)==1)//taxa de acerto
-                this.adversario.deckPokemon.get(0).getPk().atacar(pokemonPlayer); 
+            {
+                pokemonAdversario.atacar(pokemonPlayer);
+                
+                if(pokemonPlayer.getVida()==0)
+                break;
+            } 
             else{ 
                 System.out.println("O "+pokemonAdversario.getNome()+" errou o golpe");
             }
-                
+            T.sleep(1000);    
             } catch (InterruptedException ex) {
                 Logger.getLogger(Duelo.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            System.out.println("");
+            System.out.println("####Duracao da partida: "+Duelo.tempo+" ####");
+            System.out.println("||||  "+pokemonPlayer.getNome()+" HP:"+pokemonPlayer.getVida()+"\t"+ pokemonAdversario.getNome()+" HP:"+pokemonAdversario.getVida()+"  ||||");
         }
         
         if(tempo <=0)
@@ -88,7 +101,9 @@ public class Duelo {
         }
         
         if(pokemonPlayer.getVida()>pokemonAdversario.getVida())
+        {
             return 1;
+        }
         else
             return 0;
     }
@@ -101,11 +116,16 @@ public class Duelo {
                } catch (InterruptedException ex) {
                    Logger.getLogger(Duelo.class.getName()).log(Level.SEVERE, null, ex);
                }
-           tempo = c;
+           Duelo.tempo = c;
            //System.out.println(c);
            }
         
          
+    }
+    
+    public static void resetarContador()
+    {
+        Duelo.tempo = 30;
     }
     
 }

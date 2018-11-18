@@ -9,15 +9,33 @@ package cardPokemon;
  *
  * @author jessi
  */
-public class PkPlanta extends Pokemon implements Combate{
+public class Planta extends Pokemon{
 
     private String tipo;
     private String nomeAtaque;
 
-    public PkPlanta(String nome) {
-        super(nome);
-        this.tipo = "Planta";
+
+    
+    public Planta(String nome,String tipo,int ataque,int evolucao) {
+        super(nome,ataque,evolucao);
+        this.tipo = tipo;
         this.nomeAtaque = "Ataque de folhas";
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getNomeAtaque() {
+        return nomeAtaque;
+    }
+
+    public void setNomeAtaque(String nomeAtaque) {
+        this.nomeAtaque = nomeAtaque;
     }
 
     @Override
@@ -29,6 +47,8 @@ public class PkPlanta extends Pokemon implements Combate{
            adversario.receberAtaque(super.getsAtaque());
         }
     }
+
+
     
     
 }

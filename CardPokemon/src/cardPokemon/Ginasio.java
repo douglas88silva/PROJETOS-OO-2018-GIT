@@ -29,16 +29,16 @@ public class Ginasio {
         adversarios = new ArrayList();
                
         Random r = new Random();
-        
+        int j = 0;
         for(int i = id;i>0;i--)
         {
-            String adversario="Adversario_";
-            adversario = adversario.concat(toString(i+1));
+            String adversario="NPC_";
+            adversario = adversario.concat(toString(j+1));
          
             Jogador ad = new Jogador(adversario);       
-            ad.deckPokemon.add((CarD) e.get(r.nextInt(e.size())));//pegar aleatoriamente
+            ad.addDeckPokemon((CarD) e.get(r.nextInt(e.size())).createNewCardPokemon());//pegar aleatoriamente
             this.adversarios.add(ad);
- 
+            j++;
         }
         //System.out.println("Foram adicionados "+this.adversarios.size()+" adversarios no ginasio "+this.nome );
         
@@ -47,11 +47,11 @@ public class Ginasio {
     public void exibirAdversarios(){
         
         Iterator adv = this.adversarios.iterator();
-        
+        System.out.println("---ADVERSARIO  ||  POKEMONS---");
         while(adv.hasNext())
         {
             Jogador c = (Jogador) adv.next();
-            System.out.println(c.getNome());
+            System.out.println(c.getNome() +"  -  "+ c.getPokemonPrincipal().getNome());
         }
         
     }

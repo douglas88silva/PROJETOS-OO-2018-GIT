@@ -12,15 +12,39 @@ package cardPokemon;
 public abstract class Pokemon implements Combate{
     
     private String nome;
-    private int vida;
+    private int vida = 1000;
     private int sAtaque;
+    private String tipo;
+    private int evolucao = 0;
+    
+    
+    public int getEvolucao() {
+        return evolucao;
+    }
 
-    public Pokemon(String nome) {
+    public void setEvolucao(int evolucao) {
+        this.evolucao = evolucao;
+    }
+
+
+    
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+
+    public Pokemon(String nome, int sAtaque,int evolucao) {
         
         this.nome = nome;
-        this.vida = 100;
-        this.sAtaque = 10;
+        this.sAtaque = sAtaque;
+        this.vida = sAtaque*10;
+        this.evolucao=evolucao;
     }
+    
 
     public String getNome() {
         return nome;
@@ -37,6 +61,13 @@ public abstract class Pokemon implements Combate{
     public void setVida(int vida) {
         this.vida = vida;
     }
+    public void bonusLevel(int percentual)
+    {
+//        this.vida = this.vida + (int)(this.vida * (int)(percentual/100));
+//        this.sAtaque = this.sAtaque + (int)(this.sAtaque * (int)(percentual/100));
+        this.tipo+=percentual;
+        this.sAtaque+=percentual/2;
+    }
 
     public int getsAtaque() {
         return sAtaque;
@@ -50,15 +81,24 @@ public abstract class Pokemon implements Combate{
         this.vida -= dano; 
     }
     
-    @Override
-    public void atacar(Pokemon adversario) {
 
-    }
     
+//    @Override
+//    public void addExperiencia(int experiencia) {
+//
+//        super.receberExperiencia(experiencia);
+//        
+//        if(evolucao>0 && super.getLevelAtual()==2)
+//        {
+//            
+//        }
+//
+//    }
+//    
     public void duelar(){
         
-        this.vida = 40;
-        this.sAtaque = 10;
+        this.vida = this.vida;
+        this.sAtaque = this.sAtaque;
     }
     
     

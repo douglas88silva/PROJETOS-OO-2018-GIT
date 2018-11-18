@@ -5,6 +5,8 @@
  */
 package cardPokemon;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -19,10 +21,10 @@ public class Main {
      */
     static Thread T = new Thread();
     public static void main(String[] args) {
-        // TODO code application logic here
-        
+
+       
         Jogo batalhaCartasPokemon = new Jogo();
-        
+      
         batalhaCartasPokemon.iniciaJogo();
         //Duelo.exibirtempo();
         

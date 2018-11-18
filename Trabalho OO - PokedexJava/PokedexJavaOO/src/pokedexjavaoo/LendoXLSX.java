@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cardPokemon;
+package pokedexjavaoo;
 
 /**
  *
  * @author jessi
  */
-interface Combate {
+class LendoXLSX {
     
-    
-    public void atacar(Pokemon adversario);
-    
-    //public void addExperiencia(int experiencia); 
 }

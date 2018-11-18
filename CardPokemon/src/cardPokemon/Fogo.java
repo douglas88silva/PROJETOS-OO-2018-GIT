@@ -9,17 +9,33 @@ package cardPokemon;
  *
  * @author jessi
  */
-public class PkFogo extends Pokemon implements Combate{
+public class Fogo extends Pokemon implements Combate{
 
     private String tipo;
     private String nomeAtaque;
 
-    public PkFogo(String nome) {
-        super(nome);
-        this.tipo = "Fogo";
-        this.nomeAtaque = "Bola de Fogo";
+    public String getTipo() {
+        return tipo;
     }
 
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getNomeAtaque() {
+        return nomeAtaque;
+    }
+
+    public void setNomeAtaque(String nomeAtaque) {
+        this.nomeAtaque = nomeAtaque;
+    }
+
+
+    public Fogo(String nome,String tipo,int ataque, int evolucao) {
+        super(nome,ataque,evolucao);
+        this.tipo = tipo;
+        this.nomeAtaque = "Bola de Fogo";
+    }
     @Override
     public void atacar(Pokemon adversario) {
         
