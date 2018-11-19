@@ -25,6 +25,15 @@ public class LevelUp {
     }
 
     
+    public void evolucao(){
+        
+     this.levelAtual = 1;
+     this.experienciaAtual = 0;
+     this.experienciaLevel=100;
+     this.bonusAtributoLevel = 200;
+        
+    }
+    
     public int getLevelAtual() {
         return levelAtual;
     }

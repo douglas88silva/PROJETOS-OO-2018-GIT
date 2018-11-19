@@ -12,10 +12,11 @@ package cardPokemon;
 public abstract class Pokemon implements Combate{
     
     private String nome;
-    private int vida = 1000;
+    private int sVida = 1000;
     private int sAtaque;
     private String tipo;
     private int evolucao = 0;
+    private int hPCombate;
     
     
     public int getEvolucao() {
@@ -41,7 +42,8 @@ public abstract class Pokemon implements Combate{
         
         this.nome = nome;
         this.sAtaque = sAtaque;
-        this.vida = sAtaque*10;
+        this.sVida = sAtaque*10;
+        this.hPCombate = this.sVida;
         this.evolucao=evolucao;
     }
     
@@ -55,16 +57,22 @@ public abstract class Pokemon implements Combate{
     }
 
     public int getVida() {
-        return vida;
+        return sVida;
+    }
+
+    public int gethPCombate() {
+        return hPCombate;
+    }
+
+    public void sethPCombate(int hPCombate) {
+        this.hPCombate = hPCombate;
     }
 
     public void setVida(int vida) {
-        this.vida = vida;
+        this.sVida = vida;
     }
     public void bonusLevel(int percentual)
     {
-//        this.vida = this.vida + (int)(this.vida * (int)(percentual/100));
-//        this.sAtaque = this.sAtaque + (int)(this.sAtaque * (int)(percentual/100));
         this.tipo+=percentual;
         this.sAtaque+=percentual/2;
     }
@@ -78,27 +86,21 @@ public abstract class Pokemon implements Combate{
     }
     public void receberAtaque(int dano)
     {
-        this.vida -= dano; 
+        if(this.hPCombate - dano <0)
+        {
+            this.hPCombate = 0;
+        }
+        else    
+        {
+            this.hPCombate -= dano;
+        } 
     }
     
 
-    
-//    @Override
-//    public void addExperiencia(int experiencia) {
-//
-//        super.receberExperiencia(experiencia);
-//        
-//        if(evolucao>0 && super.getLevelAtual()==2)
-//        {
-//            
-//        }
-//
-//    }
-//    
-    public void duelar(){
+    public void restaurarHp(){
         
-        this.vida = this.vida;
-        this.sAtaque = this.sAtaque;
+        this.hPCombate = this.sVida;
+        //this.sAtaque = this.sAtaque;
     }
     
     

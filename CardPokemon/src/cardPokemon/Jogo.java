@@ -18,7 +18,7 @@ public class Jogo {
     private Jogador player;
     private List<Ginasio> ginasios;
     private boolean fecharJogo = false;
-    private int expericenciaPorVitoria = 110;
+    private int expericenciaPorVitoria = 60;
     Scanner ler = new Scanner(System.in);
    
     public Jogo() {
@@ -111,7 +111,7 @@ public class Jogo {
                    Main.pausarAplicacao();
                        if(g.adversarios.size()>1 && i != g.adversarios.size()-1 )
                        {
-                          System.out.println("Deseja desafiar o proximo?(s/n)");
+                        System.out.println("Deseja desafiar o proximo?(s/n)");
                         String opcao = ler.next();
                         ler.nextLine();
                         while(!"s".equals(opcao) && !"n".equals(opcao))

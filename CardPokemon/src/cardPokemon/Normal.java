@@ -48,7 +48,7 @@ public class Normal extends Pokemon implements Combate{
         
         System.out.println(super.getNome()+ " usou "+this.nomeAtaque+ " no "+adversario.getNome());
      
-        if(adversario.getVida()>0){
+        if(adversario.gethPCombate()>0){
            adversario.receberAtaque(super.getsAtaque());
         }
     }

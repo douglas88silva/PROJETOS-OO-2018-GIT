@@ -50,18 +50,18 @@ public class CarD extends LevelUp {
         if("Planta".equals(tipo))
             pk = new Planta(nome,tipo,ataque,evolucao);
         
-        if("Agua".equals(tipo))
-            pk = new Agua(nome,tipo,ataque,evolucao);
+        else if("Agua".equals(tipo))
+                pk = new Agua(nome,tipo,ataque,evolucao);
         
-        if("Fogo".equals(tipo))
-            pk = new Fogo(nome,tipo,ataque,evolucao);
+             else if("Fogo".equals(tipo))
+                pk = new Fogo(nome,tipo,ataque,evolucao);
         
-        if("Eletrico".equals(tipo))
-            pk = new Eletrico(nome,tipo,ataque,evolucao);
+                  else if("Eletrico".equals(tipo))
+                    pk = new Eletrico(nome,tipo,ataque,evolucao);
         
-        else{
-            pk = new Normal(nome,tipo,ataque,evolucao);
-        }
+                       else
+                         pk = new Normal(nome,tipo,ataque,evolucao);
+        
 
         id++;
         this.idCard = idCard;
@@ -91,9 +91,11 @@ public class CarD extends LevelUp {
                         //fazendo a troca do pokemon para sua evolucao
                         System.out.println("\n\nOps... Parece que o "+this.pk.getNome()+" vai evoluir!");
                         Main.pausarAplicacao();
+                        
 
                         this.pk = cartasDiponiveis.get(this.idCard++).getPk();
-
+                        super.evolucao();
+                        
                         System.out.println("Parabens! seu pokemon evoluiu para "+this.pk.getNome());
                         Main.pausarAplicacao();
                     }
@@ -114,13 +116,38 @@ public class CarD extends LevelUp {
     
     public CarD createNewCardPokemon(){
         
-                        int idPk = this.idCard;
-                        String nomePk = this.pk.getNome();
-                        String tipoPK = this.pk.getTipo();
-                        int ataquePK = this.pk.getsAtaque();
-                        int evolucaoPK = this.pk.getEvolucao();
+                   int idPk = this.idCard;
+                   String nomePk = this.pk.getNome();
+                   String tipoPK = this.pk.getTipo();
+                   int ataquePK = this.pk.getsAtaque();
+                   int evolucaoPK = this.pk.getEvolucao();
                         
                    CarD aux = new CarD(idCard, nomePk, tipoPK, ataquePK, evolucaoPK);
+                   
+                   return aux;
+        
+        
+    }
+    public CarD createNewCardPokemon(int nivel){
+                    
+                   int idPk = this.idCard;
+                   String nomePk = this.pk.getNome();
+                   String tipoPK = this.pk.getTipo();
+                   int ataquePK = this.pk.getsAtaque();
+                   int evolucaoPK = this.pk.getEvolucao();
+                   
+                   CarD aux;
+                   
+                   if(nivel == 1)
+                   {
+                       aux = new CarD(idCard, nomePk, tipoPK, (int)(ataquePK/4), evolucaoPK);
+                   }
+                   else if(nivel == 2)
+                        {
+                            aux = new CarD(idCard, nomePk, tipoPK, (int)(ataquePK/2), evolucaoPK);
+                        }
+                        else
+                            aux = new CarD(idCard, nomePk, tipoPK, ataquePK, evolucaoPK);
                    
                    return aux;
         

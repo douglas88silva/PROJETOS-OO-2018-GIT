@@ -36,7 +36,7 @@ public class Ginasio {
             adversario = adversario.concat(toString(j+1));
          
             Jogador ad = new Jogador(adversario);       
-            ad.addDeckPokemon((CarD) e.get(r.nextInt(e.size())).createNewCardPokemon());//pegar aleatoriamente
+            ad.addDeckPokemon((CarD) e.get(r.nextInt(e.size())).createNewCardPokemon(this.nivel));//pegar aleatoriamente
             this.adversarios.add(ad);
             j++;
         }
@@ -47,7 +47,7 @@ public class Ginasio {
     public void exibirAdversarios(){
         
         Iterator adv = this.adversarios.iterator();
-        System.out.println("---ADVERSARIO  ||  POKEMONS---");
+        System.out.println("---ADVERSARIO     ||    POKEMONS---");
         while(adv.hasNext())
         {
             Jogador c = (Jogador) adv.next();
@@ -84,8 +84,5 @@ public class Ginasio {
 
         return "0"+i;
     }
-    
-    
-    
-    
+   
 }

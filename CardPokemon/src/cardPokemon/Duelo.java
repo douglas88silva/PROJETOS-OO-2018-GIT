@@ -51,17 +51,15 @@ public class Duelo {
         Pokemon pokemonPlayer = this.player.getPokemonPrincipal();
         Pokemon pokemonAdversario = this.adversario.getPokemonPrincipal();
         
-        pokemonPlayer.duelar();
-        pokemonAdversario.duelar();
+        pokemonPlayer.restaurarHp();
+        pokemonAdversario.restaurarHp();
         
         Random r = new Random();
         Duelo.resetarContador();
         
         System.out.println("####Duracao da partida: "+Duelo.tempo+" ####");
-        while((Duelo.tempo=Duelo.tempo-3)>0 && pokemonPlayer.getVida()>0 && pokemonAdversario.getVida()>0){
-            
-           
-            
+        while((Duelo.tempo=Duelo.tempo-3)>0 && pokemonPlayer.gethPCombate()>0 && pokemonAdversario.gethPCombate()>0){
+
             try {
                 
                 T.sleep(1000);
@@ -69,7 +67,7 @@ public class Duelo {
             if(r.nextInt(2)==1)//taxa de acerto
             {
                 pokemonPlayer.atacar(pokemonAdversario);
-                if(pokemonAdversario.getVida()==0)
+                if(pokemonAdversario.gethPCombate()==0)
                     break;
             }
             else{
@@ -80,7 +78,7 @@ public class Duelo {
             {
                 pokemonAdversario.atacar(pokemonPlayer);
                 
-                if(pokemonPlayer.getVida()==0)
+                if(pokemonPlayer.gethPCombate()==0)
                 break;
             } 
             else{ 
@@ -92,15 +90,19 @@ public class Duelo {
             }
             System.out.println("");
             System.out.println("####Duracao da partida: "+Duelo.tempo+" ####");
-            System.out.println("||||  "+pokemonPlayer.getNome()+" HP:"+pokemonPlayer.getVida()+"\t"+ pokemonAdversario.getNome()+" HP:"+pokemonAdversario.getVida()+"  ||||");
+            System.out.println("||||  "+pokemonPlayer.getNome()+" HP:"+pokemonPlayer.gethPCombate()+"\t"+ pokemonAdversario.getNome()+" HP:"+pokemonAdversario.gethPCombate()+"  ||||");
         }
+        
+        
+        pokemonPlayer.restaurarHp();
+        pokemonAdversario.restaurarHp();
         
         if(tempo <=0)
         {
             System.out.println("Tempo limite da partida atingido!");
         }
         
-        if(pokemonPlayer.getVida()>pokemonAdversario.getVida())
+        if(pokemonPlayer.gethPCombate()>pokemonAdversario.gethPCombate())
         {
             return 1;
         }
