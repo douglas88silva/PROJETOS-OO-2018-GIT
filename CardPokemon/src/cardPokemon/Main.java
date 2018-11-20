@@ -24,7 +24,6 @@ public class Main {
 
        
         Jogo batalhaCartasPokemon = new Jogo();
-      
         batalhaCartasPokemon.iniciaJogo();
         //Duelo.exibirtempo();
         

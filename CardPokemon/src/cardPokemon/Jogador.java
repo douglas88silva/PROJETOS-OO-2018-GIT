@@ -19,6 +19,18 @@ public class Jogador {
     private CarD pokemonPrincipal;
     private List<CarD> deckPokemon;
 
+    
+    
+    public void addDeckPokemon(CarD pk) {
+  
+        this.deckPokemon.add(pk);
+
+         if(this.deckPokemon.size()==1)
+         {
+           this.pokemonPrincipal = this.deckPokemon.get(0);
+         }
+    }
+    
     public List<CarD> getDeckPokemon() {
         return deckPokemon;
     }
@@ -49,23 +61,14 @@ public class Jogador {
         return this.deckPokemon.size();
     }
     
-    public void addDeckPokemon(CarD pk) {
-        
-        
-        this.deckPokemon.add(pk);
-        
-        if(this.deckPokemon.size()==1)
-        {
-         this.pokemonPrincipal = this.deckPokemon.get(0);
-        }
-    }
+
 
     public void setPokemonPrincipal(int id) {
         
         if(id >= 0 && id < this.deckPokemon.size())
         {
             this.pokemonPrincipal = this.deckPokemon.get(id);
-            System.out.println("Seu novo pokemon pricinpa e "+this.getPokemonPrincipal().getNome());
+            System.out.println("Seu novo pokemon principal e "+this.getPokemonPrincipal().getNome());
             Main.pausarAplicacao();
         }
         

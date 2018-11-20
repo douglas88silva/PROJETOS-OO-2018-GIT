@@ -35,17 +35,6 @@ public class Duelo {
 
     }
 
-    public int getVencedor() {
-        return vencedor;
-    }
-
-    public void setVencedor(int vencedor) {
-        this.vencedor = vencedor;
-    }
-    
-    
-    
-    
     public int duelar(){
         
         Pokemon pokemonPlayer = this.player.getPokemonPrincipal();
@@ -124,6 +113,15 @@ public class Duelo {
         
          
     }
+    
+    public int getVencedor() {
+        return vencedor;
+    }
+
+    public void setVencedor(int vencedor) {
+        this.vencedor = vencedor;
+    }
+    
     
     public static void resetarContador()
     {

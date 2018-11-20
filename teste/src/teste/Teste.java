@@ -23,21 +23,54 @@ public class Teste {
      * @param args the command line arguments
      */
     static Thread T = new Thread();
+    
+    private static void countMe(String name){
+        i++;
+        System.out.println("Current Counter is: " + i + ", updated by: " + name);
+    }
+ 
+    private static Runnable t1 = new Runnable() {
+        public void run() {
+            try{
+                for(int i=0; i<5; i++){
+                    countMe("t1");
+                }
+            } catch (Exception e){}
+ 
+        }
+    };
+ 
+    private static Runnable t2 = new Runnable() {
+        public void run() {
+            try{
+                for(int i=0; i<5; i++){
+                    countMe("t2");
+                }
+            } catch (Exception e){}
+       }
+    };
+    
+    static int i = 0;
     public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
+        
+        
+        
+        new Thread(t1).start();
+        new Thread(t2).start();
 //        
 //           for (int c = 20; c >= 0; c--) {
 //            T.sleep(1000);                                  
 //           System.out.println(c);
 //      
 //    }
-
-        Random r = new Random();
-        
-        System.out.println(r.nextInt(2));
-        System.out.println(r.nextInt(2));
-        System.out.println(r.nextInt(2));
-        System.out.println(r.nextInt(2));
+//
+//        Random r = new Random();
+//        
+//        System.out.println(r.nextInt(2));
+//        System.out.println(r.nextInt(2));
+//        System.out.println(r.nextInt(2));
+//        System.out.println(r.nextInt(2));
 //        List a = new ArrayList();
 //        
 //        a.add("1");

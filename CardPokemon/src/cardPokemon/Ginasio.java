@@ -19,9 +19,9 @@ public class Ginasio {
     private static int id = 0;
     private String nome;
     private int nivel;
-    List<Jogador> adversarios;
+    private List<Jogador> adversarios;
 
-    public Ginasio(String nome, List<CarD> e) {
+    public Ginasio(String nome, List<CarD> cartasDisponiveis) {
       
         id++;
         this.nivel = id;
@@ -36,7 +36,7 @@ public class Ginasio {
             adversario = adversario.concat(toString(j+1));
          
             Jogador ad = new Jogador(adversario);       
-            ad.addDeckPokemon((CarD) e.get(r.nextInt(e.size())).createNewCardPokemon(this.nivel));//pegar aleatoriamente
+            ad.addDeckPokemon((CarD) cartasDisponiveis.get(r.nextInt(cartasDisponiveis.size())).createNewCardPokemon(this.nivel));//pegar aleatoriamente
             this.adversarios.add(ad);
             j++;
         }

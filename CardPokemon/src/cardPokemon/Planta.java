@@ -11,24 +11,18 @@ package cardPokemon;
  */
 public class Planta extends Pokemon{
 
-    private String tipo;
+    
     private String nomeAtaque;
 
 
     
     public Planta(String nome,String tipo,int ataque,int evolucao) {
         super(nome,ataque,evolucao);
-        this.tipo = tipo;
+        super.setTipo(tipo);
         this.nomeAtaque = "Ataque de folhas";
     }
 
-    public String getTipo() {
-        return tipo;
-    }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 
     public String getNomeAtaque() {
         return nomeAtaque;
@@ -38,6 +32,17 @@ public class Planta extends Pokemon{
         this.nomeAtaque = nomeAtaque;
     }
 
+    
+    @Override
+    public String getTipo() {
+        return super.getTipo();
+    }
+
+    @Override
+    public void setTipo(String tipo) {
+        super.setTipo(tipo);
+    }
+    
     @Override
     public void atacar(Pokemon adversario) {
         

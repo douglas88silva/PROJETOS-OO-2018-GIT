@@ -11,18 +11,17 @@ package cardPokemon;
  */
 public class Normal extends Pokemon implements Combate{
 
-    private String tipo;
+    
     private String nomeAtaque;
     
-    @Override
-    public String getTipo() {
-        return tipo;
+    
+        public Normal(String nome,String tipo,int ataque, int evolucao) {
+        super(nome,ataque,evolucao);
+        super.setTipo(tipo);
+        this.nomeAtaque = "Corpo-a-Corpo";
     }
+    
 
-    @Override
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 
     public String getNomeAtaque() {
         return nomeAtaque;
@@ -32,16 +31,15 @@ public class Normal extends Pokemon implements Combate{
         this.nomeAtaque = nomeAtaque;
     }
     
-
-
-    
-    public Normal(String nome,String tipo,int ataque, int evolucao) {
-        super(nome,ataque,evolucao);
-        this.tipo = tipo;
-        this.nomeAtaque = "Corpo-a-Corpo";
+    @Override
+    public String getTipo() {
+        return super.getTipo();
     }
 
-
+    @Override
+    public void setTipo(String tipo) {
+        super.setTipo(tipo);
+    }
 
     @Override
     public void atacar(Pokemon adversario) {

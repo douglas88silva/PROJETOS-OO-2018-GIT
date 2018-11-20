@@ -22,11 +22,11 @@ public class Jogo {
     Scanner ler = new Scanner(System.in);
    
     public Jogo() {
-        //cartasDisponiveis = new ArrayList();
+        
         ginasios = new ArrayList();
-        //System.out.println("Carregando cartas pokemons!");
         CarregaDadosTXT loadCartas = new CarregaDadosTXT();
         cartasDisponiveis = loadCartas.carregarPokemons();
+      
       //CRIANDO OS GINASIOS
       for(int i=0;i<5;i++)
       {
@@ -91,7 +91,7 @@ public class Jogo {
         g.exibirAdversarios();
         Main.pausarAplicacao();
        
-        for(int i = 0;i<g.adversarios.size();i++){
+        for(int i = 0;i<g.getAdversarios().size();i++){
            System.out.println("###################################### DUELO ##########################################");
            System.out.println(
                    "["+this.player.getNome()+" - "+this.player.getPokemonPrincipal().getNome()+"] "
@@ -109,7 +109,7 @@ public class Jogo {
                    System.out.println("Parabens você venceu a batalha!");
                    this.player.getCardPrincipal().addExperiencia(this.expericenciaPorVitoria, (ArrayList<CarD>)this.cartasDisponiveis);
                    Main.pausarAplicacao();
-                       if(g.adversarios.size()>1 && i != g.adversarios.size()-1 )
+                       if(g.getAdversarios().size()>1 && i != g.getAdversarios().size()-1 )
                        {
                         System.out.println("Deseja desafiar o proximo?(s/n)");
                         String opcao = ler.next();
@@ -140,7 +140,7 @@ public class Jogo {
                    break;
                }
            }
-            if(combate.getVencedor()==1 && i == g.adversarios.size()-1)
+            if(combate.getVencedor()==1 && i == g.getAdversarios().size()-1)
             {
                 System.out.println("Parabens você venceu todos os adversarios!");
                 Main.pausarAplicacao(); 

@@ -16,14 +16,38 @@ public class LevelUp {
     private int experienciaLevel=100;
     private int bonusAtributoLevel = 200;
 
-    public int getBonusAtributoLevel() {
-        return bonusAtributoLevel;
-    }
 
-    public void setBonusAtributoLevel(int bonusAtributoLevel) {
-        this.bonusAtributoLevel = bonusAtributoLevel;
-    }
+    
 
+
+    public void receberExperiencia(int experiencia){
+        
+        
+        if(experiencia<0)
+        {
+            if(this.experienciaAtual+experiencia<0)
+                this.experienciaAtual = 0;
+            else
+                this.experienciaAtual+=experiencia;
+        }
+        else 
+        {
+            this.experienciaAtual+=experiencia;
+            
+            while(this.experienciaAtual >= this.experienciaLevel)
+            {
+                if(this.experienciaAtual>=this.experienciaLevel)
+                {
+                    this.levelAtual++;
+                    this.experienciaAtual = this.experienciaAtual-this.experienciaLevel;
+                    this.experienciaLevel = this.experienciaLevel*this.levelAtual;
+                }
+            }
+            
+        }
+  
+    }
+    
     
     public void evolucao(){
         
@@ -58,36 +82,12 @@ public class LevelUp {
         this.experienciaLevel = experienciaLevel;
     }
     
-    
-    public void receberExperiencia(int experiencia){
-        
-        
-        if(experiencia<0)
-        {
-            if(this.experienciaAtual+experiencia<0)
-                this.experienciaAtual = 0;
-            else
-                this.experienciaAtual+=experiencia;
-        }
-        else 
-        {
-            this.experienciaAtual+=experiencia;
-            
-            while(this.experienciaAtual >= this.experienciaLevel)
-            {
-                if(this.experienciaAtual>=this.experienciaLevel)
-                {
-                    this.levelAtual++;
-                    this.experienciaAtual = this.experienciaAtual-this.experienciaLevel;
-                    this.experienciaLevel = this.experienciaLevel*this.levelAtual;
-                }
-            }
-            
-        }
-        
+    public int getBonusAtributoLevel() {
+        return bonusAtributoLevel;
+    }
 
-        
-        
+    public void setBonusAtributoLevel(int bonusAtributoLevel) {
+        this.bonusAtributoLevel = bonusAtributoLevel;
     }
     
 }

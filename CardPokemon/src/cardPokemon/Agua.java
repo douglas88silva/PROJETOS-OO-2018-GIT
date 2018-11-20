@@ -11,17 +11,14 @@ package cardPokemon;
  */
 public class Agua extends Pokemon implements Combate{
 
-    private String tipo;
     private String nomeAtaque;
 
-    public String getTipo() {
-        return tipo;
+    public Agua(String nome,String tipo,int ataque, int evolucao) {
+        super(nome,ataque,evolucao);
+        super.setTipo(tipo);
+        this.nomeAtaque = "Jato d'Agua";
     }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
+    
     public String getNomeAtaque() {
         return nomeAtaque;
     }
@@ -30,12 +27,16 @@ public class Agua extends Pokemon implements Combate{
         this.nomeAtaque = nomeAtaque;
     }
 
-    
-    public Agua(String nome,String tipo,int ataque,int evolucao) {
-        super(nome,ataque,evolucao);
-        this.tipo = tipo;
-        this.nomeAtaque = "Jato d'Agua";
+    @Override
+    public String getTipo() {
+        return super.getTipo();
     }
+
+    @Override
+    public void setTipo(String tipo) {
+        super.setTipo(tipo);
+    }
+    
     @Override
     public void atacar(Pokemon adversario) {
         
@@ -45,6 +46,7 @@ public class Agua extends Pokemon implements Combate{
            adversario.receberAtaque(super.getsAtaque());
         }
     }
+    
     
     
 }

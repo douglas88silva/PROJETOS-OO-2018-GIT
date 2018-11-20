@@ -19,31 +19,7 @@ public class CarD extends LevelUp {
     private int sPCard;
     private Pokemon pk;
     
-    public int getIdCard() {
-        return idCard;
-    }
-    
-    public void setIdCard(int idCard) {
-        this.idCard = idCard;
-    }
 
-    public int getsPCard() {
-        return sPCard;
-    }
-
-    public void setsPCard(int sPCard) {
-        this.sPCard = sPCard;
-    }
-
-    public Pokemon getPk() {
-        return pk;
-    }
-
-    public void setPk(Pokemon pk) {
-        this.pk = pk;
-    }
-
-    
     public CarD(int idCard,String nome,String tipo,int ataque,int evolucao) {
         
         
@@ -154,7 +130,29 @@ public class CarD extends LevelUp {
         
     }
 
+    public int getIdCard() {
+        return idCard;
+    }
+    
+    public void setIdCard(int idCard) {
+        this.idCard = idCard;
+    }
 
+    public int getsPCard() {
+        return sPCard;
+    }
+
+    public void setsPCard(int sPCard) {
+        this.sPCard = sPCard;
+    }
+
+    public Pokemon getPk() {
+        return pk;
+    }
+
+    public void setPk(Pokemon pk) {
+        this.pk = pk;
+    }
     
     
     
