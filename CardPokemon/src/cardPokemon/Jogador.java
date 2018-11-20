@@ -19,7 +19,10 @@ public class Jogador {
     private CarD pokemonPrincipal;
     private List<CarD> deckPokemon;
 
-    
+    public Jogador(String nome) {
+        this.deckPokemon = new ArrayList();
+        this.nome = nome;   
+    }
     
     public void addDeckPokemon(CarD pk) {
   
@@ -85,10 +88,7 @@ public class Jogador {
         this.nome = nome;
     }
      
-    public Jogador(String nome) {
-        this.deckPokemon = new ArrayList();
-        this.nome = nome;   
-    }
+
 
 
     
