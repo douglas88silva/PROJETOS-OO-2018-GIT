@@ -149,10 +149,10 @@ public class Jogo {
             Main.pausarAplicacao();
         }
     }
-    private String toString(int i) {
+    public String toString(int i) {
         return "0"+i;
     }
-    private void carregarJogador() {
+    public void carregarJogador() {
         
        System.out.println("\n#### TELA DE CADASTRO ####");
        System.out.println("Digite o seu nome:");
@@ -181,7 +181,7 @@ public class Jogo {
         Main.pausarAplicacao();
     }
     
-    private void menuGinasio() {
+    public void menuGinasio() {
             System.out.println("\n#### EM QUAL GINASIO VOCE DESEJA BATALHAR ####");
             this.exibirGinasios();
             System.out.println("(-1) - Voltar");
@@ -198,7 +198,7 @@ public class Jogo {
             }
     }
     
-    private void exibirMeusPokemons() {
+    public void exibirMeusPokemons() {
         System.out.println("###MEUS POKEMONS###");
         System.out.println("N#\tNOME:\t\t\tLEVEL:\t\t\tEXP/EXP\t\tVIDA\t\tATAQUE");
         int i = 1;
@@ -226,7 +226,7 @@ public class Jogo {
         }
     }
    
-    private void premioVitoria(List<Jogador> adversarios) {
+    public void premioVitoria(List<Jogador> adversarios) {
         System.out.println("Escolha um pokemon como premio");
         ArrayList opcoes = new ArrayList();
         int i = 1;
@@ -245,4 +245,64 @@ public class Jogo {
         else
             premioVitoria(adversarios);
     }
+
+    public List<CarD> getCartasDisponiveis() {
+        return cartasDisponiveis;
+    }
+
+    public void setCartasDisponiveis(List<CarD> cartasDisponiveis) {
+        this.cartasDisponiveis = cartasDisponiveis;
+    }
+
+    public int getTotalCartas() {
+        return totalCartas;
+    }
+
+    public void setTotalCartas(int totalCartas) {
+        this.totalCartas = totalCartas;
+    }
+
+    public Jogador getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Jogador player) {
+        this.player = player;
+    }
+
+    public List<Ginasio> getGinasios() {
+        return ginasios;
+    }
+
+    public void setGinasios(List<Ginasio> ginasios) {
+        this.ginasios = ginasios;
+    }
+
+    public boolean isFecharJogo() {
+        return fecharJogo;
+    }
+
+    public void setFecharJogo(boolean fecharJogo) {
+        this.fecharJogo = fecharJogo;
+    }
+
+    public int getExpericenciaPorVitoria() {
+        return expericenciaPorVitoria;
+    }
+
+    public void setExpericenciaPorVitoria(int expericenciaPorVitoria) {
+        this.expericenciaPorVitoria = expericenciaPorVitoria;
+    }
+
+    public Scanner getLer() {
+        return ler;
+    }
+
+    public void setLer(Scanner ler) {
+        this.ler = ler;
+    }
+    
+    
+    
+    
 }
