@@ -5,7 +5,13 @@
  */
 package View;
 
+import static View.TelaPrincipal.batalhaPokemon;
 import static View.TelaPrincipal.menu;
+import cardPokemon.CarD;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 
 
@@ -15,13 +21,29 @@ import static View.TelaPrincipal.menu;
  */
 public class MenuExibirTodosPokemons extends javax.swing.JInternalFrame {
 
+    private List<CarD> cartasDisponiveis;
+    
     /**
      * Creates new form MenuExibirTodosPokemons
      */
     public MenuExibirTodosPokemons() {
         initComponents();
+        
+        this.cartasDisponiveis = batalhaPokemon.getCartasDisponiveis();
+        this.carregarJTable();
+        
     }
-
+    
+    
+     public void carregarJTable()
+    {
+       
+        TabelaPokedex model = new TabelaPokedex(cartasDisponiveis);
+        
+        this.jTable1.setModel(model);
+        
+          
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,30 +63,12 @@ public class MenuExibirTodosPokemons extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "N#", "Nome", "Level", "Vida", "Ataque"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Voltar");
@@ -95,7 +99,7 @@ public class MenuExibirTodosPokemons extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(229, Short.MAX_VALUE)
+                .addContainerGap(233, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

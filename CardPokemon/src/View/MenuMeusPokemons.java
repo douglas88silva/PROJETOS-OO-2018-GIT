@@ -6,8 +6,13 @@
 package View;
 
 
+import static View.TelaPrincipal.batalhaPokemon;
 import static View.TelaPrincipal.jPAreaTrabalho;
 import static View.TelaPrincipal.menu;
+import cardPokemon.CarD;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -18,10 +23,26 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
     /**
      * Creates new form MenuMeusPokemons
      */
+    List<CarD> cartasDisponiveis;
+    
     public MenuMeusPokemons() {
         initComponents();
+        this.cartasDisponiveis = batalhaPokemon.getCartasDisponiveis();
+        
+        this.carregarJTable();
+        
+        
     }
-
+    
+    
+    public void carregarJTable()
+    {
+        TableModel model = jTable.getModel();
+        
+        
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,7 +54,7 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
 
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jTextField1 = new javax.swing.JTextField();
@@ -46,7 +67,7 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -72,7 +93,7 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Meus Pokemons");
@@ -151,7 +172,7 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
