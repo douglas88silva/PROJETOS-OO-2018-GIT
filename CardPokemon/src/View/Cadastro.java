@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cardPokemon.View;
+package View;
 
+import static View.TelaPrincipal.jPAreaTrabalho;
 import cardPokemon.Jogo;
-import static cardPokemon.View.TelaPrincipal.batalhaCartasPokemon;
 import java.awt.event.ItemListener;
 
 /**
@@ -19,6 +19,9 @@ public class Cadastro extends javax.swing.JInternalFrame {
     /**
      * Creates new form Player
      */
+    
+    public static MenuInicial menu;
+    
     public Cadastro() {
         initComponents();
     }
@@ -125,22 +128,16 @@ public class Cadastro extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        batalhaCartasPokemon.getPlayer().setNome(nomeJogador.getText());
-        batalhaCartasPokemon.getPlayer().addDeckPokemon( batalhaCartasPokemon.getCartasDisponiveis().get(0));
-        
-        
-        
+            this.menu = new MenuInicial();
+            jPAreaTrabalho.add(menu);
+            menu.setVisible(true);
+            this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
        
-        jComboBox1.addItem(batalhaCartasPokemon.getCartasDisponiveis().get(0).getPk().getNome());
-        jComboBox1.addItem(batalhaCartasPokemon.getCartasDisponiveis().get(3).getPk().getNome());
-        jComboBox1.addItem(batalhaCartasPokemon.getCartasDisponiveis().get(6).getPk().getNome());
+
         
 
        

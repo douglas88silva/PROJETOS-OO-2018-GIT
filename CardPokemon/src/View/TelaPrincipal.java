@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cardPokemon.View;
+package View;
 
 import cardPokemon.*;
+import java.util.Arrays;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -16,11 +18,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form TelaPrincipal
      */
-    
-    
-    public static Jogo batalhaCartasPokemon = new Jogo();
-    
-    
+
     public TelaPrincipal() {
         initComponents();
     }
@@ -102,15 +100,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         
-        Cadastro novoJogador = new Cadastro();
-        jPAreaTrabalho.add(novoJogador);
-        novoJogador.setVisible(true);
         
-         
+      
+      
+      
+      
+      Cadastro cadastrando = new Cadastro();
+      jPAreaTrabalho.add(cadastrando);
+      cadastrando.setVisible(true);
+        
         
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+
+    
     /**
      * @param args the command line arguments
      */
@@ -153,6 +157,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JDesktopPane jPAreaTrabalho;
+    public static javax.swing.JDesktopPane jPAreaTrabalho;
     // End of variables declaration//GEN-END:variables
 }

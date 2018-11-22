@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cardPokemon.View;
+package View;
+
+import static View.TelaPrincipal.jPAreaTrabalho;
 
 /**
  *
@@ -14,6 +16,10 @@ public class MenuInicial extends javax.swing.JInternalFrame {
     /**
      * Creates new form MenuInicial
      */
+    public static  MenuMeusPokemons exibirMeusPokemons;
+    public static MenuExibirTodosPokemons exibirPokemons;
+    public static MenuGinasios exibirGinasios;
+    
     public MenuInicial() {
         initComponents();
     }
@@ -29,11 +35,10 @@ public class MenuInicial extends javax.swing.JInternalFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jBtnBatalhar = new javax.swing.JButton();
+        jBtnMeusPokemons = new javax.swing.JButton();
+        jBtnPokemons = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -59,14 +64,24 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Batalhar ");
-
-        jButton3.setText("Meus Pokemons");
-
-        jButton4.setText("Pokemons");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jBtnBatalhar.setText("Batalhar ");
+        jBtnBatalhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jBtnBatalharActionPerformed(evt);
+            }
+        });
+
+        jBtnMeusPokemons.setText("Meus Pokemons");
+        jBtnMeusPokemons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnMeusPokemonsActionPerformed(evt);
+            }
+        });
+
+        jBtnPokemons.setText("Pokemons");
+        jBtnPokemons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnPokemonsActionPerformed(evt);
             }
         });
 
@@ -90,49 +105,50 @@ public class MenuInicial extends javax.swing.JInternalFrame {
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1))
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBtnBatalhar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnPokemons, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
                 .addContainerGap(44, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(47, 47, 47)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnMeusPokemons, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(42, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(jButton2)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(45, 45, 45)
+                .addComponent(jBtnBatalhar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addComponent(jBtnPokemons)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5)
                 .addGap(29, 29, 29))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(126, 126, 126)
-                    .addComponent(jButton3)
+                    .addComponent(jBtnMeusPokemons)
                     .addContainerGap(129, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jBtnPokemonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPokemonsActionPerformed
+
+
+        this.exibirMeusPokemons = new MenuMeusPokemons();
+        jPAreaTrabalho.add(exibirMeusPokemons);
+        exibirMeusPokemons.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jBtnPokemonsActionPerformed
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
@@ -145,16 +161,34 @@ public class MenuInicial extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jBtnMeusPokemonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMeusPokemonsActionPerformed
+        // TODO add your handling code here:
+        
+        this.exibirPokemons = new MenuExibirTodosPokemons();
+        jPAreaTrabalho.add(exibirPokemons);
+        exibirPokemons.setVisible(true);
+        this.setVisible(false);
+      
+    }//GEN-LAST:event_jBtnMeusPokemonsActionPerformed
+
+    private void jBtnBatalharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBatalharActionPerformed
+        // TODO add your handling code here:
+        
+        this.exibirGinasios = new MenuGinasios();
+        jPAreaTrabalho.add(exibirGinasios);
+        exibirGinasios.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jBtnBatalharActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jBtnBatalhar;
+    private javax.swing.JButton jBtnMeusPokemons;
+    private javax.swing.JButton jBtnPokemons;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
