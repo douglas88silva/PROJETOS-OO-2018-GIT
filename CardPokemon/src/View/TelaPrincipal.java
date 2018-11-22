@@ -29,6 +29,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public TelaPrincipal() {
         initComponents();
+        
+        this.iniciarJogo();
     }
 
     /**
@@ -75,6 +77,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         jMenu1.setText("File");
+        jMenu1.setEnabled(false);
 
         jMenuItem1.setText("Iniciar Jogo");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +90,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
+        jMenu2.setEnabled(false);
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -104,27 +108,49 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-
-//       try{ 
+    
+    
+    public void iniciarJogo(){
+        
+        //       try{ 
            
             this.batalhaPokemon = new Jogo();
-            
+
             List<CarD> iniciais = this.batalhaPokemon.getCartasDisponiveis();
-            
-            
+
             Cadastro cadastrando = new Cadastro(Arrays.asList(
                 iniciais.get(0),iniciais.get(1),iniciais.get(2)));
-            
+
             jPAreaTrabalho.add(cadastrando);
             cadastrando.setVisible(true);
             
             
 //       }catch(Exception e)
 //       {
-//           //alert mensagem
+//           JOptionPane.showMessageDialog(null, "erro a" + e);
+//           
+//       }
+        
+    }
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+
+//       try{ 
+           
+            this.batalhaPokemon = new Jogo();
+
+            List<CarD> iniciais = this.batalhaPokemon.getCartasDisponiveis();
+
+            Cadastro cadastrando = new Cadastro(Arrays.asList(
+                iniciais.get(0),iniciais.get(1),iniciais.get(2)));
+
+            jPAreaTrabalho.add(cadastrando);
+            cadastrando.setVisible(true);
+            
+            
+//       }catch(Exception e)
+//       {
+//           JOptionPane.showMessageDialog(null, "erro a" + e);
 //           
 //       }
         

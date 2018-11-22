@@ -153,7 +153,15 @@ public class CarD extends LevelUp {
     public void setPk(Pokemon pk) {
         this.pk = pk;
     }
+    public String getNome()
+    {
+        return this.pk.getNome();
+    }
     
+    @Override
+    public String toString() {
+        return this.pk.getNome();
+    }
     
     
 }

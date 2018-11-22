@@ -47,7 +47,7 @@ public abstract class Pokemon implements Combate{
         this.evolucao=evolucao;
     }
     
-
+    
     public String getNome() {
         return nome;
     }
