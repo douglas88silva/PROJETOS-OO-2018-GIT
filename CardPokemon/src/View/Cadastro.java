@@ -5,10 +5,14 @@
  */
 package View;
 
+import static View.TelaPrincipal.batalhaPokemon;
 import static View.TelaPrincipal.jPAreaTrabalho;
 import static View.TelaPrincipal.menu;
-import cardPokemon.Jogo;
+import cardPokemon.*;
 import java.awt.event.ItemListener;
+import java.util.List;
+import java.util.Objects;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -20,10 +24,22 @@ public class Cadastro extends javax.swing.JInternalFrame {
     /**
      * Creates new form Player
      */
+    private Jogador player;
+    private List<CarD>listaPokemon;
     
-    
-    
-    public Cadastro() {
+    public Cadastro(List<CarD> pokemons) {
+        
+        if(pokemons != null)
+            listaPokemon = pokemons;
+        
+//        Objects.equals(ui, ui)
+//        
+//        
+//        for (CarD pokemon : pokemons) {
+//            jComboBox.addItem(pokemon.getPk().getNome());
+//        }
+        
+        
         initComponents();
     }
 
@@ -40,7 +56,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         nomeJogador = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
@@ -56,9 +72,9 @@ public class Cadastro extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Pokemon");
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxActionPerformed(evt);
             }
         });
 
@@ -86,7 +102,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2))
                         .addContainerGap(167, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(113, 113, 113))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -99,7 +115,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -125,6 +141,8 @@ public class Cadastro extends javax.swing.JInternalFrame {
 
     private void nomeJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeJogadorActionPerformed
         // TODO add your handling code here:
+        
+       
     }//GEN-LAST:event_nomeJogadorActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -135,22 +153,18 @@ public class Cadastro extends javax.swing.JInternalFrame {
             this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-       
-
+    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
         
-
+        this.player = new Jogador(nomeJogador.getText());
+        //batalhaPokemon.setPlayer();
        
-
-
         
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

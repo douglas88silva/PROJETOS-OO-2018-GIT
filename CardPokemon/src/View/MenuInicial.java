@@ -9,6 +9,7 @@ import static View.TelaPrincipal.exibirGinasios;
 import static View.TelaPrincipal.exibirMeusPokemons;
 import static View.TelaPrincipal.exibirPokemons;
 import static View.TelaPrincipal.jPAreaTrabalho;
+import javafx.application.Application;
 
 /**
  *
@@ -160,7 +161,9 @@ public class MenuInicial extends javax.swing.JInternalFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        //this.setVisible(false);
+        
+        System.exit(0);
         
     }//GEN-LAST:event_jButton5ActionPerformed
 

@@ -6,7 +6,9 @@
 package View;
 
 import cardPokemon.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import javax.swing.JInternalFrame;
 
 /**
@@ -23,6 +25,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public static MenuExibirTodosPokemons exibirPokemons = null;
     public static MenuGinasios exibirGinasios = null;
     public static MenuInicial menu = null;
+    public static Jogo batalhaPokemon;
     
     public TelaPrincipal() {
         initComponents();
@@ -105,12 +108,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
 
-        
-      Cadastro cadastrando = new Cadastro();
-      jPAreaTrabalho.add(cadastrando);
-      cadastrando.setVisible(true);
-        
-        
+//       try{ 
+           
+            this.batalhaPokemon = new Jogo();
+            
+            List<CarD> iniciais = this.batalhaPokemon.getCartasDisponiveis();
+            
+            
+            Cadastro cadastrando = new Cadastro(Arrays.asList(
+                iniciais.get(0),iniciais.get(1),iniciais.get(2)));
+            
+            jPAreaTrabalho.add(cadastrando);
+            cadastrando.setVisible(true);
+            
+            
+//       }catch(Exception e)
+//       {
+//           //alert mensagem
+//           
+//       }
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
