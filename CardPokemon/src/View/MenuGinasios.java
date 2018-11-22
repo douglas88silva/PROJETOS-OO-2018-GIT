@@ -5,7 +5,9 @@
  */
 package View;
 
-import static View.Cadastro.menu;
+import static View.TelaPrincipal.menu;
+
+
 
 /**
  *
@@ -172,7 +174,7 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
                 this.setVisible(false);
-        menu.setVisible(true);
+                menu.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -5,8 +5,9 @@
  */
 package View;
 
-import static View.Cadastro.menu;
+
 import static View.TelaPrincipal.jPAreaTrabalho;
+import static View.TelaPrincipal.menu;
 
 /**
  *

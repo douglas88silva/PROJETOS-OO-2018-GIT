@@ -5,6 +5,9 @@
  */
 package View;
 
+import static View.TelaPrincipal.exibirGinasios;
+import static View.TelaPrincipal.exibirMeusPokemons;
+import static View.TelaPrincipal.exibirPokemons;
 import static View.TelaPrincipal.jPAreaTrabalho;
 
 /**
@@ -16,9 +19,7 @@ public class MenuInicial extends javax.swing.JInternalFrame {
     /**
      * Creates new form MenuInicial
      */
-    public static  MenuMeusPokemons exibirMeusPokemons;
-    public static MenuExibirTodosPokemons exibirPokemons;
-    public static MenuGinasios exibirGinasios;
+
     
     public MenuInicial() {
         initComponents();
@@ -143,7 +144,7 @@ public class MenuInicial extends javax.swing.JInternalFrame {
     private void jBtnPokemonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPokemonsActionPerformed
 
 
-        this.exibirMeusPokemons = new MenuMeusPokemons();
+        exibirMeusPokemons = new MenuMeusPokemons();
         jPAreaTrabalho.add(exibirMeusPokemons);
         exibirMeusPokemons.setVisible(true);
         this.setVisible(false);
@@ -159,12 +160,14 @@ public class MenuInicial extends javax.swing.JInternalFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jBtnMeusPokemonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMeusPokemonsActionPerformed
         // TODO add your handling code here:
         
-        this.exibirPokemons = new MenuExibirTodosPokemons();
+        exibirPokemons = new MenuExibirTodosPokemons();
         jPAreaTrabalho.add(exibirPokemons);
         exibirPokemons.setVisible(true);
         this.setVisible(false);
@@ -174,7 +177,7 @@ public class MenuInicial extends javax.swing.JInternalFrame {
     private void jBtnBatalharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBatalharActionPerformed
         // TODO add your handling code here:
         
-        this.exibirGinasios = new MenuGinasios();
+        exibirGinasios = new MenuGinasios();
         jPAreaTrabalho.add(exibirGinasios);
         exibirGinasios.setVisible(true);
         this.setVisible(false);

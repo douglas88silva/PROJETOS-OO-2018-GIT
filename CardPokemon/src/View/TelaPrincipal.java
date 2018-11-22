@@ -18,7 +18,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form TelaPrincipal
      */
-
+    
+    public static MenuMeusPokemons exibirMeusPokemons = null;
+    public static MenuExibirTodosPokemons exibirPokemons = null;
+    public static MenuGinasios exibirGinasios = null;
+    public static MenuInicial menu = null;
+    
     public TelaPrincipal() {
         initComponents();
     }
@@ -99,12 +104,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+
         
-        
-      
-      
-      
-      
       Cadastro cadastrando = new Cadastro();
       jPAreaTrabalho.add(cadastrando);
       cadastrando.setVisible(true);

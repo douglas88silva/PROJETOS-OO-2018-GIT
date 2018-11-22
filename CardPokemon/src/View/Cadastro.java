@@ -6,6 +6,7 @@
 package View;
 
 import static View.TelaPrincipal.jPAreaTrabalho;
+import static View.TelaPrincipal.menu;
 import cardPokemon.Jogo;
 import java.awt.event.ItemListener;
 
@@ -20,7 +21,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
      * Creates new form Player
      */
     
-    public static MenuInicial menu;
+    
     
     public Cadastro() {
         initComponents();
@@ -128,7 +129,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-            this.menu = new MenuInicial();
+            menu = new MenuInicial();
             jPAreaTrabalho.add(menu);
             menu.setVisible(true);
             this.setVisible(false);
