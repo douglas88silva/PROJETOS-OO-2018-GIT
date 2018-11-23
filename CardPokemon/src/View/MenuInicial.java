@@ -7,9 +7,9 @@ package View;
 
 import static View.TelaPrincipal.exibirGinasios;
 import static View.TelaPrincipal.exibirMeusPokemons;
-import static View.TelaPrincipal.exibirPokemons;
 import static View.TelaPrincipal.jPAreaTrabalho;
 import javafx.application.Application;
+import static View.TelaPrincipal.exibirTodosPokemons;
 
 /**
  *
@@ -144,10 +144,9 @@ public class MenuInicial extends javax.swing.JInternalFrame {
 
     private void jBtnPokemonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPokemonsActionPerformed
 
-
-        exibirMeusPokemons = new MenuMeusPokemons();
-        jPAreaTrabalho.add(exibirMeusPokemons);
-        exibirMeusPokemons.setVisible(true);
+        exibirTodosPokemons = new MenuExibirTodosPokemons();
+        jPAreaTrabalho.add(exibirTodosPokemons);
+        exibirTodosPokemons.setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_jBtnPokemonsActionPerformed
@@ -169,10 +168,10 @@ public class MenuInicial extends javax.swing.JInternalFrame {
 
     private void jBtnMeusPokemonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMeusPokemonsActionPerformed
         // TODO add your handling code here:
-        
-        exibirPokemons = new MenuExibirTodosPokemons();
-        jPAreaTrabalho.add(exibirPokemons);
-        exibirPokemons.setVisible(true);
+        exibirMeusPokemons = new MenuMeusPokemons();
+        jPAreaTrabalho.add(exibirMeusPokemons);
+        exibirMeusPokemons.setVisible(true);
+
         this.setVisible(false);
       
     }//GEN-LAST:event_jBtnMeusPokemonsActionPerformed

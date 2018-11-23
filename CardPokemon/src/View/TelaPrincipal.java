@@ -22,7 +22,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     
     public static MenuMeusPokemons exibirMeusPokemons = null;
-    public static MenuExibirTodosPokemons exibirPokemons = null;
+    public static MenuExibirTodosPokemons exibirTodosPokemons = null;
     public static MenuGinasios exibirGinasios = null;
     public static MenuInicial menu = null;
     public static Jogo batalhaPokemon;

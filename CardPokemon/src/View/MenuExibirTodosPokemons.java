@@ -38,7 +38,7 @@ public class MenuExibirTodosPokemons extends javax.swing.JInternalFrame {
      public void carregarJTable()
     {
        
-        TabelaPokedex model = new TabelaPokedex(cartasDisponiveis);
+        TabelaTodosPokemons model = new TabelaTodosPokemons(cartasDisponiveis);
         
         this.jTable1.setModel(model);
         

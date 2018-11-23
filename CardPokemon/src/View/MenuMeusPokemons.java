@@ -10,6 +10,7 @@ import static View.TelaPrincipal.batalhaPokemon;
 import static View.TelaPrincipal.jPAreaTrabalho;
 import static View.TelaPrincipal.menu;
 import cardPokemon.CarD;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -27,20 +28,28 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
     
     public MenuMeusPokemons() {
         initComponents();
-        this.cartasDisponiveis = batalhaPokemon.getCartasDisponiveis();
+        
+        //this.cartasDisponiveis = batalhaPokemon.getPlayer().getDeckPokemon();
+        
+        //TESTE
+        this.cartasDisponiveis  = new ArrayList();
+        this.cartasDisponiveis.add(batalhaPokemon.getCartasDisponiveis().get(1));
+        this.cartasDisponiveis.add(batalhaPokemon.getCartasDisponiveis().get(6));
+        //FIM TESTE
         
         this.carregarJTable();
-        
-        
+   
     }
     
     
-    public void carregarJTable()
+     public void carregarJTable()
     {
-        TableModel model = jTable.getModel();
+       
+        TabelaMeusPokemons model = new TabelaMeusPokemons(cartasDisponiveis);
         
+        this.jTable.setModel(model);
         
-        
+          
     }
     
     /**
@@ -69,30 +78,12 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "N#", "Nome", "Level", "Vida", "Ataque", "Exp/Exp", "Principal"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(jTable);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N

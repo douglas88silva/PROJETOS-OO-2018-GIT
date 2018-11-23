@@ -1,13 +1,16 @@
 package View;
 
+import static View.TelaPrincipal.batalhaPokemon;
 import cardPokemon.CarD;
 import java.util.List;
+import java.util.Objects;
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
-public class TabelaPokedex extends AbstractTableModel {
+public class TabelaMeusPokemons extends AbstractTableModel {
 
     private String colunas[] = {"N#", "Nome", "Level", "Vida", "Ataque", "Experiencia","Principal"};
-    private List<CarD> cartasDisponivies;
+    private List<CarD> meusPokemons;
     private final int COLUNA_ID = 0;
     private final int COLUNA_NOME = 1;
     private final int COLUNA_LEVEL = 2;
@@ -16,20 +19,21 @@ public class TabelaPokedex extends AbstractTableModel {
     private final int COLUNA_EXP = 5;
     private final int COLUNA_PRINCIPAL = 6;
 
-    public TabelaPokedex(List<CarD> cartasDisponiveis) {
-        this.cartasDisponivies = cartasDisponiveis;
+    public TabelaMeusPokemons(List<CarD> meusPokemons) {
+        this.meusPokemons = meusPokemons;
     }
 
     //retorna se a célula é editável ou não
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return true;
+        
+        return false;
     }
 
     //retorna o total de itens(que virarão linhas) da nossa lista
     @Override
     public int getRowCount() {
-        return cartasDisponivies.size();
+        return meusPokemons.size();
     }
     //retorna o total de colunas da tabela
     @Override
@@ -57,7 +61,7 @@ public class TabelaPokedex extends AbstractTableModel {
             case COLUNA_ATAQUE:
                return Integer.class; 
             case COLUNA_EXP:
-                return Integer.class;  
+                return String.class; 
              case COLUNA_PRINCIPAL:
                 return Boolean.class;                         
             default:
@@ -68,30 +72,33 @@ public class TabelaPokedex extends AbstractTableModel {
     //preenche cada célula da tabela
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        CarD carta = this.cartasDisponivies.get(rowIndex);
-
-        switch (columnIndex) {
-            case COLUNA_ID:
-                return carta.getIdCard();
-            case COLUNA_NOME:
-                return carta.getNome();
-//            case COLUNA_LEVEL:
-//                return carta.getLevelAtual();
-            case COLUNA_VIDA:
-                return carta.getPk().getVida();
-            case COLUNA_ATAQUE:
-               return carta.getPk().getsAtaque();
-//            case COLUNA_EXP:
-//                String a = "";
-////                a.concat(carta.getExperienciaAtual()+" / "+ carta.getExperienciaLevel());
-//                return a;    
-//             case COLUNA_PRINCIPAL:
-//                //return carta.getNome();   
-                
+        
+        CarD carta = this.meusPokemons.get(rowIndex);
+        try{
+            switch (columnIndex) {
+                case COLUNA_ID:
+                   return carta.getIdCard();
+                case COLUNA_NOME:
+                    return carta.getNome();
+                case COLUNA_LEVEL:
+                    System.out.println(carta.getLevelAtual());
+                    return carta.getLevel();
+                case COLUNA_VIDA:
+                    return carta.getPk().getVida();
+                case COLUNA_ATAQUE:
+                   return carta.getPk().getsAtaque();
+                case COLUNA_EXP:
+                   String a = "";
+                   return a.concat(carta.getExperienciaAtual()+" / "+ carta.getExperienciaLevel()); 
+                case COLUNA_PRINCIPAL:
+                   //return carta.equals(batalhaPokemon.player.getCardPrincipal());
+                    return false;
+            }
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "erro " + e);
         }
         return null;
     }
-    //altera o valor do objeto de acordo com a célula editada
-    //e notifica a alteração da tabela, para que ela seja atualizada na tela
 
 }

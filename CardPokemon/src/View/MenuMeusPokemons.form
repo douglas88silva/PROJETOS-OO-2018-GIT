@@ -88,15 +88,7 @@
         <Component class="javax.swing.JTable" name="jTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="4">
-                <Column editable="true" title="N#" type="java.lang.Integer"/>
-                <Column editable="false" title="Nome" type="java.lang.String"/>
-                <Column editable="false" title="Level" type="java.lang.Integer"/>
-                <Column editable="false" title="Vida" type="java.lang.Integer"/>
-                <Column editable="false" title="Ataque" type="java.lang.Integer"/>
-                <Column editable="false" title="Exp/Exp" type="java.lang.Object"/>
-                <Column editable="false" title="Principal" type="java.lang.Boolean"/>
-              </Table>
+              <Table columnCount="0" rowCount="0"/>
             </Property>
           </Properties>
         </Component>
