@@ -7,6 +7,7 @@ package cardPokemon;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 /**
  *
@@ -102,71 +103,8 @@ public class Jogo {
 
            Main.pausarAplicacao();
            Duelo combate = new Duelo(this.player,g.getAdversarios().get(i));
-           if(combate.getVencedor() != -1)
-           {
-               if(combate.getVencedor()==1)
-               {
-                   System.out.println("Parabens você venceu a batalha!");
-                   this.player.getCardPrincipal().addExperiencia(this.expericenciaPorVitoria, (ArrayList<CarD>)this.cartasDisponiveis);
-                   Main.pausarAplicacao();
-                       if(g.getAdversarios().size()>1 && i != g.getAdversarios().size()-1 )
-                       {
-                        System.out.println("Deseja desafiar o proximo?(s/n)");
-                        String opcao = ler.next();
-                        ler.nextLine();
-                        while(!"s".equals(opcao) && !"n".equals(opcao))
-                        {
-                         System.out.println("Deseja desafiar o proximo?(s/n)");
-                         opcao = ler.next();
-                         ler.nextLine();
-                        }
-                        if(("s").equals(opcao))
-                        {
-                            combate.setVencedor(-1);
-                        }
-                        else
-                        {
-                            System.out.println("\nParabens você venceu " + (i+1) +" adversarios!");
-                            break;
-                        }
-                      }
-               }
-               else if(combate.getVencedor()==0)
-               {
-                   System.out.println("\nQue pena, voce foi derrotado adversario "+ g.getAdversarios().get(i).getNome());
-                   this.player.getCardPrincipal().addExperiencia(((int)-this.expericenciaPorVitoria/4), (ArrayList<CarD>)this.cartasDisponiveis);
-
-                   Main.pausarAplicacao();
-                   break;
-               }
-           }
-            if(combate.getVencedor()==1 && i == g.getAdversarios().size()-1)
-            {
-                System.out.println("Parabens você venceu todos os adversarios!");
-                Main.pausarAplicacao(); 
-                this.premioVitoria(g.getAdversarios());
-            }
-            Main.pausarAplicacao();
-        }
-    }
-   
-    
-    
-        public void batalharGinasio(Ginasio g){
-        //INICIAR A BATALHA
-        System.out.println("\ns#### ENTRANDO NO GINASIO " +g.getNome()+" ####");
-
-        for(int i = 0;i<g.getAdversarios().size();i++){
-           System.out.println("###################################### DUELO ##########################################");
-           System.out.println(
-                   "["+this.player.getNome()+" - "+this.player.getPokemonPrincipal().getNome()+"] "
-                   +"X"
-                   + " ["+g.getAdversarios().get(i).getNome()+" - "+g.getAdversarios().get(i).getPokemonPrincipal().getNome()+"]");
+           combate.duelar();
            
-           System.out.println("############");
-
-           //Main.pausarAplicacao();
-           Duelo combate = new Duelo(this.player,g.getAdversarios().get(i));
            if(combate.getVencedor() != -1)
            {
                if(combate.getVencedor()==1)
@@ -201,6 +139,53 @@ public class Jogo {
                    System.out.println("\nQue pena, voce foi derrotado adversario "+ g.getAdversarios().get(i).getNome());
                    this.player.getCardPrincipal().addExperiencia(((int)-this.expericenciaPorVitoria/4), (ArrayList<CarD>)this.cartasDisponiveis);
 
+                   //Main.pausarAplicacao();
+                   break;
+               }
+           }
+            if(combate.getVencedor()==1 && i == g.getAdversarios().size()-1)
+            {
+                System.out.println("Parabens você venceu todos os adversarios!");
+                Main.pausarAplicacao(); 
+                this.premioVitoria(g.getAdversarios());
+            }
+            Main.pausarAplicacao();
+        }
+    }
+   
+    
+    
+    public void batalharGinasio(Ginasio g){
+        //INICIAR A BATALHA
+        System.out.println("\ns#### ENTRANDO NO GINASIO " +g.getNome()+" ####");
+
+        for(int i = 0;i<g.getAdversarios().size();i++){
+           System.out.println("###################################### DUELO ##########################################");
+           System.out.println(
+                   "["+this.player.getNome()+" - "+this.player.getPokemonPrincipal().getNome()+"] "
+                   +"X"
+                   + " ["+g.getAdversarios().get(i).getNome()+" - "+g.getAdversarios().get(i).getPokemonPrincipal().getNome()+"]");
+           
+           System.out.println("############");
+
+           //Main.pausarAplicacao();
+           Duelo combate = new Duelo(this.player,g.getAdversarios().get(i));
+           combate.duelarInstantaneo();
+           
+           if(combate.getVencedor() != -1)
+           {
+               if(combate.getVencedor()==1)
+               {
+                   System.out.println("Parabens você venceu a batalha!");
+                   this.player.getCardPrincipal().addExperiencia(this.expericenciaPorVitoria, (ArrayList<CarD>)this.cartasDisponiveis);
+                   //Main.pausarAplicacao();
+
+               }
+               else if(combate.getVencedor()==0)
+               {
+                   System.out.println("\nQue pena, voce foi derrotado adversario "+ g.getAdversarios().get(i).getNome());
+                   this.player.getCardPrincipal().addExperiencia(((int)-this.expericenciaPorVitoria/4), (ArrayList<CarD>)this.cartasDisponiveis);
+
                   // Main.pausarAplicacao();
                    break;
                }
@@ -209,7 +194,7 @@ public class Jogo {
             {
                 System.out.println("Parabens você venceu todos os adversarios!");
                // Main.pausarAplicacao(); 
-                this.premioVitoria(g.getAdversarios());
+                this.premioVitoriaInstatanea(g.getAdversarios());
             }
            // Main.pausarAplicacao();
         }
@@ -311,6 +296,13 @@ public class Jogo {
         }
         else
             premioVitoria(adversarios);
+    }
+    
+    public void premioVitoriaInstatanea(List<Jogador> adversarios) {
+            Random r = new Random();
+            
+            this.player.addDeckPokemon(adversarios.get(r.nextInt(adversarios.size())).getCardPrincipal().createNewCardPokemon());
+         
     }
 
     public List<CarD> getCartasDisponiveis() {

@@ -26,8 +26,10 @@ public class TabelaMeusPokemons extends AbstractTableModel {
     //retorna se a célula é editável ou não
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        
-        return false;
+        if(columnIndex == COLUNA_PRINCIPAL)
+        return true;
+        else
+            return false;
     }
 
     //retorna o total de itens(que virarão linhas) da nossa lista
@@ -100,5 +102,27 @@ public class TabelaMeusPokemons extends AbstractTableModel {
         }
         return null;
     }
+    
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
+        try{
+                CarD carta = this.meusPokemons.get(rowIndex);
+
+            switch (columnIndex) {
+                case COLUNA_PRINCIPAL:
+                    batalhaPokemon.getPlayer().setPokemonPrincipal(carta.getIdCard());
+            }
+            //este método é que notifica a tabela que houve alteração de dados
+            fireTableDataChanged();
+        }
+        catch(Exception e)
+        {
+             JOptionPane.showMessageDialog(null, "erro " + e);
+        }
+
+    }
+    
+    
 }
+

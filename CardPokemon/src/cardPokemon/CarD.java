@@ -64,14 +64,14 @@ public class CarD extends LevelUp {
                     {
                         //fazendo a troca do pokemon para sua evolucao
                         System.out.println("\n\nOps... Parece que o "+this.pk.getNome()+" vai evoluir!");
-                        Main.pausarAplicacao();
+                        //Main.pausarAplicacao();
                         
 
                         this.pk = cartasDiponiveis.get(this.idCard++).getPk();
                         super.evolucao();
                         
                         System.out.println("Parabens! seu pokemon evoluiu para "+this.pk.getNome());
-                        Main.pausarAplicacao();
+                        //Main.pausarAplicacao();
                     }
                     totalEvolucao--;
                 }
@@ -80,7 +80,7 @@ public class CarD extends LevelUp {
             {
                 System.out.println("ops... Seu pokemon acaba de subir para o level "+super.getLevelAtual());
                 this.pk.bonusLevel(super.getBonusAtributoLevel());
-                Main.pausarAplicacao();
+                //Main.pausarAplicacao();
             }
             
         }

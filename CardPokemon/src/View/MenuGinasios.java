@@ -7,10 +7,14 @@ package View;
 
 import static View.TelaPrincipal.batalhaPokemon;
 import static View.TelaPrincipal.menu;
+import cardPokemon.CarD;
+import cardPokemon.Duelo;
 
 import cardPokemon.Ginasio;
 import cardPokemon.Jogador;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -147,7 +151,7 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,23 +177,21 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jSeparator1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(38, 38, 38)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -214,7 +216,7 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -223,7 +225,8 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        batalhaPokemon.batalharGinasio((Ginasio) jComboBox1.getSelectedItem());
+        this.batalharView((Ginasio) jComboBox1.getSelectedItem());
+        JOptionPane.showMessageDialog(null, "Fim da batalha");
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -241,7 +244,64 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
             this.carregarJTable();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    void batalharView(Ginasio g)
+    {
+        //INICIAR A BATALHA
+        System.out.println("\ns#### ENTRANDO NO GINASIO " +g.getNome()+" ####");
 
+        for(int i = 0;i<g.getAdversarios().size();i++){
+           System.out.println("###################################### DUELO ##########################################");
+           System.out.println(
+                   "["+batalhaPokemon.getPlayer().getNome()+" - "+batalhaPokemon.getPlayer().getPokemonPrincipal().getNome()+"] "
+                   +"X"
+                   + " ["+g.getAdversarios().get(i).getNome()+" - "+g.getAdversarios().get(i).getPokemonPrincipal().getNome()+"]");
+           
+           System.out.println("############");
+
+           //Main.pausarAplicacao();
+           Duelo combate = new Duelo(batalhaPokemon.getPlayer(),g.getAdversarios().get(i));
+           combate.duelarInstantaneo();
+           
+           if(combate.getVencedor() != -1)
+           {
+               if(combate.getVencedor()==1)
+               {
+                   System.out.println("Parabens você venceu a batalha!");
+                   JOptionPane.showMessageDialog(null, "Parabens você venceu a batalha!");
+                   batalhaPokemon.getPlayer().getCardPrincipal().addExperiencia(batalhaPokemon.getExpericenciaPorVitoria(), (ArrayList<CarD>)batalhaPokemon.getCartasDisponiveis());
+                   //Main.pausarAplicacao();
+
+               }
+               else if(combate.getVencedor()==0)
+               {
+                   System.out.println("\nQue pena, voce foi derrotado adversario "+ g.getAdversarios().get(i).getNome());
+                   JOptionPane.showMessageDialog(null, "\nQue pena, voce foi derrotado adversario "+ g.getAdversarios().get(i).getNome());
+                   batalhaPokemon.getPlayer().getCardPrincipal().addExperiencia(((int)-batalhaPokemon.getExpericenciaPorVitoria()/4), (ArrayList<CarD>)batalhaPokemon.getCartasDisponiveis());
+
+                  // Main.pausarAplicacao();
+                   break;
+               }
+           }
+            if(combate.getVencedor()==1 && i == g.getAdversarios().size()-1)
+            {
+                System.out.println("Parabens você venceu todos os adversarios!");
+                JOptionPane.showMessageDialog(null, "Parabens você venceu todos os adversarios!");
+               // Main.pausarAplicacao(); 
+                this.premioVitoriaInstatanea(g.getAdversarios());
+            }
+           // Main.pausarAplicacao();
+        }
+    }
+    
+    public void premioVitoriaInstatanea(List<Jogador> adversarios) {
+            Random r = new Random();
+                  batalhaPokemon.getPlayer().addDeckPokemon(adversarios.get(r.nextInt(adversarios.size())).getCardPrincipal().createNewCardPokemon());
+         
+    }
+   
+   
+        
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

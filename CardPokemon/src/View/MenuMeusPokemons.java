@@ -90,6 +90,11 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
         jLabel1.setText("Meus Pokemons");
 
         jToggleButton1.setText("Alterar Pokemon Principal");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +161,13 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
         
                
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        
+       // jTable.setValueAt(cartasDisponiveis, Integer.parseInt(jTextField1.getText()), 6);
+        
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
