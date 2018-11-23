@@ -3,7 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cardPokemon;
+package Controller;
+import DAO.CarregaDadosTXT;
+import cardPokemon.CarD;
+import cardPokemon.Duelo;
+import cardPokemon.Ginasio;
+import cardPokemon.Jogador;
+import cardPokemon.Main;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -39,10 +45,10 @@ public class Jogo {
       this.totalCartas = cartasDisponiveis.size();
     }
     
-    public void iniciaJogo()
+    public void iniciaJogoConsole()
     {
         System.out.println("#### LOADING BATALHA CARTAS POKEMON ####");
-        this.carregarJogador();
+        this.carregarJogadorConsole();
         while(this.fecharJogo == false)
         {
             System.out.println("\n#### BATALHA DE CARTAS POKEMON####");
@@ -53,16 +59,16 @@ public class Jogo {
             System.out.println("(-1) - SAIR");
             int opcao = ler.nextInt();
             if(opcao == 1)
-                this.menuGinasio();
+                this.menuGinasioConsole();
             if(opcao == 2)
-                this.exibirMeusPokemons();
+                this.exibirMeusPokemonsConsole();
             if(opcao == 3)
-                this.exibirPokemonsDisponiveis();
+                this.exibirPokemonsDisponiveisConsole();
             if(opcao == -1)
                 this.fecharJogo = true;
         }
     }
-    public void exibirPokemonsDisponiveis()
+    public void exibirPokemonsDisponiveisConsole()
     {
         Iterator cartas= this.cartasDisponiveis.iterator();
         while(cartas.hasNext())
@@ -72,7 +78,7 @@ public class Jogo {
         }
         Main.pausarAplicacao();
     }
-    public void exibirGinasios()
+    public void exibirGinasiosConsole()
     {
         System.out.println("#### GINASIOS ABERTOS ####");
         Iterator gin= this.ginasios.iterator();
@@ -85,7 +91,7 @@ public class Jogo {
         }
     }
     
-    public void entrarGinasio(Ginasio g){
+    public void entrarGinasioConsole(Ginasio g){
         //INICIAR A BATALHA
         System.out.println("\ns#### ENTRANDO NO GINASIO " +g.getNome()+" ####");
         
@@ -147,7 +153,7 @@ public class Jogo {
             {
                 System.out.println("Parabens você venceu todos os adversarios!");
                 Main.pausarAplicacao(); 
-                this.premioVitoria(g.getAdversarios());
+                this.premioVitoriaConsole(g.getAdversarios());
             }
             Main.pausarAplicacao();
         }
@@ -204,7 +210,7 @@ public class Jogo {
     public String toString(int i) {
         return "0"+i;
     }
-    public void carregarJogador() {
+    public void carregarJogadorConsole() {
         
        System.out.println("\n#### TELA DE CADASTRO ####");
        System.out.println("Digite o seu nome:");
@@ -233,24 +239,24 @@ public class Jogo {
         Main.pausarAplicacao();
     }
     
-    public void menuGinasio() {
+    public void menuGinasioConsole() {
             System.out.println("\n#### EM QUAL GINASIO VOCE DESEJA BATALHAR ####");
-            this.exibirGinasios();
+            this.exibirGinasiosConsole();
             System.out.println("(-1) - Voltar");
             ler.nextLine();
             int idGinasio = ler.nextInt();
            
             while(((idGinasio >= ginasios.size() || idGinasio<1)) && idGinasio != -1)
             {
-                this.menuGinasio();
+                this.menuGinasioConsole();
             }
             if(idGinasio<= ginasios.size() && idGinasio>0)
             {
-                this.entrarGinasio(ginasios.get(idGinasio-1));
+                this.entrarGinasioConsole(ginasios.get(idGinasio-1));
             }
     }
     
-    public void exibirMeusPokemons() {
+    public void exibirMeusPokemonsConsole() {
         System.out.println("###MEUS POKEMONS###");
         System.out.println("N#\tNOME:\t\t\tLEVEL:\t\t\tEXP/EXP\t\tVIDA\t\tATAQUE");
         int i = 1;
@@ -278,7 +284,7 @@ public class Jogo {
         }
     }
    
-    public void premioVitoria(List<Jogador> adversarios) {
+    public void premioVitoriaConsole(List<Jogador> adversarios) {
         System.out.println("Escolha um pokemon como premio");
         ArrayList opcoes = new ArrayList();
         int i = 1;
@@ -295,7 +301,7 @@ public class Jogo {
             this.player.addDeckPokemon(adversarios.get(indice).getCardPrincipal().createNewCardPokemon());
         }
         else
-            premioVitoria(adversarios);
+            premioVitoriaConsole(adversarios);
     }
     
     public void premioVitoriaInstatanea(List<Jogador> adversarios) {
@@ -353,13 +359,8 @@ public class Jogo {
         this.expericenciaPorVitoria = expericenciaPorVitoria;
     }
 
-    public Scanner getLer() {
-        return ler;
-    }
 
-    public void setLer(Scanner ler) {
-        this.ler = ler;
-    }
+
     
     
     
