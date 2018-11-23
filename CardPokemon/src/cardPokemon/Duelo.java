@@ -5,7 +5,7 @@
  */
 package cardPokemon;
 
-import static cardPokemon.Main.T;
+
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 
 public class Duelo {
-    
+    static Thread T = new Thread();
     private Jogador player;
     private Jogador adversario;
     private static int tempo;
@@ -28,7 +28,6 @@ public class Duelo {
         
         this.player = player;
         this.adversario = adversario;
-        //this.tempo = 30;
         this.vencedor = this.duelar();
 
 

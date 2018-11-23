@@ -29,13 +29,13 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
     public MenuMeusPokemons() {
         initComponents();
         
-        //this.cartasDisponiveis = batalhaPokemon.getPlayer().getDeckPokemon();
+        this.cartasDisponiveis = batalhaPokemon.getPlayer().getDeckPokemon();
         
-        //TESTE
-        this.cartasDisponiveis  = new ArrayList();
-        this.cartasDisponiveis.add(batalhaPokemon.getCartasDisponiveis().get(1));
-        this.cartasDisponiveis.add(batalhaPokemon.getCartasDisponiveis().get(6));
-        //FIM TESTE
+////        TESTE
+//        this.cartasDisponiveis  = new ArrayList();
+//        this.cartasDisponiveis.add(batalhaPokemon.getCartasDisponiveis().get(1));
+//        this.cartasDisponiveis.add(batalhaPokemon.getCartasDisponiveis().get(6));
+////        FIM TESTE
         
         this.carregarJTable();
    

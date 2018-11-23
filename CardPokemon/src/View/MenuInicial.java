@@ -5,6 +5,7 @@
  */
 package View;
 
+import static View.TelaPrincipal.batalhaPokemon;
 import static View.TelaPrincipal.exibirGinasios;
 import static View.TelaPrincipal.exibirMeusPokemons;
 import static View.TelaPrincipal.jPAreaTrabalho;
@@ -153,7 +154,11 @@ public class MenuInicial extends javax.swing.JInternalFrame {
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         // TODO add your handling code here:
-        jLabel1.setText("Douglas");
+        if(batalhaPokemon.getPlayer()!= null)
+        jLabel1.setText(batalhaPokemon.getPlayer().getNome());
+        
+        else
+            jLabel1.setText("jogador nao criado");
         
         
     }//GEN-LAST:event_formInternalFrameActivated

@@ -159,11 +159,13 @@ public class Cadastro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_nomeJogadorActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        //pegando o objeto selecionado no combo
+       
         CarD opcao = (CarD) jComboBox.getSelectedItem();
-        //mostrando o nome da categoria em um dialogo
+        this.player = new Jogador(nomeJogador.getText());
+        batalhaPokemon.setPlayer(player);
+        batalhaPokemon.getPlayer().addDeckPokemon(opcao);
+       
+        
         JOptionPane.showMessageDialog(this,"Parabens, agora "+ opcao.getNome()+" e seu novo companheiro");
         
         
@@ -172,7 +174,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
         jPAreaTrabalho.add(menu);
         menu.setVisible(true);
         this.setVisible(false);  
-        
+               
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

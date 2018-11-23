@@ -91,8 +91,8 @@ public class TabelaMeusPokemons extends AbstractTableModel {
                    String a = "";
                    return a.concat(carta.getExperienciaAtual()+" / "+ carta.getExperienciaLevel()); 
                 case COLUNA_PRINCIPAL:
-                   //return carta.equals(batalhaPokemon.player.getCardPrincipal());
-                    return false;
+                   return carta.equals(batalhaPokemon.getPlayer().getCardPrincipal());
+                   // return false;
             }
         }catch(Exception e)
         {

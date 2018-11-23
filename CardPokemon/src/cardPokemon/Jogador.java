@@ -35,15 +35,15 @@ public class Jogador {
     }
     
     public List<CarD> getDeckPokemon() {
-        return deckPokemon;
+        return this.deckPokemon;
     }
 
     public Pokemon getPokemonPrincipal() {
-        return pokemonPrincipal.getPk();
+        return this.pokemonPrincipal.getPk();
     }
     
     public CarD getCardPrincipal() {
-        return pokemonPrincipal;
+        return this.pokemonPrincipal;
     }
 
     public void setDeckPokemon(List<CarD> deckPokemon) {
@@ -52,7 +52,7 @@ public class Jogador {
     
     
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public CarD getDeckPokemon(int id) {

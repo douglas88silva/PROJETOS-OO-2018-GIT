@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class CarD extends LevelUp {
     
     private static int id = 0;
-    private int level = 1;
     private int idCard;
     private int sPCard;
     private Pokemon pk;
@@ -51,13 +50,12 @@ public class CarD extends LevelUp {
         
         super.receberExperiencia(experiencia);
         
-        this.level = super.getLevelAtual();
-        
-        if(level_inicial < this.level)
+      
+        if(level_inicial < super.getLevelAtual())
         {
-            if(this.level%5==0)//pokemon pode evoluir
+            if(super.getLevelAtual()%5==0)//pokemon pode evoluir
             {
-                int totalEvolucao = this.level - level_inicial;
+                int totalEvolucao = super.getLevelAtual() - level_inicial;
             
             
                 while(totalEvolucao > 0)
@@ -80,7 +78,7 @@ public class CarD extends LevelUp {
             }
             else
             {
-                System.out.println("ops... Seu pokemon acaba de subir para o level "+this.level);
+                System.out.println("ops... Seu pokemon acaba de subir para o level "+super.getLevelAtual());
                 this.pk.bonusLevel(super.getBonusAtributoLevel());
                 Main.pausarAplicacao();
             }
@@ -156,6 +154,16 @@ public class CarD extends LevelUp {
     public String getNome()
     {
         return this.pk.getNome();
+    }
+    
+    
+    
+    public int getLevel() {
+        return super.getLevelAtual();
+    }
+
+    public void setLevel(int level) {
+        super.setLevelAtual(level);
     }
     
     @Override

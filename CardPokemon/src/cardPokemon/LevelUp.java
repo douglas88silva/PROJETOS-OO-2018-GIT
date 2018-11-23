@@ -59,7 +59,7 @@ public class LevelUp {
     }
     
     public int getLevelAtual() {
-        return levelAtual;
+        return this.levelAtual;
     }
 
     public void setLevelAtual(int levelAtual) {

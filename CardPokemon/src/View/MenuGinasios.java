@@ -7,9 +7,12 @@ package View;
 
 import static View.TelaPrincipal.batalhaPokemon;
 import static View.TelaPrincipal.menu;
+
 import cardPokemon.Ginasio;
+import cardPokemon.Jogador;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 
 
@@ -22,22 +25,24 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
     /**
      * Creates new form MenuGinasios
      */
-    
+    private List<Jogador> treinadores;
     private List<Ginasio>listaGinasios;
     
     public MenuGinasios() {
         
         this.listaGinasios = batalhaPokemon.getGinasios();
+        
          initComponents();
          this.carregarComboBox();
+         
          
     }
     
     
-        public void carregarComboBox()
+    public void carregarComboBox()
     {
         
-        DefaultComboBoxModel comboModelGinasio = (DefaultComboBoxModel) jComboBox1.getModel();
+        DefaultComboBoxModel comboModelGinasio = (DefaultComboBoxModel)this.jComboBox1.getModel();
         comboModelGinasio.removeAllElements();
    
            comboModelGinasio.addElement("---Selecione um Ginasio---");
@@ -47,6 +52,31 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
               
            } 
     }
+    
+    public void carregarJTable()
+    {
+       try{
+           
+               Ginasio g  = (Ginasio) this.jComboBox1.getSelectedItem();
+               if(!this.jComboBox1.getSelectedItem().equals("---Selecione um Ginasio---")){
+                   
+                    this.jLabel3.setText(Integer.toString(g.getNivel()));
+                    this.treinadores = g.getAdversarios();
+
+                    TabelaGinasio model = new TabelaGinasio(this.treinadores);
+                    this.jTable1.setModel(model);  
+                   
+               }
+
+               
+       }catch(Exception e)
+       {
+           JOptionPane.showMessageDialog(null, "erro a" + e);
+       }
+          
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +108,12 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
             }
         });
 
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -103,7 +139,9 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setText("Oponente:");
+        jLabel1.setText(" Level:");
+
+        jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -125,7 +163,7 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Ginasios");
 
-        jLabel3.setText("Oponente:");
+        jLabel3.setText("Oponente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,25 +171,26 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel2))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jSeparator1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel2))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(38, 38, 38)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +223,7 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        batalhaPokemon.entrarGinasio((Ginasio) jComboBox1.getSelectedItem());
+        batalhaPokemon.batalharGinasio((Ginasio) jComboBox1.getSelectedItem());
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -194,6 +233,13 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
                 this.setVisible(false);
                 menu.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        
+        if(!this.jComboBox1.getSelectedItem().equals("---Selecione um Ginasio---"));
+            this.carregarJTable();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

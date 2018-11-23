@@ -8,6 +8,7 @@ package cardPokemon;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -44,6 +45,9 @@ public class Ginasio {
         
       
     }
+
+
+
     public void exibirAdversarios(){
         
         Iterator adv = this.adversarios.iterator();
@@ -57,7 +61,7 @@ public class Ginasio {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
@@ -83,6 +87,24 @@ public class Ginasio {
     private String toString(int i) {
 
         return "0"+i;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ginasio other = (Ginasio) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
     }
    
 }
