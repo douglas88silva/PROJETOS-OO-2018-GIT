@@ -5,11 +5,13 @@
  */
 package View;
 
+import Controller.Jogo;
 import cardPokemon.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -112,47 +114,48 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public void iniciarJogo(){
         
-        //       try{ 
+    try{ 
            
             this.batalhaPokemon = new Jogo();
 
             List<CarD> iniciais = this.batalhaPokemon.getCartasDisponiveis();
 
             Cadastro cadastrando = new Cadastro(Arrays.asList(
-                iniciais.get(0),iniciais.get(1),iniciais.get(2)));
+                iniciais.get(0),iniciais.get(3),iniciais.get(6)));
 
             jPAreaTrabalho.add(cadastrando);
             cadastrando.setVisible(true);
             
             
-//       }catch(Exception e)
-//       {
-//           JOptionPane.showMessageDialog(null, "erro a" + e);
-//           
-//       }
+       }catch(Exception e)
+       {
+           JOptionPane.showMessageDialog(null, "erro a" + e);
+           
+       }
         
     }
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
 
-//       try{ 
+       try{ 
            
             this.batalhaPokemon = new Jogo();
 
             List<CarD> iniciais = this.batalhaPokemon.getCartasDisponiveis();
 
             Cadastro cadastrando = new Cadastro(Arrays.asList(
-                iniciais.get(0),iniciais.get(1),iniciais.get(2)));
-
+                iniciais.get(10),iniciais.get(30),iniciais.get(60)));
+            
+           
             jPAreaTrabalho.add(cadastrando);
             cadastrando.setVisible(true);
             
             
-//       }catch(Exception e)
-//       {
-//           JOptionPane.showMessageDialog(null, "erro a" + e);
-//           
-//       }
+       }catch(Exception e)
+       {
+           JOptionPane.showMessageDialog(null, "erro a" + e);
+           
+       }
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

@@ -160,6 +160,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
+        try{
         CarD opcao = (CarD) jComboBox.getSelectedItem();
         this.player = new Jogador(nomeJogador.getText());
         batalhaPokemon.setPlayer(player);
@@ -168,13 +169,15 @@ public class Cadastro extends javax.swing.JInternalFrame {
         
         JOptionPane.showMessageDialog(this,"Parabens, agora "+ opcao.getNome()+" e seu novo companheiro");
         
-        
-        
         menu = new MenuInicial();
         jPAreaTrabalho.add(menu);
         menu.setVisible(true);
         this.setVisible(false);  
-               
+        }catch(Exception e)
+       {
+           JOptionPane.showMessageDialog(null, "Campos dos cadastro vazios");
+           
+       }    
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

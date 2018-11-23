@@ -5,6 +5,7 @@
  */
 package cardPokemon;
 
+import Controller.Jogo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -24,7 +25,7 @@ public class Main {
 
        
         Jogo batalhaCartasPokemon = new Jogo();
-        batalhaCartasPokemon.iniciaJogo();
+        batalhaCartasPokemon.iniciaJogoConsole();
         //Duelo.exibirtempo();
         
     }

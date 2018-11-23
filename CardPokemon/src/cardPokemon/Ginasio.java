@@ -46,6 +46,11 @@ public class Ginasio {
       
     }
 
+    @Override
+    public String toString() {
+        return "Ginasio{" + "nome=" + nome + '}';
+    }
+
 
 
     public void exibirAdversarios(){
