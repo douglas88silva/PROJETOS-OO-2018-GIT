@@ -64,6 +64,7 @@ public class MenuInicial extends javax.swing.JInternalFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        setBorder(null);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameActivated(evt);
@@ -81,7 +82,6 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(null);
 
@@ -97,7 +97,7 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jBtnBatalhar);
-        jBtnBatalhar.setBounds(410, 150, 302, 90);
+        jBtnBatalhar.setBounds(380, 150, 302, 110);
 
         jBtnMeusPokemons.setText("Meus Pokemons");
         jBtnMeusPokemons.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +106,7 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jBtnMeusPokemons);
-        jBtnMeusPokemons.setBounds(48, 152, 305, 23);
+        jBtnMeusPokemons.setBounds(50, 150, 305, 50);
 
         jBtnPokemons.setText("Pokemons");
         jBtnPokemons.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +115,7 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jBtnPokemons);
-        jBtnPokemons.setBounds(48, 186, 310, 23);
+        jBtnPokemons.setBounds(50, 210, 300, 50);
 
         jButton5.setText("Fechar Jogo");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -124,17 +124,32 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jButton5);
-        jButton5.setBounds(217, 220, 130, 23);
+        jButton5.setBounds(550, 290, 130, 23);
 
         jLabel3.setText("Treinador:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(50, 110, 50, 14);
+        jLabel3.setBounds(50, 110, 80, 14);
 
         jLabel1.setText("NomeJogador");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(120, 110, 302, 14);
+        jLabel1.setBounds(130, 110, 150, 14);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 340));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(158, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(159, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -37,6 +37,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         initComponents();
         
+        
         Toolkit tk = Toolkit.getDefaultToolkit();
             int xsize = (int)tk.getScreenSize().getWidth();
             int ysize = (int)tk.getScreenSize().getHeight();
@@ -59,10 +60,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jDialog1 = new javax.swing.JDialog();
         jPAreaTrabalho = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         jMenu3.setText("jMenu3");
 
@@ -91,27 +88,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jPAreaTrabalhoLayout.setVerticalGroup(
             jPAreaTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 413, Short.MAX_VALUE)
+            .addGap(0, 434, Short.MAX_VALUE)
         );
-
-        jMenu1.setText("File");
-        jMenu1.setEnabled(false);
-
-        jMenuItem1.setText("Iniciar Jogo");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenu2.setEnabled(false);
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,13 +130,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
        }
         
     }
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-
-            this.iniciarJogo();
-        
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
 
     
     /**
@@ -198,11 +169,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     public static javax.swing.JDesktopPane jPAreaTrabalho;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
