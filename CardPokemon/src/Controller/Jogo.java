@@ -30,7 +30,7 @@ public class Jogo {
     private Jogador player;
     private List<Ginasio> ginasios;
     private boolean fecharJogo = false;
-    private int expericenciaPorVitoria = 60;
+    private int expericenciaPorVitoria = 1000;
     Scanner ler = new Scanner(System.in);
     public int VENCEDOR;
 
@@ -189,7 +189,7 @@ public class Jogo {
 
                     JOptionPane.showMessageDialog(null, "\nParabens você venceu a batalha!");
                     jTextArea1.append("\nParabens você venceu a batalha!");
-                    this.player.getCardPrincipal().addExperiencia(this.expericenciaPorVitoria, (ArrayList<CarD>) this.cartasDisponiveis);
+                    this.player.getCardPrincipal().addExperienciaInterface(this.expericenciaPorVitoria, (ArrayList<CarD>) this.cartasDisponiveis);
                     //Main.pausarAplicacao();
                     if (g.getAdversarios().size() > 1 && i != g.getAdversarios().size() - 1) {
                  
@@ -211,7 +211,7 @@ public class Jogo {
                 } else if (VENCEDOR == 0) {
                     JOptionPane.showMessageDialog(null, "\nQue pena, voce foi derrotado adversario " + g.getAdversarios().get(i).getNome());
                     jTextArea1.append("\nQue pena, voce foi derrotado adversario ");
-                    this.player.getCardPrincipal().addExperiencia(((int) -this.expericenciaPorVitoria / 4), (ArrayList<CarD>) this.cartasDisponiveis);
+                    this.player.getCardPrincipal().addExperienciaInterface(((int) -this.expericenciaPorVitoria / 4), (ArrayList<CarD>) this.cartasDisponiveis);
 
                     //Main.pausarAplicacao();
                     break;

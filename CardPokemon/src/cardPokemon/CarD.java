@@ -6,6 +6,7 @@
 package cardPokemon;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,6 +80,58 @@ public class CarD extends LevelUp {
             else
             {
                 System.out.println("ops... Seu pokemon acaba de subir para o level "+super.getLevelAtual());
+                this.pk.bonusLevel(super.getBonusAtributoLevel());
+                //Main.pausarAplicacao();
+            }
+            
+        }
+        
+        
+    }
+    
+    
+    
+    public void addExperienciaInterface(int experiencia , ArrayList<CarD> cartasDiponiveis)
+    {
+        
+        int level_inicial = super.getLevelAtual();
+        
+        super.receberExperiencia(experiencia);
+        
+      
+        if(level_inicial < super.getLevelAtual())
+        {
+            if(super.getLevelAtual()%5==0)//pokemon pode evoluir
+            {
+                int totalEvolucao = super.getLevelAtual() - level_inicial;
+                
+            
+                while(totalEvolucao > 0)
+                {
+                    if(this.pk.getEvolucao()>0)
+                    {
+                        //fazendo a troca do pokemon para sua evolucao
+                        System.out.println("\n\nOps... Parece que o "+this.pk.getNome()+" vai evoluir!");
+                        JOptionPane.showMessageDialog(null, "\n\nOps... Parece que o "+this.pk.getNome()+" vai evoluir!");
+                        //Main.pausarAplicacao();
+                        
+
+                        this.pk = cartasDiponiveis.get(this.idCard++).getPk();
+                        super.evolucao();
+                        
+                        System.out.println("Parabens! seu pokemon evoluiu para "+this.pk.getNome());
+                        JOptionPane.showMessageDialog(null, "Parabens! seu pokemon evoluiu para "+this.pk.getNome());
+
+                        //Main.pausarAplicacao();
+                    }
+                    totalEvolucao--;
+                }
+            }
+            else
+            {
+                System.out.println("ops... Seu pokemon acaba de subir para o level "+super.getLevelAtual());
+                JOptionPane.showMessageDialog(null, "ops... Seu pokemon acaba de subir para o level "+super.getLevelAtual());
+
                 this.pk.bonusLevel(super.getBonusAtributoLevel());
                 //Main.pausarAplicacao();
             }
