@@ -5,8 +5,11 @@
  */
 package cardPokemon;
 
+import static View.TelaPrincipal.batalhaPokemon;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +19,33 @@ public class Jogador {
 
     private String nome;
     private int tamDeck = 0;
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Jogador other = (Jogador) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.pokemonPrincipal, other.pokemonPrincipal)) {
+            return false;
+        }
+        return true;
+    }
     private CarD pokemonPrincipal;
     private List<CarD> deckPokemon;
 
@@ -71,6 +101,23 @@ public class Jogador {
         return aux;
     }
     
+    public int getIndexOfDeck(int id){
+        
+        int indexOfCardID = -1;
+        
+        for (CarD carta : this.deckPokemon) {
+            
+            
+            if(carta.getIdCard() == id)
+                indexOfCardID = this.deckPokemon.indexOf(carta);
+                
+        }
+
+        return indexOfCardID;
+        
+    }
+    
+    
     public int getSizeDeckPokemon()
     {
         return this.deckPokemon.size();
@@ -78,18 +125,27 @@ public class Jogador {
     
 
 
-    public void setPokemonPrincipal(int id) {
+    public void setPokemonPrincipal(int idCard) {
         
-        if(id >= 0 && id < this.deckPokemon.size())
-        {
-            this.pokemonPrincipal = this.deckPokemon.get(id);
-            System.out.println("Seu novo pokemon principal e "+this.getPokemonPrincipal().getNome());
-            Main.pausarAplicacao();
+        int indexOf = this.getIndexOfDeck(idCard);
+        boolean local = this.pokemonPrincipal.equals(this.deckPokemon.get(indexOf));
+        
+        if((indexOf >= 0 && indexOf < this.deckPokemon.size()))
+        {   
+ 
+                this.pokemonPrincipal = this.deckPokemon.get(indexOf);
+                System.out.println("Seu novo pokemon principal e "+this.getPokemonPrincipal().getNome());
+                if(!local)
+                JOptionPane.showMessageDialog(null, "Seu novo pokemon principal e "+this.getPokemonPrincipal().getNome());
+            
+            //Main.pausarAplicacao();
+            
         }
         
         else
         {
-            System.out.println("Nao foi possivel encontrar o pokemon de id= "+id);
+            System.out.println("Nao foi possivel encontrar o pokemon de id= "+idCard);
+            JOptionPane.showMessageDialog(null, ("Nao foi possivel encontrar o pokemon de id= "+idCard));
         }
         
     }

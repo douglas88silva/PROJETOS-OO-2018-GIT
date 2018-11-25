@@ -5,13 +5,13 @@
  */
 package View;
 
-
 import static View.TelaPrincipal.batalhaPokemon;
 import static View.TelaPrincipal.jPAreaTrabalho;
 import static View.TelaPrincipal.menu;
 import cardPokemon.CarD;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -25,33 +25,29 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
      * Creates new form MenuMeusPokemons
      */
     List<CarD> cartasDisponiveis;
-    
+
     public MenuMeusPokemons() {
         initComponents();
-        
+
         this.cartasDisponiveis = batalhaPokemon.getPlayer().getDeckPokemon();
-        
+
 ////        TESTE
 //        this.cartasDisponiveis  = new ArrayList();
 //        this.cartasDisponiveis.add(batalhaPokemon.getCartasDisponiveis().get(1));
 //        this.cartasDisponiveis.add(batalhaPokemon.getCartasDisponiveis().get(6));
 ////        FIM TESTE
-        
         this.carregarJTable();
-   
+
     }
-    
-    
-     public void carregarJTable()
-    {
-       
+
+    public void carregarJTable() {
+
         TabelaMeusPokemons model = new TabelaMeusPokemons(cartasDisponiveis);
-        
+
         this.jTable.setModel(model);
-        
-          
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -155,18 +151,31 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         this.setVisible(false);
         menu.setVisible(true);
-        
-               
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        
-       // jTable.setValueAt(cartasDisponiveis, Integer.parseInt(jTextField1.getText()), 6);
-        
+        try {
+            int idCard = Integer.parseInt(jTextField1.getText());
+
+                batalhaPokemon.getPlayer().setPokemonPrincipal(idCard);
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Carta invalida!");
+
+        }
+        finally{
+            this.carregarJTable();
+        }
+
+        // jTable.setValueAt(cartasDisponiveis, Integer.parseInt(jTextField1.getText()), 6);
+
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
 

@@ -330,10 +330,7 @@ public class Jogo {
         Random r = new Random();
         
         int indexJogador = r.nextInt(adversarios.size());
-          
-        
-        int idCard = adversarios.get(indexJogador).getCardPrincipal().getIdCard();
-        
+        int idCard = adversarios.get(indexJogador).getCardPrincipal().getIdCard();      
         int indexOf = this.getIndexOfCardID(idCard);
         
         
