@@ -56,7 +56,19 @@ public class Jogador {
     }
 
     public CarD getDeckPokemon(int id) {
-        return this.deckPokemon.get(id);
+        
+        CarD aux = null;
+        
+        for (CarD carD : deckPokemon) {
+            
+            if(carD.getIdCard() == id)
+            {
+                aux = carD;
+                break;
+            }
+        }
+        
+        return aux;
     }
     
     public int getSizeDeckPokemon()

@@ -329,14 +329,36 @@ public class Jogo {
     public void premioVitoriaInstatanea(List<Jogador> adversarios) {
         Random r = new Random();
         
-        int idCard = adversarios.get(r.nextInt(adversarios.size())).getCardPrincipal().getIdCard();
-                       
-        CarD aux = cartasDisponiveis.get(idCard).createNewCardPokemon();
+        int indexJogador = r.nextInt(adversarios.size());
+          
+        
+        int idCard = adversarios.get(indexJogador).getCardPrincipal().getIdCard();
+        
+        int indexOf = this.getIndexOfCardID(idCard);
+        
+        
+        CarD aux = cartasDisponiveis.get(indexOf).createNewCardPokemon();
         this.player.addDeckPokemon(aux);
         JOptionPane.showMessageDialog(null, "Parabens, agora "+aux.getNome()+ " e seu novo companheiro");
         
     }
-
+    public int getIndexOfCardID(int id){
+        
+        int indexOfCardID = 0;
+        
+        for (CarD carta : cartasDisponiveis) {
+            
+            
+            if(carta.getIdCard() == id)
+                indexOfCardID = cartasDisponiveis.indexOf(carta);
+                
+        }
+        
+        
+        
+        return indexOfCardID;
+        
+    }
     public List<CarD> getCartasDisponiveis() {
         return cartasDisponiveis;
     }
