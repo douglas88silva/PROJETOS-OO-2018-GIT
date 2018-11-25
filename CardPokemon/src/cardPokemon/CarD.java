@@ -102,6 +102,22 @@ public class CarD extends LevelUp {
         
         
     }
+    
+    public CarD createNewCardPokemon(CarD novo){
+        
+                   int idPk = novo.idCard;
+                   String nomePk = novo.pk.getNome();
+                   String tipoPK = novo.pk.getTipo();
+                   int ataquePK = novo.pk.getsAtaque();
+                   int evolucaoPK = novo.pk.getEvolucao();
+                        
+                   CarD aux = new CarD(idCard, nomePk, tipoPK, ataquePK, evolucaoPK);
+                   
+                   return aux;
+        
+        
+    }
+    
     public CarD createNewCardPokemon(int nivel){
                     
                    int idPk = this.idCard;

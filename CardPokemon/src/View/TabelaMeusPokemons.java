@@ -26,6 +26,7 @@ public class TabelaMeusPokemons extends AbstractTableModel {
     //retorna se a célula é editável ou não
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
+        
         if(columnIndex == COLUNA_PRINCIPAL)
         return true;
         else

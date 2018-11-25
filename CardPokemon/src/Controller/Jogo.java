@@ -32,7 +32,7 @@ public class Jogo {
     private boolean fecharJogo = false;
     private int expericenciaPorVitoria = 60;
     Scanner ler = new Scanner(System.in);
-    public  int VENCEDOR;
+    public int VENCEDOR;
 
     public Jogo() {
 
@@ -159,10 +159,8 @@ public class Jogo {
 
         VENCEDOR = 9;
 
-                jTextArea1.append("\n#### ENTRANDO NO GINASIO " + g.getNome() + " ####");
+        jTextArea1.append("\n#### ENTRANDO NO GINASIO " + g.getNome() + " ####");
 
-        
-        
         for (int i = 0; i < g.getAdversarios().size(); i++) {
 
             jTextArea1.append("\n########################### DUELO ############################");
@@ -179,43 +177,40 @@ public class Jogo {
 //            new Thread(new Runnable() {
 //                @Override
 //                public void run() {
-                     
-                    VENCEDOR = combate.duelarInstantaneo(jTextArea1);
+
+            VENCEDOR = combate.duelarInstantaneo(jTextArea1);
 //                }
 //            }).start();
-                  
+
             VENCEDOR = combate.getVencedor();
-                
+
             if (VENCEDOR != -1) {
                 if (VENCEDOR == 1) {
-                  
-                  JOptionPane.showMessageDialog(null, "\nParabens você venceu a batalha!");
 
+                    JOptionPane.showMessageDialog(null, "\nParabens você venceu a batalha!");
+                    jTextArea1.append("\nParabens você venceu a batalha!");
                     this.player.getCardPrincipal().addExperiencia(this.expericenciaPorVitoria, (ArrayList<CarD>) this.cartasDisponiveis);
                     //Main.pausarAplicacao();
-//                    if (g.getAdversarios().size() > 1 && i != g.getAdversarios().size() - 1) {
-//                        jTextArea1.append("\n\nDeseja desafiar o proximo?(s/n)");
-//                        String opcao = ler.next();
-//                        ler.nextLine();
-//                        while(!"s".equals(opcao) && !"n".equals(opcao))
-//                        {
-//                            System.out.println("Deseja desafiar o proximo?(s/n)");
-//                            opcao = ler.next();
-//                            ler.nextLine();
-//                           }
-//                           if(("s").equals(opcao))
-//                           {
-//                               combate.setVencedor(-1);
-//                           }
-//                           else
-//                           {
-//                               System.out.println("\nParabens você venceu " + (i+1) +" adversarios!");
-//                               break;
-//                           }
-                        
-//                    }
+                    if (g.getAdversarios().size() > 1 && i != g.getAdversarios().size() - 1) {
+                 
+
+                        int Confirm = JOptionPane.showConfirmDialog(null, "Deseja desafiar o proximo treinador?", "sim ou nao", JOptionPane.YES_NO_OPTION);
+                        if (Confirm == JOptionPane.YES_OPTION) {
+                            combate.setVencedor(-1);
+                            
+                        } else if (Confirm == JOptionPane.NO_OPTION) {
+
+                            JOptionPane.showMessageDialog(null, "\nParabens você venceu " + (i + 1) + " adversarios!");
+                            System.out.println("\nParabens você venceu " + (i + 1) + " adversarios!");
+                            jTextArea1.append("\nParabens você venceu " + (i + 1) + " adversarios!");
+                            break;
+
+                        }
+
+                    }
                 } else if (VENCEDOR == 0) {
                     JOptionPane.showMessageDialog(null, "\nQue pena, voce foi derrotado adversario " + g.getAdversarios().get(i).getNome());
+                    jTextArea1.append("\nQue pena, voce foi derrotado adversario ");
                     this.player.getCardPrincipal().addExperiencia(((int) -this.expericenciaPorVitoria / 4), (ArrayList<CarD>) this.cartasDisponiveis);
 
                     //Main.pausarAplicacao();
@@ -224,12 +219,15 @@ public class Jogo {
             }
             if (VENCEDOR == 1 && i == g.getAdversarios().size() - 1) {
                 JOptionPane.showMessageDialog(null, "Parabens você venceu todos os adversarios!");
+                jTextArea1.append("\nParabens você venceu todos os adversarios!");
                 System.out.println("Parabens você venceu todos os adversarios!");
                 //Main.pausarAplicacao(); 
                 this.premioVitoriaInstatanea(g.getAdversarios());
             }
             //Main.pausarAplicacao();
         }
+
+        jTextArea1.append("\n\n########################### FIM DA BATALHA ############################");
 //        JOptionPane.showMessageDialog(null, "Fim da batalha");
     }
 
@@ -330,9 +328,13 @@ public class Jogo {
 
     public void premioVitoriaInstatanea(List<Jogador> adversarios) {
         Random r = new Random();
-
-        this.player.addDeckPokemon(adversarios.get(r.nextInt(adversarios.size())).getCardPrincipal().createNewCardPokemon());
-
+        
+        int idCard = adversarios.get(r.nextInt(adversarios.size())).getCardPrincipal().getIdCard();
+                       
+        CarD aux = cartasDisponiveis.get(idCard).createNewCardPokemon();
+        this.player.addDeckPokemon(aux);
+        JOptionPane.showMessageDialog(null, "Parabens, agora "+aux.getNome()+ " e seu novo companheiro");
+        
     }
 
     public List<CarD> getCartasDisponiveis() {
