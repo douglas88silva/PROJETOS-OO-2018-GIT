@@ -7,6 +7,7 @@ package View;
 
 import Controller.Jogo;
 import cardPokemon.*;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +31,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public static Jogo batalhaPokemon;
     
     public TelaPrincipal() {
+        this.setUndecorated(true);// remove barra de titulo
+        //this.setAlwaysOnTop(true); // 
+        
+        
         initComponents();
+        
+        Toolkit tk = Toolkit.getDefaultToolkit();
+            int xsize = (int)tk.getScreenSize().getWidth();
+            int ysize = (int)tk.getScreenSize().getHeight();
+            
+        this.setSize(xsize, ysize);
         
         this.iniciarJogo();
     }
@@ -43,6 +54,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jMenu3 = new javax.swing.JMenu();
         jDialog1 = new javax.swing.JDialog();
@@ -66,12 +78,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(0, 0));
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jPAreaTrabalho, org.jdesktop.beansbinding.ELProperty.create("${maximumSize}"), jPAreaTrabalho, org.jdesktop.beansbinding.BeanProperty.create("maximumSize"));
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPAreaTrabalhoLayout = new javax.swing.GroupLayout(jPAreaTrabalho);
         jPAreaTrabalho.setLayout(jPAreaTrabalhoLayout);
         jPAreaTrabalhoLayout.setHorizontalGroup(
             jPAreaTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
+            .addGap(0, 617, Short.MAX_VALUE)
         );
         jPAreaTrabalhoLayout.setVerticalGroup(
             jPAreaTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,8 +121,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPAreaTrabalho, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jPAreaTrabalho)
         );
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,25 +155,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
 
-       try{ 
-           
-            this.batalhaPokemon = new Jogo();
-
-            List<CarD> iniciais = this.batalhaPokemon.getCartasDisponiveis();
-
-            Cadastro cadastrando = new Cadastro(Arrays.asList(
-                iniciais.get(10),iniciais.get(30),iniciais.get(60)));
-            
-           
-            jPAreaTrabalho.add(cadastrando);
-            cadastrando.setVisible(true);
-            
-            
-       }catch(Exception e)
-       {
-           JOptionPane.showMessageDialog(null, "erro a" + e);
-           
-       }
+            this.iniciarJogo();
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -204,5 +204,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     public static javax.swing.JDesktopPane jPAreaTrabalho;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

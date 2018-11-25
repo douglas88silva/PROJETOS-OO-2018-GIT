@@ -11,6 +11,7 @@ import static View.TelaPrincipal.exibirMeusPokemons;
 import static View.TelaPrincipal.jPAreaTrabalho;
 import javafx.application.Application;
 import static View.TelaPrincipal.exibirTodosPokemons;
+import java.awt.Toolkit;
 
 /**
  *
@@ -24,7 +25,19 @@ public class MenuInicial extends javax.swing.JInternalFrame {
 
     
     public MenuInicial() {
+        
+        //this.setUndecorated(true);// remove barra de titulo
+        //this.setAlwaysOnTop(true); // 
+        
         initComponents();
+        
+        Toolkit tk = Toolkit.getDefaultToolkit();
+            int xsize = (int)tk.getScreenSize().getWidth();
+            int ysize = (int)tk.getScreenSize().getHeight();
+            
+        this.setSize(xsize, ysize);
+        
+        
     }
 
     /**
@@ -38,12 +51,14 @@ public class MenuInicial extends javax.swing.JInternalFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jBtnBatalhar = new javax.swing.JButton();
         jBtnMeusPokemons = new javax.swing.JButton();
         jBtnPokemons = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -66,6 +81,14 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("BATALHA CARTAS POKEMON");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(48, 55, 302, 22);
 
         jBtnBatalhar.setText("Batalhar ");
         jBtnBatalhar.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +96,8 @@ public class MenuInicial extends javax.swing.JInternalFrame {
                 jBtnBatalharActionPerformed(evt);
             }
         });
+        jPanel1.add(jBtnBatalhar);
+        jBtnBatalhar.setBounds(410, 150, 302, 90);
 
         jBtnMeusPokemons.setText("Meus Pokemons");
         jBtnMeusPokemons.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +105,8 @@ public class MenuInicial extends javax.swing.JInternalFrame {
                 jBtnMeusPokemonsActionPerformed(evt);
             }
         });
+        jPanel1.add(jBtnMeusPokemons);
+        jBtnMeusPokemons.setBounds(48, 152, 305, 23);
 
         jBtnPokemons.setText("Pokemons");
         jBtnPokemons.addActionListener(new java.awt.event.ActionListener() {
@@ -87,8 +114,8 @@ public class MenuInicial extends javax.swing.JInternalFrame {
                 jBtnPokemonsActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("NomeJogador");
+        jPanel1.add(jBtnPokemons);
+        jBtnPokemons.setBounds(48, 186, 310, 23);
 
         jButton5.setText("Fechar Jogo");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -96,49 +123,18 @@ public class MenuInicial extends javax.swing.JInternalFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton5);
+        jButton5.setBounds(217, 220, 130, 23);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("BATALHA CARTAS POKEMON");
+        jLabel3.setText("Treinador:");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(50, 110, 50, 14);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBtnBatalhar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtnPokemons, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
-                .addContainerGap(44, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(47, 47, 47)
-                    .addComponent(jBtnMeusPokemons, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(42, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addGap(45, 45, 45)
-                .addComponent(jBtnBatalhar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBtnPokemons)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
-                .addGap(29, 29, 29))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(126, 126, 126)
-                    .addComponent(jBtnMeusPokemons)
-                    .addContainerGap(129, Short.MAX_VALUE)))
-        );
+        jLabel1.setText("NomeJogador");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(120, 110, 302, 14);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -198,6 +194,8 @@ public class MenuInicial extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

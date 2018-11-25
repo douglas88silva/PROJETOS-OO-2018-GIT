@@ -9,6 +9,7 @@ import static View.TelaPrincipal.batalhaPokemon;
 import static View.TelaPrincipal.jPAreaTrabalho;
 import static View.TelaPrincipal.menu;
 import cardPokemon.CarD;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -28,14 +29,16 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
 
     public MenuMeusPokemons() {
         initComponents();
-
+                Toolkit tk = Toolkit.getDefaultToolkit();
+            int xsize = (int)tk.getScreenSize().getWidth();
+            int ysize = (int)tk.getScreenSize().getHeight();
+            
+        this.setSize(xsize, ysize);
+        
+        
         this.cartasDisponiveis = batalhaPokemon.getPlayer().getDeckPokemon();
 
-////        TESTE
-//        this.cartasDisponiveis  = new ArrayList();
-//        this.cartasDisponiveis.add(batalhaPokemon.getCartasDisponiveis().get(1));
-//        this.cartasDisponiveis.add(batalhaPokemon.getCartasDisponiveis().get(6));
-////        FIM TESTE
+
         this.carregarJTable();
 
     }

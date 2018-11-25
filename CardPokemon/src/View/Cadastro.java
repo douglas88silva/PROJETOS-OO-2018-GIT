@@ -9,6 +9,7 @@ import static View.TelaPrincipal.batalhaPokemon;
 import static View.TelaPrincipal.jPAreaTrabalho;
 import static View.TelaPrincipal.menu;
 import cardPokemon.*;
+import java.awt.Toolkit;
 import java.awt.event.ItemListener;
 import java.util.List;
 import java.util.Objects;
@@ -32,12 +33,18 @@ public class Cadastro extends javax.swing.JInternalFrame {
     
     public Cadastro(List<CarD> pokemons) {
         
-        
+
         if(pokemons != null)
           listaPokemon = pokemons;
      
          initComponents();
          this.carregarComboBox();
+         
+        Toolkit tk = Toolkit.getDefaultToolkit();
+            int xsize = (int)tk.getScreenSize().getWidth();
+            int ysize = (int)tk.getScreenSize().getHeight();
+            
+        this.setSize(xsize, ysize);
    
     }
     
@@ -70,8 +77,10 @@ public class Cadastro extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jComboBox = new javax.swing.JComboBox<>();
 
+        setBorder(null);
         setClosable(true);
-        setTitle("Nome de usuario");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setText("Nome");
 
@@ -115,7 +124,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1)
                             .addComponent(nomeJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
-                        .addGap(0, 157, Short.MAX_VALUE)))
+                        .addGap(0, 320, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -131,23 +140,11 @@ public class Cadastro extends javax.swing.JInternalFrame {
                 .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(39, 29, 475, 287);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
