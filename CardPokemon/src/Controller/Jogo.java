@@ -329,6 +329,7 @@ public class Jogo {
     public void premioVitoriaInstatanea(List<Jogador> adversarios) {
         Random r = new Random();
         
+        //PEGANDO ALEATORIAMENTE DENTRO DOS POKEMONS DOS ADVERSARIOS
         int indexJogador = r.nextInt(adversarios.size());
         int idCard = adversarios.get(indexJogador).getCardPrincipal().getIdCard();      
         int indexOf = this.getIndexOfCardID(idCard);
