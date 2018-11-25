@@ -95,7 +95,14 @@ public abstract class Pokemon implements Combate{
             this.hPCombate -= dano;
         } 
     }
-    
+   
+     public String getNomeAtaque() {
+        return null;
+    }
+
+    public void setNomeAtaque(String nomeAtaque) {
+       
+    }
 
     public void restaurarHp(){
         

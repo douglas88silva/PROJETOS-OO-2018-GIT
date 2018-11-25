@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controller;
+
 import DAO.CarregaDadosTXT;
 import cardPokemon.CarD;
 import cardPokemon.Duelo;
@@ -15,11 +16,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author jessi
  */
 public class Jogo {
+
     private List<CarD> cartasDisponiveis;
     private int totalCartas;
     private Jogador player;
@@ -27,30 +32,28 @@ public class Jogo {
     private boolean fecharJogo = false;
     private int expericenciaPorVitoria = 60;
     Scanner ler = new Scanner(System.in);
-   
+    public  int VENCEDOR;
+
     public Jogo() {
-        
+
         ginasios = new ArrayList();
         CarregaDadosTXT loadCartas = new CarregaDadosTXT();
         cartasDisponiveis = loadCartas.carregarPokemons();
-      
-      //CRIANDO OS GINASIOS
-      for(int i=0;i<5;i++)
-      {
-          String ginasio_nome = "GINASIO_";
-          ginasio_nome = ginasio_nome.concat(toString(i+1));
-          Ginasio g = new Ginasio(ginasio_nome,(ArrayList<CarD>)cartasDisponiveis);
-          ginasios.add(g);
-      }
-      this.totalCartas = cartasDisponiveis.size();
+
+        //CRIANDO OS GINASIOS
+        for (int i = 0; i < 5; i++) {
+            String ginasio_nome = "GINASIO_";
+            ginasio_nome = ginasio_nome.concat(toString(i + 1));
+            Ginasio g = new Ginasio(ginasio_nome, (ArrayList<CarD>) cartasDisponiveis);
+            ginasios.add(g);
+        }
+        this.totalCartas = cartasDisponiveis.size();
     }
-    
-    public void iniciaJogoConsole()
-    {
+
+    public void iniciaJogoConsole() {
         System.out.println("#### LOADING BATALHA CARTAS POKEMON ####");
         this.carregarJogadorConsole();
-        while(this.fecharJogo == false)
-        {
+        while (this.fecharJogo == false) {
             System.out.println("\n#### BATALHA DE CARTAS POKEMON####");
             System.out.println("#####MENU PRINCIPAL#####");
             System.out.println("( 1) - GINASIOS");
@@ -58,257 +61,278 @@ public class Jogo {
             System.out.println("( 3) - CARTAS DISPONIVEIS");
             System.out.println("(-1) - SAIR");
             int opcao = ler.nextInt();
-            if(opcao == 1)
+            if (opcao == 1) {
                 this.menuGinasioConsole();
-            if(opcao == 2)
+            }
+            if (opcao == 2) {
                 this.exibirMeusPokemonsConsole();
-            if(opcao == 3)
+            }
+            if (opcao == 3) {
                 this.exibirPokemonsDisponiveisConsole();
-            if(opcao == -1)
+            }
+            if (opcao == -1) {
                 this.fecharJogo = true;
+            }
         }
     }
-    public void exibirPokemonsDisponiveisConsole()
-    {
-        Iterator cartas= this.cartasDisponiveis.iterator();
-        while(cartas.hasNext())
-        {
+
+    public void exibirPokemonsDisponiveisConsole() {
+        Iterator cartas = this.cartasDisponiveis.iterator();
+        while (cartas.hasNext()) {
             CarD c = (CarD) cartas.next();
-            System.out.println(c.getIdCard()+" - "+ c.getPk().getNome());
+            System.out.println(c.getIdCard() + " - " + c.getPk().getNome());
         }
         Main.pausarAplicacao();
     }
-    public void exibirGinasiosConsole()
-    {
+
+    public void exibirGinasiosConsole() {
         System.out.println("#### GINASIOS ABERTOS ####");
-        Iterator gin= this.ginasios.iterator();
+        Iterator gin = this.ginasios.iterator();
         int i = 1;
-        while(gin.hasNext())
-        {
+        while (gin.hasNext()) {
             Ginasio c = (Ginasio) gin.next();
-            System.out.println("("+i+")"+" - "+ c.getNome());
+            System.out.println("(" + i + ")" + " - " + c.getNome());
             i++;
         }
     }
-    
-    public void entrarGinasioConsole(Ginasio g){
+
+    public void entrarGinasioConsole(Ginasio g) {
         //INICIAR A BATALHA
-        System.out.println("\ns#### ENTRANDO NO GINASIO " +g.getNome()+" ####");
-        
+        System.out.println("\ns#### ENTRANDO NO GINASIO " + g.getNome() + " ####");
+
         g.exibirAdversarios();
         Main.pausarAplicacao();
-       
-        for(int i = 0;i<g.getAdversarios().size();i++){
-           System.out.println("###################################### DUELO ##########################################");
-           System.out.println(
-                   "["+this.player.getNome()+" - "+this.player.getPokemonPrincipal().getNome()+"] "
-                   +"X"
-                   + " ["+g.getAdversarios().get(i).getNome()+" - "+g.getAdversarios().get(i).getPokemonPrincipal().getNome()+"]");
-           
-           System.out.println("############");
 
-           Main.pausarAplicacao();
-           Duelo combate = new Duelo(this.player,g.getAdversarios().get(i));
-           combate.duelar();
-           
-           if(combate.getVencedor() != -1)
-           {
-               if(combate.getVencedor()==1)
-               {
-                   System.out.println("Parabens você venceu a batalha!");
-                   this.player.getCardPrincipal().addExperiencia(this.expericenciaPorVitoria, (ArrayList<CarD>)this.cartasDisponiveis);
-                   //Main.pausarAplicacao();
-                       if(g.getAdversarios().size()>1 && i != g.getAdversarios().size()-1 )
-                       {
+        for (int i = 0; i < g.getAdversarios().size(); i++) {
+            System.out.println("###################################### DUELO ##########################################");
+            System.out.println(
+                    "[" + this.player.getNome() + " - " + this.player.getPokemonPrincipal().getNome() + "] "
+                    + "X"
+                    + " [" + g.getAdversarios().get(i).getNome() + " - " + g.getAdversarios().get(i).getPokemonPrincipal().getNome() + "]");
+
+            System.out.println("############");
+
+            Main.pausarAplicacao();
+            Duelo combate = new Duelo(this.player, g.getAdversarios().get(i));
+            combate.duelar();
+
+            if (combate.getVencedor() != -1) {
+                if (combate.getVencedor() == 1) {
+                    System.out.println("Parabens você venceu a batalha!");
+                    this.player.getCardPrincipal().addExperiencia(this.expericenciaPorVitoria, (ArrayList<CarD>) this.cartasDisponiveis);
+                    //Main.pausarAplicacao();
+                    if (g.getAdversarios().size() > 1 && i != g.getAdversarios().size() - 1) {
                         System.out.println("Deseja desafiar o proximo?(s/n)");
                         String opcao = ler.next();
                         ler.nextLine();
-                        while(!"s".equals(opcao) && !"n".equals(opcao))
-                        {
-                         System.out.println("Deseja desafiar o proximo?(s/n)");
-                         opcao = ler.next();
-                         ler.nextLine();
+                        while (!"s".equals(opcao) && !"n".equals(opcao)) {
+                            System.out.println("Deseja desafiar o proximo?(s/n)");
+                            opcao = ler.next();
+                            ler.nextLine();
                         }
-                        if(("s").equals(opcao))
-                        {
+                        if (("s").equals(opcao)) {
                             combate.setVencedor(-1);
-                        }
-                        else
-                        {
-                            System.out.println("\nParabens você venceu " + (i+1) +" adversarios!");
+                        } else {
+                            System.out.println("\nParabens você venceu " + (i + 1) + " adversarios!");
                             break;
                         }
-                      }
-               }
-               else if(combate.getVencedor()==0)
-               {
-                   System.out.println("\nQue pena, voce foi derrotado adversario "+ g.getAdversarios().get(i).getNome());
-                   this.player.getCardPrincipal().addExperiencia(((int)-this.expericenciaPorVitoria/4), (ArrayList<CarD>)this.cartasDisponiveis);
+                    }
+                } else if (combate.getVencedor() == 0) {
+                    System.out.println("\nQue pena, voce foi derrotado adversario " + g.getAdversarios().get(i).getNome());
+                    this.player.getCardPrincipal().addExperiencia(((int) -this.expericenciaPorVitoria / 4), (ArrayList<CarD>) this.cartasDisponiveis);
 
-                   //Main.pausarAplicacao();
-                   break;
-               }
-           }
-            if(combate.getVencedor()==1 && i == g.getAdversarios().size()-1)
-            {
+                    //Main.pausarAplicacao();
+                    break;
+                }
+            }
+            if (combate.getVencedor() == 1 && i == g.getAdversarios().size() - 1) {
                 System.out.println("Parabens você venceu todos os adversarios!");
-                Main.pausarAplicacao(); 
+                Main.pausarAplicacao();
                 this.premioVitoriaConsole(g.getAdversarios());
             }
             Main.pausarAplicacao();
         }
     }
-   
-    
-    
-    public void batalharGinasio(Ginasio g){
+
+    public void batalharGinasio(Ginasio g, JTextArea jTextArea1) throws InterruptedException {
         //INICIAR A BATALHA
-        System.out.println("\ns#### ENTRANDO NO GINASIO " +g.getNome()+" ####");
 
-        for(int i = 0;i<g.getAdversarios().size();i++){
-           System.out.println("###################################### DUELO ##########################################");
-           System.out.println(
-                   "["+this.player.getNome()+" - "+this.player.getPokemonPrincipal().getNome()+"] "
-                   +"X"
-                   + " ["+g.getAdversarios().get(i).getNome()+" - "+g.getAdversarios().get(i).getPokemonPrincipal().getNome()+"]");
-           
-           System.out.println("############");
+        VENCEDOR = 9;
 
-           //Main.pausarAplicacao();
-           Duelo combate = new Duelo(this.player,g.getAdversarios().get(i));
-           combate.duelarInstantaneo();
-           
-           if(combate.getVencedor() != -1)
-           {
-               if(combate.getVencedor()==1)
-               {
-                   System.out.println("Parabens você venceu a batalha!");
-                   this.player.getCardPrincipal().addExperiencia(this.expericenciaPorVitoria, (ArrayList<CarD>)this.cartasDisponiveis);
-                   //Main.pausarAplicacao();
+                jTextArea1.append("\n#### ENTRANDO NO GINASIO " + g.getNome() + " ####");
 
-               }
-               else if(combate.getVencedor()==0)
-               {
-                   System.out.println("\nQue pena, voce foi derrotado adversario "+ g.getAdversarios().get(i).getNome());
-                   this.player.getCardPrincipal().addExperiencia(((int)-this.expericenciaPorVitoria/4), (ArrayList<CarD>)this.cartasDisponiveis);
+        
+        
+        for (int i = 0; i < g.getAdversarios().size(); i++) {
 
-                  // Main.pausarAplicacao();
-                   break;
-               }
-           }
-            if(combate.getVencedor()==1 && i == g.getAdversarios().size()-1)
-            {
+            jTextArea1.append("\n########################### DUELO ############################");
+            jTextArea1.append(
+                    "\n[" + this.player.getNome() + " - " + this.player.getPokemonPrincipal().getNome() + "] "
+                    + "X"
+                    + " [" + g.getAdversarios().get(i).getNome() + " - " + g.getAdversarios().get(i).getPokemonPrincipal().getNome() + "]");
+
+            System.out.println("\n############");
+
+            //Main.pausarAplicacao();
+            Duelo combate = new Duelo(this.player, g.getAdversarios().get(i));
+            int vencedor;
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+                     
+                    VENCEDOR = combate.duelarInstantaneo(jTextArea1);
+//                }
+//            }).start();
+                  
+            VENCEDOR = combate.getVencedor();
+                
+            if (VENCEDOR != -1) {
+                if (VENCEDOR == 1) {
+                  
+                  JOptionPane.showMessageDialog(null, "\nParabens você venceu a batalha!");
+
+                    this.player.getCardPrincipal().addExperiencia(this.expericenciaPorVitoria, (ArrayList<CarD>) this.cartasDisponiveis);
+                    //Main.pausarAplicacao();
+//                    if (g.getAdversarios().size() > 1 && i != g.getAdversarios().size() - 1) {
+//                        jTextArea1.append("\n\nDeseja desafiar o proximo?(s/n)");
+//                        String opcao = ler.next();
+//                        ler.nextLine();
+//                        while(!"s".equals(opcao) && !"n".equals(opcao))
+//                        {
+//                            System.out.println("Deseja desafiar o proximo?(s/n)");
+//                            opcao = ler.next();
+//                            ler.nextLine();
+//                           }
+//                           if(("s").equals(opcao))
+//                           {
+//                               combate.setVencedor(-1);
+//                           }
+//                           else
+//                           {
+//                               System.out.println("\nParabens você venceu " + (i+1) +" adversarios!");
+//                               break;
+//                           }
+                        
+//                    }
+                } else if (VENCEDOR == 0) {
+                    JOptionPane.showMessageDialog(null, "\nQue pena, voce foi derrotado adversario " + g.getAdversarios().get(i).getNome());
+                    this.player.getCardPrincipal().addExperiencia(((int) -this.expericenciaPorVitoria / 4), (ArrayList<CarD>) this.cartasDisponiveis);
+
+                    //Main.pausarAplicacao();
+                    break;
+                }
+            }
+            if (VENCEDOR == 1 && i == g.getAdversarios().size() - 1) {
+                JOptionPane.showMessageDialog(null, "Parabens você venceu todos os adversarios!");
                 System.out.println("Parabens você venceu todos os adversarios!");
-               // Main.pausarAplicacao(); 
+                //Main.pausarAplicacao(); 
                 this.premioVitoriaInstatanea(g.getAdversarios());
             }
-           // Main.pausarAplicacao();
+            //Main.pausarAplicacao();
         }
+//        JOptionPane.showMessageDialog(null, "Fim da batalha");
     }
-   
-    
+
     public String toString(int i) {
-        return "0"+i;
+        return "0" + i;
     }
+
     public void carregarJogadorConsole() {
-        
-       System.out.println("\n#### TELA DE CADASTRO ####");
-       System.out.println("Digite o seu nome:");
-       String nome = ler.next();
-       player = new Jogador(nome);
+
+        System.out.println("\n#### TELA DE CADASTRO ####");
+        System.out.println("Digite o seu nome:");
+        String nome = ler.next();
+        player = new Jogador(nome);
         System.out.println("\n#### ESCOLHA SUA CARTA POKEMON INICIAL ####");
-        System.out.println("(1) - "+ cartasDisponiveis.get(0).getPk().getNome());
-        System.out.println("(2) - "+ cartasDisponiveis.get(3).getPk().getNome());
-        System.out.println("(3) - "+ cartasDisponiveis.get(6).getPk().getNome());
+        System.out.println("(1) - " + cartasDisponiveis.get(0).getPk().getNome());
+        System.out.println("(2) - " + cartasDisponiveis.get(3).getPk().getNome());
+        System.out.println("(3) - " + cartasDisponiveis.get(6).getPk().getNome());
         int id = ler.nextInt();
-        while(id <0 || id >3)
-        {
+        while (id < 0 || id > 3) {
             System.out.println("******Codigo pokemon invalido!******");
             System.out.println("\n#### ESCOLHA SUA CARTA POKEMON INICIAL ####");
-            System.out.println("(1) - "+ cartasDisponiveis.get(0).getPk().getNome());
-            System.out.println("(2) - "+ cartasDisponiveis.get(3).getPk().getNome());
-            System.out.println("(3) - "+ cartasDisponiveis.get(6).getPk().getNome());
+            System.out.println("(1) - " + cartasDisponiveis.get(0).getPk().getNome());
+            System.out.println("(2) - " + cartasDisponiveis.get(3).getPk().getNome());
+            System.out.println("(3) - " + cartasDisponiveis.get(6).getPk().getNome());
             id = ler.nextInt();
         }
-       
-        if(id==1) player.addDeckPokemon(cartasDisponiveis.get(0));
-        if(id==2) player.addDeckPokemon(cartasDisponiveis.get(3));
-        if(id==3) player.addDeckPokemon(cartasDisponiveis.get(6));
-        
-        System.out.println("**** Parabens, o "+player.getDeckPokemon(0).getPk().getNome()+" e agora seu novo companheiro! ****");
+
+        if (id == 1) {
+            player.addDeckPokemon(cartasDisponiveis.get(0));
+        }
+        if (id == 2) {
+            player.addDeckPokemon(cartasDisponiveis.get(3));
+        }
+        if (id == 3) {
+            player.addDeckPokemon(cartasDisponiveis.get(6));
+        }
+
+        System.out.println("**** Parabens, o " + player.getDeckPokemon(0).getPk().getNome() + " e agora seu novo companheiro! ****");
         Main.pausarAplicacao();
     }
-    
+
     public void menuGinasioConsole() {
-            System.out.println("\n#### EM QUAL GINASIO VOCE DESEJA BATALHAR ####");
-            this.exibirGinasiosConsole();
-            System.out.println("(-1) - Voltar");
-            ler.nextLine();
-            int idGinasio = ler.nextInt();
-           
-            while(((idGinasio >= ginasios.size() || idGinasio<1)) && idGinasio != -1)
-            {
-                this.menuGinasioConsole();
-            }
-            if(idGinasio<= ginasios.size() && idGinasio>0)
-            {
-                this.entrarGinasioConsole(ginasios.get(idGinasio-1));
-            }
+        System.out.println("\n#### EM QUAL GINASIO VOCE DESEJA BATALHAR ####");
+        this.exibirGinasiosConsole();
+        System.out.println("(-1) - Voltar");
+        ler.nextLine();
+        int idGinasio = ler.nextInt();
+
+        while (((idGinasio >= ginasios.size() || idGinasio < 1)) && idGinasio != -1) {
+            this.menuGinasioConsole();
+        }
+        if (idGinasio <= ginasios.size() && idGinasio > 0) {
+            this.entrarGinasioConsole(ginasios.get(idGinasio - 1));
+        }
     }
-    
+
     public void exibirMeusPokemonsConsole() {
         System.out.println("###MEUS POKEMONS###");
         System.out.println("N#\tNOME:\t\t\tLEVEL:\t\t\tEXP/EXP\t\tVIDA\t\tATAQUE");
         int i = 1;
         ArrayList opcoes = new ArrayList();
-        for(CarD c:this.player.getDeckPokemon())
-        {
-            if(c.equals(this.player.getCardPrincipal()))
-            {
-              System.out.println(i+"\t"+c.getPk().getNome() +"\t\t"+ c.getLevelAtual() +"\t\t\t"+ c.getExperienciaAtual()+"/"+c.getExperienciaLevel()+"\t\t"+c.getPk().getVida()+"\t\t"+c.getPk().getsAtaque()+"\t - PRINCIPAL");
-            }
-            else {
-                System.out.println(i+"\t"+c.getPk().getNome() +"\t\t"+ c.getLevelAtual() +"\t\t\t"+ c.getExperienciaAtual()+"/"+c.getExperienciaLevel()+"\t\t"+c.getPk().getVida()+"\t\t"+c.getPk().getsAtaque());
+        for (CarD c : this.player.getDeckPokemon()) {
+            if (c.equals(this.player.getCardPrincipal())) {
+                System.out.println(i + "\t" + c.getPk().getNome() + "\t\t" + c.getLevelAtual() + "\t\t\t" + c.getExperienciaAtual() + "/" + c.getExperienciaLevel() + "\t\t" + c.getPk().getVida() + "\t\t" + c.getPk().getsAtaque() + "\t - PRINCIPAL");
+            } else {
+                System.out.println(i + "\t" + c.getPk().getNome() + "\t\t" + c.getLevelAtual() + "\t\t\t" + c.getExperienciaAtual() + "/" + c.getExperienciaLevel() + "\t\t" + c.getPk().getVida() + "\t\t" + c.getPk().getsAtaque());
             }
             opcoes.add(player.getDeckPokemon().indexOf(c));
             i++;
         }
-        
+
         System.out.println("Caso deseja alterar seu pokemon principal digite o seu N#");
         int opcao = ler.nextInt();
 
-        if(opcao > 0 && opcao <= this.player.getDeckPokemon().size())
-        {
-            this.player.setPokemonPrincipal((int) opcoes.get(opcao-1));
-            
+        if (opcao > 0 && opcao <= this.player.getDeckPokemon().size()) {
+            this.player.setPokemonPrincipal((int) opcoes.get(opcao - 1));
+
         }
     }
-   
+
     public void premioVitoriaConsole(List<Jogador> adversarios) {
         System.out.println("Escolha um pokemon como premio");
         ArrayList opcoes = new ArrayList();
         int i = 1;
-        for(Jogador j:adversarios)
-        {
-            System.out.println("("+i+") - "+ j.getPokemonPrincipal().getNome());
+        for (Jogador j : adversarios) {
+            System.out.println("(" + i + ") - " + j.getPokemonPrincipal().getNome());
             opcoes.add(adversarios.indexOf(j));
             i++;
         }
         int opcao = ler.nextInt();
-        int indice = (int) opcoes.get(opcao-1);
-        if(opcoes.contains(indice))
-        {
+        int indice = (int) opcoes.get(opcao - 1);
+        if (opcoes.contains(indice)) {
             this.player.addDeckPokemon(adversarios.get(indice).getCardPrincipal().createNewCardPokemon());
-        }
-        else
+        } else {
             premioVitoriaConsole(adversarios);
+        }
     }
-    
+
     public void premioVitoriaInstatanea(List<Jogador> adversarios) {
-            Random r = new Random();
-            
-            this.player.addDeckPokemon(adversarios.get(r.nextInt(adversarios.size())).getCardPrincipal().createNewCardPokemon());
-         
+        Random r = new Random();
+
+        this.player.addDeckPokemon(adversarios.get(r.nextInt(adversarios.size())).getCardPrincipal().createNewCardPokemon());
+
     }
 
     public List<CarD> getCartasDisponiveis() {
@@ -359,10 +383,4 @@ public class Jogo {
         this.expericenciaPorVitoria = expericenciaPorVitoria;
     }
 
-
-
-    
-    
-    
-    
 }

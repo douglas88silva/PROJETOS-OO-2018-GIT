@@ -15,10 +15,10 @@ import cardPokemon.Jogador;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-
-
 
 /**
  *
@@ -30,59 +30,49 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
      * Creates new form MenuGinasios
      */
     private List<Jogador> treinadores;
-    private List<Ginasio>listaGinasios;
-    
+    private List<Ginasio> listaGinasios;
+
     public MenuGinasios() {
-        
+
         this.listaGinasios = batalhaPokemon.getGinasios();
-        
-         initComponents();
-         this.carregarComboBox();
-         
-         
+
+        initComponents();
+        this.carregarComboBox();
+
     }
-    
-    
-    public void carregarComboBox()
-    {
-        
-        DefaultComboBoxModel comboModelGinasio = (DefaultComboBoxModel)this.jComboBox1.getModel();
+
+    public void carregarComboBox() {
+
+        DefaultComboBoxModel comboModelGinasio = (DefaultComboBoxModel) this.jComboBox1.getModel();
         comboModelGinasio.removeAllElements();
-   
-           comboModelGinasio.addElement("---Selecione um Ginasio---");
-           for (Ginasio ginasio : listaGinasios)
-           {
-              comboModelGinasio.addElement(ginasio.getNome());
-              
-           } 
+
+        comboModelGinasio.addElement("---Selecione um Ginasio---");
+        for (Ginasio ginasio : listaGinasios) {
+            comboModelGinasio.addElement(ginasio.getNome());
+
+        }
     }
-    
-    public void carregarJTable()
-    {
-       try{
-               if (this.jComboBox1.getSelectedIndex() > 0) {
 
-               Ginasio g = listaGinasios.get(this.jComboBox1.getSelectedIndex() - 1);
+    public void carregarJTable() {
+        try {
+            if (this.jComboBox1.getSelectedIndex() > 0) {
 
-               this.jLabel3.setText(Integer.toString(g.getNivel()));
-               this.treinadores = g.getAdversarios();
+                Ginasio g = listaGinasios.get(this.jComboBox1.getSelectedIndex() - 1);
 
-               
-               TabelaGinasio model = new TabelaGinasio(this.treinadores);
-               this.jTable1.setModel(model);
+                this.jLabel3.setText(Integer.toString(g.getNivel()));
+                this.treinadores = g.getAdversarios();
 
-           }
-               
+                TabelaGinasio model = new TabelaGinasio(this.treinadores);
+                this.jTable1.setModel(model);
 
-               
-       }catch(Exception e)
-       {
-           JOptionPane.showMessageDialog(null, "Erro combo" + e.toString());
-       }
-          
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro combo" + e.toString());
+        }
+
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,7 +89,6 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -149,19 +138,6 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
 
         jLabel1.setText(" Level:");
 
-        jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 144, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 96, Short.MAX_VALUE)
-        );
-
         jButton2.setText("VOLTAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,8 +149,13 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Oponente");
 
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(153, 153, 153));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
+        jTextArea1.setDropMode(javax.swing.DropMode.INSERT);
+        jTextArea1.setNextFocusableComponent(jComboBox1);
         jScrollPane2.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,10 +180,7 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(38, 38, 38)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -224,12 +202,10 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jDesktopPane1)
-                    .addComponent(jScrollPane2))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,92 +213,90 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        this.batalharView( jComboBox1.getSelectedIndex());
-        JOptionPane.showMessageDialog(null, "Fim da batalha");
-        
+        jTextArea1.setText("");
+//        this.batalharView(listaGinasios.get(jComboBox1.getSelectedIndex()-1));
+        Ginasio g = listaGinasios.get(jComboBox1.getSelectedIndex() - 1);
+
+        try {
+            batalhaPokemon.batalharGinasio(g, jTextArea1);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MenuGinasios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+//        JOptionPane.showMessageDialog(null, "Fim da batalha");
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-                this.setVisible(false);
-                menu.setVisible(true);
+
+        this.setVisible(false);
+        menu.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        
-        if(!this.jComboBox1.getSelectedItem().equals("---Selecione um Ginasio---"));
-            this.carregarJTable();
+
+        //if(!this.jComboBox1.getSelectedItem().equals("---Selecione um Ginasio---"));
+        this.carregarJTable();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    void batalharView(int a)
-    {
+    void batalharView(Ginasio g) {
         //INICIAR A BATALHA
-        Ginasio g = listaGinasios.get(a-1);
-        
-        System.out.println("\ns#### ENTRANDO NO GINASIO " +g.getNome()+" ####");
 
-        for(int i = 0;i<g.getAdversarios().size();i++){
-           System.out.println("###################################### DUELO ##########################################");
-           System.out.println(
-                   "["+batalhaPokemon.getPlayer().getNome()+" - "+batalhaPokemon.getPlayer().getPokemonPrincipal().getNome()+"] "
-                   +"X"
-                   + " ["+g.getAdversarios().get(i).getNome()+" - "+g.getAdversarios().get(i).getPokemonPrincipal().getNome()+"]");
-           
-           System.out.println("############");
+        System.out.println("\ns#### ENTRANDO NO GINASIO " + g.getNome() + " ####");
 
-           //Main.pausarAplicacao();
-           Duelo combate = new Duelo(batalhaPokemon.getPlayer(),g.getAdversarios().get(i));
-           combate.duelarInstantaneo();
-           
-           if(combate.getVencedor() != -1)
-           {
-               if(combate.getVencedor()==1)
-               {
-                   System.out.println("Parabens você venceu a batalha!");
-                   JOptionPane.showMessageDialog(null, "Parabens você venceu a batalha!");
-                   batalhaPokemon.getPlayer().getCardPrincipal().addExperiencia(batalhaPokemon.getExpericenciaPorVitoria(), (ArrayList<CarD>)batalhaPokemon.getCartasDisponiveis());
-                   //Main.pausarAplicacao();
+        for (int i = 0; i < g.getAdversarios().size(); i++) {
+            System.out.println("###################################### DUELO ##########################################");
+            System.out.println(
+                    "[" + batalhaPokemon.getPlayer().getNome() + " - " + batalhaPokemon.getPlayer().getPokemonPrincipal().getNome() + "] "
+                    + "X"
+                    + " [" + g.getAdversarios().get(i).getNome() + " - " + g.getAdversarios().get(i).getPokemonPrincipal().getNome() + "]");
 
-               }
-               else if(combate.getVencedor()==0)
-               {
-                   System.out.println("\nQue pena, voce foi derrotado adversario "+ g.getAdversarios().get(i).getNome());
-                   JOptionPane.showMessageDialog(null, "\nQue pena, voce foi derrotado adversario "+ g.getAdversarios().get(i).getNome());
-                   batalhaPokemon.getPlayer().getCardPrincipal().addExperiencia(((int)-batalhaPokemon.getExpericenciaPorVitoria()/4), (ArrayList<CarD>)batalhaPokemon.getCartasDisponiveis());
+            System.out.println("############");
 
-                  // Main.pausarAplicacao();
-                   break;
-               }
-           }
-            if(combate.getVencedor()==1 && i == g.getAdversarios().size()-1)
-            {
+            //Main.pausarAplicacao();
+            Duelo combate = new Duelo(batalhaPokemon.getPlayer(), g.getAdversarios().get(i));
+//            combate.duelarInstantaneo();
+
+            if (combate.getVencedor() != -1) {
+                if (combate.getVencedor() == 1) {
+                    System.out.println("Parabens você venceu a batalha!");
+                    JOptionPane.showMessageDialog(null, "Parabens você venceu a batalha!");
+                    batalhaPokemon.getPlayer().getCardPrincipal().addExperiencia(batalhaPokemon.getExpericenciaPorVitoria(), (ArrayList<CarD>) batalhaPokemon.getCartasDisponiveis());
+                    //Main.pausarAplicacao();
+
+                } else if (combate.getVencedor() == 0) {
+                    System.out.println("\nQue pena, voce foi derrotado adversario " + g.getAdversarios().get(i).getNome());
+                    JOptionPane.showMessageDialog(null, "\nQue pena, voce foi derrotado adversario " + g.getAdversarios().get(i).getNome());
+                    batalhaPokemon.getPlayer().getCardPrincipal().addExperiencia(((int) -batalhaPokemon.getExpericenciaPorVitoria() / 4), (ArrayList<CarD>) batalhaPokemon.getCartasDisponiveis());
+
+                    // Main.pausarAplicacao();
+                    break;
+                }
+            }
+            if (combate.getVencedor() == 1 && i == g.getAdversarios().size() - 1) {
                 System.out.println("Parabens você venceu todos os adversarios!");
                 JOptionPane.showMessageDialog(null, "Parabens você venceu todos os adversarios!");
-               // Main.pausarAplicacao(); 
+                // Main.pausarAplicacao(); 
                 this.premioVitoriaInstatanea(g.getAdversarios());
             }
-           // Main.pausarAplicacao();
+            // Main.pausarAplicacao();
         }
     }
-    
+
     public void premioVitoriaInstatanea(List<Jogador> adversarios) {
-            Random r = new Random();
-                  batalhaPokemon.getPlayer().addDeckPokemon(adversarios.get(r.nextInt(adversarios.size())).getCardPrincipal().createNewCardPokemon());
-         
+        Random r = new Random();
+        batalhaPokemon.getPlayer().addDeckPokemon(adversarios.get(r.nextInt(adversarios.size())).getCardPrincipal().createNewCardPokemon());
+
     }
-   
-   
-        
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
