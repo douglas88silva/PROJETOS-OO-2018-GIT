@@ -329,15 +329,16 @@ public class Jogo {
     public void premioVitoriaInstatanea(List<Jogador> adversarios) {
         Random r = new Random();
         
-        //PEGANDO ALEATORIAMENTE DENTRO DOS POKEMONS DOS ADVERSARIOS
-        int indexJogador = r.nextInt(adversarios.size());
-        int idCard = adversarios.get(indexJogador).getCardPrincipal().getIdCard();      
-        int indexOf = this.getIndexOfCardID(idCard);
+//        //PEGANDO ALEATORIAMENTE DENTRO DOS POKEMONS DOS ADVERSARIOS
+//        int indexJogador = r.nextInt(adversarios.size());
+//        int idCard = adversarios.get(indexJogador).getCardPrincipal().getIdCard();      
+//        int indexOf = this.getIndexOfCardID(idCard);
         
         
         
         //PEGANDO ALEATORIAMENTE DENTRO DE TODOS OS POKEMONS DISPONIVEIS
-        
+        int idCard = this.cartasDisponiveis.get(r.nextInt(cartasDisponiveis.size())).getIdCard(); 
+        int indexOf = this.getIndexOfCardID(idCard);
         
         
         //CASO JÁ EXISTA O POKEMON NO DECK ADICIONA O DOBRO DE EXPERIENCIA PARA O MESMO
@@ -350,7 +351,7 @@ public class Jogo {
         }
         
         else
-        {
+        {   
             this.player.getDeckPokemon(idCard).addExperienciaInterface(2*this.expericenciaPorVitoria, (ArrayList<CarD>) this.cartasDisponiveis);
         }
 
