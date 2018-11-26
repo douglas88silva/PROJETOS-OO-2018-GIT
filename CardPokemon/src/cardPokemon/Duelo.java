@@ -143,8 +143,7 @@ public class Duelo {
 //            }
         }
 
-        pokemonPlayer.restaurarHp();
-        pokemonAdversario.restaurarHp();
+        
 
         if (tempo <= 0) {
             jTextArea1.append("\nTempo limite da partida atingido!");
@@ -152,11 +151,16 @@ public class Duelo {
 
         if (pokemonPlayer.gethPCombate() > pokemonAdversario.gethPCombate()) {
             this.vencedor = 1;
-            return 1;
+            
         } else {
             this.vencedor = 0;
-            return 0;
+           
         }
+        
+        pokemonPlayer.restaurarHp();
+        pokemonAdversario.restaurarHp();
+        return this.vencedor;
+        
     }
 
     public static void exibirtempo() {

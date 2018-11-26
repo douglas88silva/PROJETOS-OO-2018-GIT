@@ -239,9 +239,11 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
             batalhaPokemon.batalharGinasio(g, jTextArea1);
         } catch (InterruptedException ex) {
             Logger.getLogger(MenuGinasios.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            this.carregarJTable();
         }
 
-//        JOptionPane.showMessageDialog(null, "Fim da batalha");
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -255,59 +257,11 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
 
-        //if(!this.jComboBox1.getSelectedItem().equals("---Selecione um Ginasio---"));
+        
         this.carregarJTable();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    void batalharView(Ginasio g) {
-        //INICIAR A BATALHA
 
-        System.out.println("\ns#### ENTRANDO NO GINASIO " + g.getNome() + " ####");
-
-        for (int i = 0; i < g.getAdversarios().size(); i++) {
-            System.out.println("###################################### DUELO ##########################################");
-            System.out.println(
-                    "[" + batalhaPokemon.getPlayer().getNome() + " - " + batalhaPokemon.getPlayer().getPokemonPrincipal().getNome() + "] "
-                    + "X"
-                    + " [" + g.getAdversarios().get(i).getNome() + " - " + g.getAdversarios().get(i).getPokemonPrincipal().getNome() + "]");
-
-            System.out.println("############");
-
-            //Main.pausarAplicacao();
-            Duelo combate = new Duelo(batalhaPokemon.getPlayer(), g.getAdversarios().get(i));
-//            combate.duelarInstantaneo();
-
-            if (combate.getVencedor() != -1) {
-                if (combate.getVencedor() == 1) {
-                    System.out.println("Parabens você venceu a batalha!");
-                    JOptionPane.showMessageDialog(null, "Parabens você venceu a batalha!");
-                    batalhaPokemon.getPlayer().getCardPrincipal().addExperiencia(batalhaPokemon.getExpericenciaPorVitoria(), (ArrayList<CarD>) batalhaPokemon.getCartasDisponiveis());
-                    //Main.pausarAplicacao();
-
-                } else if (combate.getVencedor() == 0) {
-                    System.out.println("\nQue pena, voce foi derrotado adversario " + g.getAdversarios().get(i).getNome());
-                    JOptionPane.showMessageDialog(null, "\nQue pena, voce foi derrotado adversario " + g.getAdversarios().get(i).getNome());
-                    batalhaPokemon.getPlayer().getCardPrincipal().addExperiencia(((int) -batalhaPokemon.getExpericenciaPorVitoria() / 4), (ArrayList<CarD>) batalhaPokemon.getCartasDisponiveis());
-
-                    // Main.pausarAplicacao();
-                    break;
-                }
-            }
-            if (combate.getVencedor() == 1 && i == g.getAdversarios().size() - 1) {
-                System.out.println("Parabens você venceu todos os adversarios!");
-                JOptionPane.showMessageDialog(null, "Parabens você venceu todos os adversarios!");
-                // Main.pausarAplicacao(); 
-                this.premioVitoriaInstatanea(g.getAdversarios());
-            }
-            // Main.pausarAplicacao();
-        }
-    }
-
-    public void premioVitoriaInstatanea(List<Jogador> adversarios) {
-        Random r = new Random();
-        batalhaPokemon.getPlayer().addDeckPokemon(adversarios.get(r.nextInt(adversarios.size())).getCardPrincipal().createNewCardPokemon());
-
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

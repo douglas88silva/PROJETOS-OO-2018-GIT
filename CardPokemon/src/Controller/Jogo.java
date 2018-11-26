@@ -212,7 +212,11 @@ public class Jogo {
                     JOptionPane.showMessageDialog(null, "\nQue pena, voce foi derrotado adversario " + g.getAdversarios().get(i).getNome());
                     jTextArea1.append("\nQue pena, voce foi derrotado adversario ");
                     this.player.getCardPrincipal().addExperienciaInterface(((int) -this.expericenciaPorVitoria / 4), (ArrayList<CarD>) this.cartasDisponiveis);
-
+                    
+                //ENFRAQUECENDO O POKEMON INIMIGO
+                 g.setVENCIDO(false);
+                 this.ginasios.get(i).atualizaPokemonsGinasio(this.cartasDisponiveis);
+                    
                     //Main.pausarAplicacao();
                     break;
                 }
@@ -221,6 +225,11 @@ public class Jogo {
                 JOptionPane.showMessageDialog(null, "Parabens você venceu todos os adversarios!");
                 jTextArea1.append("\nParabens você venceu todos os adversarios!");
                 System.out.println("Parabens você venceu todos os adversarios!");
+                
+                //FORTALECENDO O POKEMON INIMIGO
+                g.setVENCIDO(true);
+                this.ginasios.get(i).atualizaPokemonsGinasio(this.cartasDisponiveis);
+                
                 //Main.pausarAplicacao(); 
                 this.premioVitoriaInstatanea(g.getAdversarios());
             }
@@ -337,8 +346,17 @@ public class Jogo {
         
         
         //PEGANDO ALEATORIAMENTE DENTRO DE TODOS OS POKEMONS DISPONIVEIS
-        int idCard = this.cartasDisponiveis.get(r.nextInt(cartasDisponiveis.size())).getIdCard(); 
-        int indexOf = this.getIndexOfCardID(idCard);
+        int evolucao = 0; //NAO PERMITE Q O PREMIO SEJA A ULTIMA EVOLUCAO DO POKEMON
+        int idCard =-1,indexOf = -1;
+       
+        while(evolucao == 0 ){
+             
+             CarD pk = this.cartasDisponiveis.get(r.nextInt(cartasDisponiveis.size()));
+             idCard = pk.getIdCard(); 
+             indexOf = this.getIndexOfCardID(idCard);
+             evolucao = pk.getPk().getEvolucao();
+        }
+        
         
         
         //CASO JÁ EXISTA O POKEMON NO DECK ADICIONA O DOBRO DE EXPERIENCIA PARA O MESMO

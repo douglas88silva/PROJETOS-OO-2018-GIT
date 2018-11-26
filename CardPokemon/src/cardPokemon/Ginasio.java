@@ -21,6 +21,7 @@ public class Ginasio {
     private String nome;
     private int nivel;
     private List<Jogador> adversarios;
+    private boolean VENCIDO = false;
 
     public Ginasio(String nome, List<CarD> cartasDisponiveis) {
       
@@ -46,12 +47,45 @@ public class Ginasio {
       
     }
 
+    public boolean isVENCIDO() {
+        return VENCIDO;
+    }
+
+    public void setVENCIDO(boolean VENCIDO) {
+        this.VENCIDO = VENCIDO;
+    }
+
     @Override
     public String toString() {
         return "Ginasio{" + "nome=" + nome + '}';
     }
 
+    public void atualizaPokemonsGinasio(List<CarD> cartasDisponiveis)
+    {
+        Random r = new Random();
+        for (Jogador treinadores : adversarios) {
 
+            if(this.VENCIDO)
+            {
+                treinadores.getDeckPokemon().clear();
+                treinadores.addDeckPokemon((CarD) cartasDisponiveis.get(r.nextInt(cartasDisponiveis.size())).createNewCardPokemon(this.nivel++));//pegar aleatoriamente
+                
+                this.VENCIDO = false;
+            }
+            else
+            {
+                if(this.nivel>1)
+                {
+                    this.setNivel(this.nivel--);
+                    treinadores.getDeckPokemon().clear();
+                    treinadores.addDeckPokemon((CarD) cartasDisponiveis.get(r.nextInt(cartasDisponiveis.size())).createNewCardPokemon(this.nivel));//pegar aleatoriamente
+                    
+                }
+            }
+            
+        }
+        
+    }
 
     public void exibirAdversarios(){
         
