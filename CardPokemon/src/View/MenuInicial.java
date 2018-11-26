@@ -85,11 +85,12 @@ public class MenuInicial extends javax.swing.JInternalFrame {
 
         jPanel1.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel2.setText("BATALHA CARTAS POKEMON");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(48, 55, 302, 22);
+        jLabel2.setBounds(160, 30, 560, 50);
 
+        jBtnBatalhar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jBtnBatalhar.setText("Batalhar ");
         jBtnBatalhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,8 +98,9 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jBtnBatalhar);
-        jBtnBatalhar.setBounds(380, 150, 302, 110);
+        jBtnBatalhar.setBounds(480, 150, 302, 110);
 
+        jBtnMeusPokemons.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jBtnMeusPokemons.setText("Meus Pokemons");
         jBtnMeusPokemons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,8 +108,9 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jBtnMeusPokemons);
-        jBtnMeusPokemons.setBounds(50, 150, 305, 50);
+        jBtnMeusPokemons.setBounds(50, 150, 390, 50);
 
+        jBtnPokemons.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jBtnPokemons.setText("Pokemons");
         jBtnPokemons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,8 +118,9 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jBtnPokemons);
-        jBtnPokemons.setBounds(50, 210, 300, 50);
+        jBtnPokemons.setBounds(50, 210, 390, 50);
 
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton5.setText("Fechar Jogo");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,31 +128,33 @@ public class MenuInicial extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jButton5);
-        jButton5.setBounds(550, 290, 130, 23);
+        jButton5.setBounds(50, 280, 730, 50);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Treinador:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(50, 110, 80, 14);
+        jLabel3.setBounds(50, 110, 100, 22);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("NomeJogador");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(130, 110, 150, 14);
+        jLabel1.setBounds(150, 110, 150, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(158, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(100, 100, 100)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         pack();
