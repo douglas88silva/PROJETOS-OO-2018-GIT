@@ -35,7 +35,7 @@ public class Jogo {
     Scanner ler = new Scanner(System.in);
     public int VENCEDOR;
 
-    public Jogo() throws Exception{
+    public Jogo() throws Exception {
 
         ginasios = new ArrayList();
         CarregaDadosTXT loadCartas = new CarregaDadosTXT();
@@ -97,7 +97,7 @@ public class Jogo {
         }
     }
 
-    public void entrarGinasioConsole(Ginasio g)  throws Exception {
+    public void entrarGinasioConsole(Ginasio g) throws Exception {
         //INICIAR A BATALHA
         System.out.println("\ns#### ENTRANDO NO GINASIO " + g.getNome() + " ####");
 
@@ -155,7 +155,7 @@ public class Jogo {
         }
     }
 
-    public void batalharGinasio(Ginasio g, JTextArea jTextArea1)  throws Exception {
+    public void batalharGinasio(Ginasio g, JTextArea jTextArea1) throws Exception {
         //INICIAR A BATALHA
 
         VENCEDOR = 9;
@@ -174,16 +174,21 @@ public class Jogo {
 
             //Main.pausarAplicacao();
             Duelo combate = new Duelo(this.player, g.getAdversarios().get(i));
-            int vencedor;
+            
+            
 //            new Thread(new Runnable() {
 //                @Override
 //                public void run() {
 
-            VENCEDOR = combate.duelarInstantaneo(jTextArea1);
+                    VENCEDOR = combate.duelarInstantaneo(jTextArea1);
 //                }
 //            }).start();
 
-            VENCEDOR = combate.getVencedor();
+            
+
+
+
+            //VENCEDOR = Jogo.VENCEDOR;//combate.getVencedor();
 
             if (VENCEDOR != -1) {
                 if (VENCEDOR == 1) {
@@ -193,12 +198,11 @@ public class Jogo {
                     this.player.getCardPrincipal().addExperienciaInterface(this.expericenciaPorVitoria, (ArrayList<CarD>) this.cartasDisponiveis);
                     //Main.pausarAplicacao();
                     if (g.getAdversarios().size() > 1 && i != g.getAdversarios().size() - 1) {
-                 
 
                         int Confirm = JOptionPane.showConfirmDialog(null, "Deseja desafiar o proximo treinador?", "sim ou nao", JOptionPane.YES_NO_OPTION);
                         if (Confirm == JOptionPane.YES_OPTION) {
                             combate.setVencedor(-1);
-                            
+
                         } else if (Confirm == JOptionPane.NO_OPTION) {
 
                             JOptionPane.showMessageDialog(null, "\nParabens você venceu " + (i + 1) + " adversarios!");
@@ -213,11 +217,11 @@ public class Jogo {
                     JOptionPane.showMessageDialog(null, "\nQue pena, voce foi derrotado adversario " + g.getAdversarios().get(i).getNome());
                     jTextArea1.append("\nQue pena, voce foi derrotado adversario ");
                     this.player.getCardPrincipal().addExperienciaInterface(((int) -this.expericenciaPorVitoria / 4), (ArrayList<CarD>) this.cartasDisponiveis);
-                    
-                //ENFRAQUECENDO O POKEMON INIMIGO
-                 g.setVENCIDO(false);
-                 this.ginasios.get(i).atualizaPokemonsGinasio(this.cartasDisponiveis);
-                    
+
+                    //ENFRAQUECENDO O POKEMON INIMIGO
+                    g.setVENCIDO(false);
+                    this.ginasios.get(i).atualizaPokemonsGinasio(this.cartasDisponiveis);
+
                     //Main.pausarAplicacao();
                     break;
                 }
@@ -226,11 +230,11 @@ public class Jogo {
                 JOptionPane.showMessageDialog(null, "Parabens você venceu todos os adversarios!");
                 jTextArea1.append("\nParabens você venceu todos os adversarios!");
                 System.out.println("Parabens você venceu todos os adversarios!");
-                
+
                 //FORTALECENDO O POKEMON INIMIGO
                 g.setVENCIDO(true);
                 this.ginasios.get(i).atualizaPokemonsGinasio(this.cartasDisponiveis);
-                
+
                 //Main.pausarAplicacao(); 
                 this.premioVitoriaInstatanea(g.getAdversarios());
             }
@@ -336,63 +340,54 @@ public class Jogo {
         }
     }
 
-    public void premioVitoriaInstatanea(List<Jogador> adversarios)  throws Exception{
+    public void premioVitoriaInstatanea(List<Jogador> adversarios) throws Exception {
         Random r = new Random();
-        
+
 //        //PEGANDO ALEATORIAMENTE DENTRO DOS POKEMONS DOS ADVERSARIOS
 //        int indexJogador = r.nextInt(adversarios.size());
 //        int idCard = adversarios.get(indexJogador).getCardPrincipal().getIdCard();      
 //        int indexOf = this.getIndexOfCardID(idCard);
-        
-        
-        
         //PEGANDO ALEATORIAMENTE DENTRO DE TODOS OS POKEMONS DISPONIVEIS
         int evolucao = 0; //NAO PERMITE Q O PREMIO SEJA A ULTIMA EVOLUCAO DO POKEMON
-        int idCard =-1,indexOf = -1;
-       
-        while(evolucao == 0 ){
-             
-             CarD pk = this.cartasDisponiveis.get(r.nextInt(cartasDisponiveis.size()));
-             idCard = pk.getIdCard(); 
-             indexOf = this.getIndexOfCardID(idCard);
-             evolucao = pk.getPk().getEvolucao();
-        }
-        
-        
-        
-        //CASO JÁ EXISTA O POKEMON NO DECK ADICIONA O DOBRO DE EXPERIENCIA PARA O MESMO
-        if(!this.player.existsOfIdCarD(idCard)){
-            
-            CarD aux = cartasDisponiveis.get(indexOf).createNewCardPokemon();
-            this.player.addDeckPokemon(aux);
-            JOptionPane.showMessageDialog(null, "Parabens, agora "+aux.getNome()+ " e seu novo companheiro");
-            
-        }
-        
-        else
-        {   
-            this.player.getDeckPokemon(idCard).addExperienciaInterface(2*this.expericenciaPorVitoria, (ArrayList<CarD>) this.cartasDisponiveis);
+        int idCard = -1, indexOf = -1;
+
+        while (evolucao == 0) {
+
+            CarD pk = this.cartasDisponiveis.get(r.nextInt(cartasDisponiveis.size()));
+            idCard = pk.getIdCard();
+            indexOf = this.getIndexOfCardID(idCard);
+            evolucao = pk.getPk().getEvolucao();
         }
 
-        
-    }
-    public int getIndexOfCardID(int id)  throws Exception{
-        
-        int indexOfCardID = 0;
-        
-        for (CarD carta : cartasDisponiveis) {
-            
-            
-            if(carta.getIdCard() == id)
-                indexOfCardID = cartasDisponiveis.indexOf(carta);
-                
+        //CASO JÁ EXISTA O POKEMON NO DECK ADICIONA O DOBRO DE EXPERIENCIA PARA O MESMO
+        if (!this.player.existsOfIdCarD(idCard)) {
+
+            CarD aux = cartasDisponiveis.get(indexOf).createNewCardPokemon();
+            this.player.addDeckPokemon(aux);
+            JOptionPane.showMessageDialog(null, "Parabens, agora " + aux.getNome() + " e seu novo companheiro");
+
+        } else {
+            this.player.getDeckPokemon(idCard).addExperienciaInterface(2 * this.expericenciaPorVitoria, (ArrayList<CarD>) this.cartasDisponiveis);
         }
-        
-        
-        
-        return indexOfCardID;
-        
+
     }
+
+    public int getIndexOfCardID(int id) throws Exception {
+
+        int indexOfCardID = 0;
+
+        for (CarD carta : cartasDisponiveis) {
+
+            if (carta.getIdCard() == id) {
+                indexOfCardID = cartasDisponiveis.indexOf(carta);
+            }
+
+        }
+
+        return indexOfCardID;
+
+    }
+
     public List<CarD> getCartasDisponiveis() {
         return cartasDisponiveis;
     }

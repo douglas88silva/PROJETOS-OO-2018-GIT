@@ -30,9 +30,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public static MenuGinasios exibirGinasios = null;
     public static MenuInicial menu = null;
     public static Jogo batalhaPokemon;
-    private Class<? extends Exception> NullPointerException;
-    private Class<? extends Exception> FileNotFoundException;
-    private Class<? extends Exception> NumberFormatException;
+
     
     public TelaPrincipal() {
         this.setUndecorated(true);// remove barra de titulo
