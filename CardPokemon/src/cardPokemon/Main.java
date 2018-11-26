@@ -9,6 +9,8 @@ import Controller.Jogo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,9 +26,18 @@ public class Main {
     public static void main(String[] args) {
 
        
-        Jogo batalhaCartasPokemon = new Jogo();
-        batalhaCartasPokemon.iniciaJogoConsole();
-        //Duelo.exibirtempo();
+        Jogo batalhaCartasPokemon = null;
+        try {
+            batalhaCartasPokemon = new Jogo();
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            batalhaCartasPokemon.iniciaJogoConsole();
+            //Duelo.exibirtempo();
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     

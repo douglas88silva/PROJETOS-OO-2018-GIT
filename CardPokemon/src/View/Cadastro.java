@@ -196,7 +196,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
         this.setVisible(false);  
         }catch(Exception e)
        {
-           JOptionPane.showMessageDialog(null, "Campos dos cadastro vazios");
+           JOptionPane.showMessageDialog(null, "Campos dos cadastro vazios", null, 2);
            
        }    
         

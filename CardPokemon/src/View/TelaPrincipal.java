@@ -8,6 +8,7 @@ package View;
 import Controller.Jogo;
 import cardPokemon.*;
 import java.awt.Toolkit;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,6 +30,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public static MenuGinasios exibirGinasios = null;
     public static MenuInicial menu = null;
     public static Jogo batalhaPokemon;
+    private Class<? extends Exception> NullPointerException;
+    private Class<? extends Exception> FileNotFoundException;
+    private Class<? extends Exception> NumberFormatException;
     
     public TelaPrincipal() {
         this.setUndecorated(true);// remove barra de titulo
@@ -108,7 +112,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     
-    public void iniciarJogo(){
+    public void iniciarJogo() {
         
     try{ 
            
@@ -125,9 +129,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             
        }catch(Exception e)
        {
-           JOptionPane.showMessageDialog(null, "erro a" + e);
-           
+            
+               JOptionPane.showMessageDialog(null, "Erro ao carregar o jogo!"+e.getMessage(), null, 0);
+        
+           System.exit(0);
        }
+
         
     }
 

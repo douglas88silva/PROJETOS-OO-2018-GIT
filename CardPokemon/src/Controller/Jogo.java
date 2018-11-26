@@ -11,6 +11,7 @@ import cardPokemon.Duelo;
 import cardPokemon.Ginasio;
 import cardPokemon.Jogador;
 import cardPokemon.Main;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,7 +35,7 @@ public class Jogo {
     Scanner ler = new Scanner(System.in);
     public int VENCEDOR;
 
-    public Jogo() {
+    public Jogo() throws Exception{
 
         ginasios = new ArrayList();
         CarregaDadosTXT loadCartas = new CarregaDadosTXT();
@@ -50,7 +51,7 @@ public class Jogo {
         this.totalCartas = cartasDisponiveis.size();
     }
 
-    public void iniciaJogoConsole() {
+    public void iniciaJogoConsole() throws Exception {
         System.out.println("#### LOADING BATALHA CARTAS POKEMON ####");
         this.carregarJogadorConsole();
         while (this.fecharJogo == false) {
@@ -96,7 +97,7 @@ public class Jogo {
         }
     }
 
-    public void entrarGinasioConsole(Ginasio g) {
+    public void entrarGinasioConsole(Ginasio g)  throws Exception {
         //INICIAR A BATALHA
         System.out.println("\ns#### ENTRANDO NO GINASIO " + g.getNome() + " ####");
 
@@ -154,7 +155,7 @@ public class Jogo {
         }
     }
 
-    public void batalharGinasio(Ginasio g, JTextArea jTextArea1) throws InterruptedException {
+    public void batalharGinasio(Ginasio g, JTextArea jTextArea1)  throws Exception {
         //INICIAR A BATALHA
 
         VENCEDOR = 9;
@@ -278,7 +279,7 @@ public class Jogo {
         Main.pausarAplicacao();
     }
 
-    public void menuGinasioConsole() {
+    public void menuGinasioConsole() throws Exception {
         System.out.println("\n#### EM QUAL GINASIO VOCE DESEJA BATALHAR ####");
         this.exibirGinasiosConsole();
         System.out.println("(-1) - Voltar");
@@ -335,7 +336,7 @@ public class Jogo {
         }
     }
 
-    public void premioVitoriaInstatanea(List<Jogador> adversarios) {
+    public void premioVitoriaInstatanea(List<Jogador> adversarios)  throws Exception{
         Random r = new Random();
         
 //        //PEGANDO ALEATORIAMENTE DENTRO DOS POKEMONS DOS ADVERSARIOS
@@ -375,7 +376,7 @@ public class Jogo {
 
         
     }
-    public int getIndexOfCardID(int id){
+    public int getIndexOfCardID(int id)  throws Exception{
         
         int indexOfCardID = 0;
         
