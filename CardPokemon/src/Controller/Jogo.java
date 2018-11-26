@@ -335,9 +335,25 @@ public class Jogo {
         int indexOf = this.getIndexOfCardID(idCard);
         
         
-        CarD aux = cartasDisponiveis.get(indexOf).createNewCardPokemon();
-        this.player.addDeckPokemon(aux);
-        JOptionPane.showMessageDialog(null, "Parabens, agora "+aux.getNome()+ " e seu novo companheiro");
+        
+        //PEGANDO ALEATORIAMENTE DENTRO DE TODOS OS POKEMONS DISPONIVEIS
+        
+        
+        
+        //CASO JÁ EXISTA O POKEMON NO DECK ADICIONA O DOBRO DE EXPERIENCIA PARA O MESMO
+        if(!this.player.existsOfIdCarD(idCard)){
+            
+            CarD aux = cartasDisponiveis.get(indexOf).createNewCardPokemon();
+            this.player.addDeckPokemon(aux);
+            JOptionPane.showMessageDialog(null, "Parabens, agora "+aux.getNome()+ " e seu novo companheiro");
+            
+        }
+        
+        else
+        {
+            this.player.getDeckPokemon(idCard).addExperienciaInterface(2*this.expericenciaPorVitoria, (ArrayList<CarD>) this.cartasDisponiveis);
+        }
+
         
     }
     public int getIndexOfCardID(int id){

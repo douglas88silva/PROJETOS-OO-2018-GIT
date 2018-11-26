@@ -7,6 +7,7 @@ package cardPokemon;
 
 import static View.TelaPrincipal.batalhaPokemon;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Objects;
 import javax.swing.JOptionPane;
@@ -19,35 +20,12 @@ public class Jogador {
 
     private String nome;
     private int tamDeck = 0;
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Jogador other = (Jogador) obj;
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.pokemonPrincipal, other.pokemonPrincipal)) {
-            return false;
-        }
-        return true;
-    }
     private CarD pokemonPrincipal;
     private List<CarD> deckPokemon;
+    
+    
+
+
 
     public Jogador(String nome) {
         this.deckPokemon = new ArrayList();
@@ -150,7 +128,20 @@ public class Jogador {
         
     }
    
-    
+   public boolean existsOfIdCarD(int idCard)
+   {
+       boolean a = false;
+       
+       for (CarD carD : deckPokemon) {
+           
+           if(carD.getIdCard() == idCard)
+               a= true;
+           
+       }
+       
+       return a;
+       
+   }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -158,7 +149,32 @@ public class Jogador {
      
 
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Jogador other = (Jogador) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.pokemonPrincipal, other.pokemonPrincipal)) {
+            return false;
+        }
+        return true;
+    }
     
     
 }
