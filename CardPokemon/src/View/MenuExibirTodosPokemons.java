@@ -11,7 +11,10 @@ import cardPokemon.CarD;
 import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 
@@ -48,8 +51,32 @@ public class MenuExibirTodosPokemons extends javax.swing.JInternalFrame {
         TabelaTodosPokemons model = new TabelaTodosPokemons(cartasDisponiveis);
         
         this.jTable1.setModel(model);
-        
-          
+       
+                DefaultTableCellRenderer ESQUERDA = new DefaultTableCellRenderer();
+                DefaultTableCellRenderer CENTRALIZADO = new DefaultTableCellRenderer();
+                DefaultTableCellRenderer DIREITA = new DefaultTableCellRenderer();
+                
+                ESQUERDA.setHorizontalAlignment(SwingConstants.LEFT);
+                CENTRALIZADO.setHorizontalAlignment(SwingConstants.CENTER);
+                DIREITA.setHorizontalAlignment(SwingConstants.RIGHT);
+                
+                //ALINHAMENTO DO CABEÇALHO
+                ((DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER); 
+
+                //ALINHAMENTO DAS COLUNAS
+                jTable1.getColumnModel().getColumn(0).setCellRenderer(CENTRALIZADO);
+                jTable1.getColumnModel().getColumn(1).setCellRenderer(CENTRALIZADO);
+                jTable1.getColumnModel().getColumn(2).setCellRenderer(CENTRALIZADO);
+                jTable1.getColumnModel().getColumn(3).setCellRenderer(CENTRALIZADO);
+                jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+                
+                //SETANDO O TAMANHO DAS COLUNAS
+                jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
+                jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
+                jTable1.getColumnModel().getColumn(2).setPreferredWidth(800);
+                jTable1.getColumnModel().getColumn(3).setPreferredWidth(800);
+                
+
     }
     /**
      * This method is called from within the constructor to initialize the form.

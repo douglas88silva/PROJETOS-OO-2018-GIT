@@ -20,6 +20,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -64,6 +66,8 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
 
     public void carregarJTable() {
         try {
+            
+             ((DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
             if (this.jComboBox1.getSelectedIndex() > 0) {
 
                 Ginasio g = listaGinasios.get(this.jComboBox1.getSelectedIndex() - 1);
@@ -73,6 +77,8 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
 
                 TabelaGinasio model = new TabelaGinasio(this.treinadores);
                 this.jTable1.setModel(model);
+                
+                this.centralizarJtable();
 
             }
 
@@ -81,7 +87,28 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
         }
 
     }
+    
+    public void centralizarJtable()
+    {
+                DefaultTableCellRenderer ESQUERDA = new DefaultTableCellRenderer();
+                DefaultTableCellRenderer CENTRALIZADO = new DefaultTableCellRenderer();
+                DefaultTableCellRenderer DIREITA = new DefaultTableCellRenderer();
+                
+                ESQUERDA.setHorizontalAlignment(SwingConstants.LEFT);
+                CENTRALIZADO.setHorizontalAlignment(SwingConstants.CENTER);
+                DIREITA.setHorizontalAlignment(SwingConstants.RIGHT);
+                
+                //ALINHAMENTO DO CABEÇALHO
+                ((DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER); 
 
+                //ALINHAMENTO DAS COLUNAS
+                jTable1.getColumnModel().getColumn(0).setCellRenderer(CENTRALIZADO);
+                jTable1.getColumnModel().getColumn(1).setCellRenderer(CENTRALIZADO);
+                jTable1.getColumnModel().getColumn(2).setCellRenderer(CENTRALIZADO);
+                jTable1.getColumnModel().getColumn(3).setCellRenderer(CENTRALIZADO);
+                jTable1.getColumnModel().getColumn(4).setCellRenderer(CENTRALIZADO);
+                jTable1.getColumnModel().getColumn(5).setCellRenderer(CENTRALIZADO);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

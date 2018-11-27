@@ -2,7 +2,13 @@ package View;
 
 import cardPokemon.CarD;
 import java.util.List;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
+
+
+
 
 public class TabelaTodosPokemons extends AbstractTableModel {
 
@@ -16,11 +22,19 @@ public class TabelaTodosPokemons extends AbstractTableModel {
 
     public TabelaTodosPokemons(List<CarD> cartasDisponiveis) {
         this.cartasDisponivies = cartasDisponiveis;
-    }
+        
+        
 
+    }
+    
+
+    
+    
     //retorna se a célula é editável ou não
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
+        
+        
         return false;
     }
 

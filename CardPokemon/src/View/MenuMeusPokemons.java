@@ -13,6 +13,9 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -48,6 +51,42 @@ public class MenuMeusPokemons extends javax.swing.JInternalFrame {
         TabelaMeusPokemons model = new TabelaMeusPokemons(cartasDisponiveis);
 
         this.jTable.setModel(model);
+        
+        
+                DefaultTableCellRenderer ESQUERDA = new DefaultTableCellRenderer();
+                DefaultTableCellRenderer CENTRALIZADO = new DefaultTableCellRenderer();
+                DefaultTableCellRenderer DIREITA = new DefaultTableCellRenderer();
+                
+                ESQUERDA.setHorizontalAlignment(SwingConstants.LEFT);
+                CENTRALIZADO.setHorizontalAlignment(SwingConstants.CENTER);
+                DIREITA.setHorizontalAlignment(SwingConstants.RIGHT);
+                
+                //ALINHAMENTO DO CABEÇALHO
+                ((DefaultTableCellRenderer) jTable.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER); 
+
+                //ALINHAMENTO DAS COLUNAS
+                jTable.getColumnModel().getColumn(0).setCellRenderer(CENTRALIZADO);
+                jTable.getColumnModel().getColumn(1).setCellRenderer(CENTRALIZADO);
+                jTable.getColumnModel().getColumn(2).setCellRenderer(CENTRALIZADO);
+                jTable.getColumnModel().getColumn(3).setCellRenderer(CENTRALIZADO);
+                jTable.getColumnModel().getColumn(4).setCellRenderer(CENTRALIZADO);
+                jTable.getColumnModel().getColumn(5).setCellRenderer(CENTRALIZADO);
+                
+                
+                
+                jTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+                
+                //SETANDO O TAMANHO DAS COLUNAS
+                jTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+                jTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+                jTable.getColumnModel().getColumn(2).setPreferredWidth(800);
+                jTable.getColumnModel().getColumn(3).setPreferredWidth(800);
+                jTable.getColumnModel().getColumn(4).setPreferredWidth(800);
+                jTable.getColumnModel().getColumn(5).setPreferredWidth(800);
+                jTable.getColumnModel().getColumn(6).setPreferredWidth(200);
+        
+        
+        
 
     }
 
