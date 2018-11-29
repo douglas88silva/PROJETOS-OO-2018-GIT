@@ -6,14 +6,25 @@
 package View;
 
 import Controller.Jogo;
+import static View.TelaPrincipal.jPAreaTrabalho;
 import cardPokemon.*;
+import com.jgoodies.looks.plastic.PlasticLookAndFeel;
+import com.jgoodies.looks.plastic.theme.DarkStar;
+import com.jgoodies.looks.plastic.theme.DesertGreen;
+import com.jgoodies.looks.plastic.theme.ExperienceRoyale;
+import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -34,9 +45,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public TelaPrincipal() {
         this.setUndecorated(true);// remove barra de titulo
-        //this.setAlwaysOnTop(true); // 
-        
-        
+        //this.setAlwaysOnTop(true); // nao permite ser minimizado
+
         initComponents();
         
         
@@ -78,6 +88,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(0, 0));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jPAreaTrabalho, org.jdesktop.beansbinding.ELProperty.create("${maximumSize}"), jPAreaTrabalho, org.jdesktop.beansbinding.BeanProperty.create("maximumSize"));
         bindingGroup.addBinding(binding);
@@ -86,7 +101,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPAreaTrabalho.setLayout(jPAreaTrabalhoLayout);
         jPAreaTrabalhoLayout.setHorizontalGroup(
             jPAreaTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 617, Short.MAX_VALUE)
+            .addGap(0, 607, Short.MAX_VALUE)
         );
         jPAreaTrabalhoLayout.setVerticalGroup(
             jPAreaTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +112,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPAreaTrabalho, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPAreaTrabalho)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,6 +125,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        //ALTERANDO O PADRAO DE COR DO PROJETO
+        //SkyBlue()
+        //BrownSugar()
+        // DarkStar()  
+        //DesertGreen()
+        //Silver()
+        //ExperienceRoyale()
+        
+//                  try {
+//            PlasticLookAndFeel.setPlasticTheme(new DarkStar());
+//                  try {
+//                      UIManager.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
+//                  } catch (InstantiationException ex) {
+//                      Logger.getLogger(jPAreaTrabalho.getName()).log(Level.SEVERE, null, ex);
+//                  } catch (IllegalAccessException ex) {
+//                      Logger.getLogger(jPAreaTrabalho.getName()).log(Level.SEVERE, null, ex);
+//                  } catch (UnsupportedLookAndFeelException ex) {
+//                      Logger.getLogger(jPAreaTrabalho.getName()).log(Level.SEVERE, null, ex);
+//                  }
+//           
+//
+//        } catch (ClassNotFoundException ex) {
+//            ex.printStackTrace();
+//        }
+//    SwingUtilities.updateComponentTreeUI(this);
+//
+// jPAreaTrabalho.setBackground(SystemColor.BLACK);
+        
+        
+    }//GEN-LAST:event_formWindowOpened
     
     
     public void iniciarJogo() {
