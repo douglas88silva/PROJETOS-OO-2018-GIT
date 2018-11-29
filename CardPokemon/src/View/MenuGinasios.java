@@ -83,7 +83,7 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro combo" + e.toString());
+            JOptionPane.showMessageDialog(null, "Erro ComboboX  " + e.toString());
         }
 
     }
@@ -100,14 +100,15 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
                 
                 //ALINHAMENTO DO CABEÇALHO
                 ((DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER); 
-
+                
+                
                 //ALINHAMENTO DAS COLUNAS
                 jTable1.getColumnModel().getColumn(0).setCellRenderer(CENTRALIZADO);
                 jTable1.getColumnModel().getColumn(1).setCellRenderer(CENTRALIZADO);
                 jTable1.getColumnModel().getColumn(2).setCellRenderer(CENTRALIZADO);
                 jTable1.getColumnModel().getColumn(3).setCellRenderer(CENTRALIZADO);
-                jTable1.getColumnModel().getColumn(4).setCellRenderer(CENTRALIZADO);
-                jTable1.getColumnModel().getColumn(5).setCellRenderer(CENTRALIZADO);
+
+               
     }
     /**
      * This method is called from within the constructor to initialize the form.
