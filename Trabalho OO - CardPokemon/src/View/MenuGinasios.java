@@ -55,7 +55,7 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
 
     public void carregarComboBox() {
 
-        DefaultComboBoxModel comboModelGinasio = (DefaultComboBoxModel) this.jComboBox1.getModel();
+        DefaultComboBoxModel comboModelGinasio = (DefaultComboBoxModel) this.jComboBox1_ginasios.getModel();
         comboModelGinasio.removeAllElements();
 
         comboModelGinasio.addElement("---Selecione um Ginasio---");
@@ -69,9 +69,9 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
         try {
             this.jLabel3.setText("");
              ((DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-            if (this.jComboBox1.getSelectedIndex() > 0) {
+            if (this.jComboBox1_ginasios.getSelectedIndex() > 0) {
 
-                Ginasio g = listaGinasios.get(this.jComboBox1.getSelectedIndex() - 1);
+                Ginasio g = listaGinasios.get(this.jComboBox1_ginasios.getSelectedIndex() - 1);
 
                 this.jLabel3.setText(Integer.toString(g.getNivel()));
                 this.treinadores = g.getAdversarios();
@@ -121,13 +121,13 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1_batalhar = new javax.swing.JButton();
+        jComboBox1_ginasios = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButton_voltar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -141,17 +141,19 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
         setClosable(true);
         setToolTipText("");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton1.setText("BATALHAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1_batalhar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton1_batalhar.setText("BATALHAR");
+        jButton1_batalhar.setNextFocusableComponent(jButton_voltar);
+        jButton1_batalhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton1_batalharActionPerformed(evt);
             }
         });
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1_ginasios.setNextFocusableComponent(jButton1_batalhar);
+        jComboBox1_ginasios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBox1_ginasiosActionPerformed(evt);
             }
         });
 
@@ -183,11 +185,12 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText(" Level:");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("VOLTAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton_voltar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_voltar.setText("VOLTAR");
+        jButton_voltar.setNextFocusableComponent(jComboBox1_ginasios);
+        jButton_voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton_voltarActionPerformed(evt);
             }
         });
 
@@ -203,7 +206,7 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
         jTextArea1.setRows(5);
         jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
         jTextArea1.setDropMode(javax.swing.DropMode.INSERT);
-        jTextArea1.setNextFocusableComponent(jComboBox1);
+        jTextArea1.setNextFocusableComponent(jComboBox1_ginasios);
         jScrollPane2.setViewportView(jTextArea1);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -217,27 +220,21 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1_batalhar, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1_ginasios, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                        .addComponent(jLabel3))
+                    .addComponent(jLabel4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -249,31 +246,31 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1_ginasios, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1_batalhar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                 .addGap(23, 23, 23)
-                .addComponent(jButton2)
+                .addComponent(jButton_voltar)
                 .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1_batalharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_batalharActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("");
 //        this.batalharView(listaGinasios.get(jComboBox1.getSelectedIndex()-1));
         try {        
 
-            Ginasio g = listaGinasios.get(jComboBox1.getSelectedIndex() - 1);
+            Ginasio g = listaGinasios.get(jComboBox1_ginasios.getSelectedIndex() - 1);
 
        
             batalhaPokemon.batalharGinasio(g, jTextArea1);
@@ -287,30 +284,30 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
 
         
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton1_batalharActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_voltarActionPerformed
         // TODO add your handling code here:
 
         this.setVisible(false);
         menu.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton_voltarActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBox1_ginasiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_ginasiosActionPerformed
         // TODO add your handling code here:
 
         
         this.carregarJTable();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBox1_ginasiosActionPerformed
 
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton1_batalhar;
+    private javax.swing.JButton jButton_voltar;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox1_ginasios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
