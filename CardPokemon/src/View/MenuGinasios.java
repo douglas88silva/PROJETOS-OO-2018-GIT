@@ -38,7 +38,8 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
     public MenuGinasios() {
 
         this.listaGinasios = batalhaPokemon.getGinasios();
-
+        
+        
         initComponents();
                 Toolkit tk = Toolkit.getDefaultToolkit();
             int xsize = (int)tk.getScreenSize().getWidth();
@@ -66,7 +67,7 @@ public class MenuGinasios extends javax.swing.JInternalFrame {
 
     public void carregarJTable() {
         try {
-            
+            this.jLabel3.setText("");
              ((DefaultTableCellRenderer) jTable1.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
             if (this.jComboBox1.getSelectedIndex() > 0) {
 
