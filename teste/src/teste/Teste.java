@@ -55,10 +55,21 @@ public class Teste {
         // TODO code application logic here
         
         
-        
-        new Thread(t1).start();
-        new Thread(t2).start();
 //        
+//        new Thread(t1).start();
+//        new Thread(t2).start();
+         for(int linha = 0; linha <= 5; linha++)
+        {
+            for (int coluna = 4; coluna >= 0; coluna--)
+            {
+                if (coluna<linha )
+                {
+                    break;
+                }
+                System.out.print(coluna+1);
+            }
+            System.out.println("");
+        }
 //           for (int c = 20; c >= 0; c--) {
 //            T.sleep(1000);                                  
 //           System.out.println(c);

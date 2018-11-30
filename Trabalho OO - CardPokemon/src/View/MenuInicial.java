@@ -85,10 +85,10 @@ public class MenuInicial extends javax.swing.JInternalFrame {
 
         jPanel1.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel2.setText("BATALHA CARTAS POKEMON");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(160, 30, 560, 50);
+        jLabel2.setBounds(80, 30, 730, 50);
 
         jBtnBatalhar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jBtnBatalhar.setText("Batalhar ");
