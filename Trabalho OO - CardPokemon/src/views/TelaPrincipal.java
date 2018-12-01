@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package views;
 
 import Controller.Jogo;
-import static View.TelaPrincipal.jPAreaTrabalho;
+import static views.TelaPrincipal.jPAreaTrabalho;
 import cardPokemon.*;
 //import com.jgoodies.looks.plastic.PlasticLookAndFeel;
 //import com.jgoodies.looks.plastic.theme.DarkStar;
@@ -27,8 +27,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
+ * Classe por inicializar a interface grafica do Jogo.
  *
- * @author douglas.silva
+ * @author Douglas
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 

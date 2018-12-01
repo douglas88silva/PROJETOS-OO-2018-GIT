@@ -6,8 +6,9 @@
 package cardPokemon;
 
 /**
+ * Classe responsavel pela criacao concreta de um Pokemon.
  *
- * @author jessi
+ * @author Douglas
  */
 public class Normal extends Pokemon implements Combate{
 

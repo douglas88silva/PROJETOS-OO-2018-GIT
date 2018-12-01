@@ -5,7 +5,7 @@
  */
 package cardPokemon;
 
-import static View.TelaPrincipal.batalhaPokemon;
+import static views.TelaPrincipal.batalhaPokemon;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -13,8 +13,13 @@ import java.util.Objects;
 import javax.swing.JOptionPane;
 
 /**
+ * Modelo de Jogador. Cada jogaador tem um nome uma lista com todos os seus
+ * pokemons e um pokemon que é utilizado na batalha. obs.: O pokemon principal
+ * não é um objeto é apenas um ponteiro para um pokemon da lista.
  *
- * @author jessi
+ * @see CarD
+ * @autor Douglas
+ *
  */
 public class Jogador {
 
@@ -22,26 +27,21 @@ public class Jogador {
     private int tamDeck = 0;
     private CarD pokemonPrincipal;
     private List<CarD> deckPokemon;
-    
-    
-
-
 
     public Jogador(String nome) {
         this.deckPokemon = new ArrayList();
-        this.nome = nome;   
+        this.nome = nome;
     }
-    
+
     public void addDeckPokemon(CarD pk) {
-  
+
         this.deckPokemon.add(pk);
 
-         if(this.deckPokemon.size()==1)
-         {
-           this.pokemonPrincipal = this.deckPokemon.get(0);
-         }
+        if (this.deckPokemon.size() == 1) {
+            this.pokemonPrincipal = this.deckPokemon.get(0);
+        }
     }
-    
+
     public List<CarD> getDeckPokemon() {
         return this.deckPokemon;
     }
@@ -49,7 +49,7 @@ public class Jogador {
     public Pokemon getPokemonPrincipal() {
         return this.pokemonPrincipal.getPk();
     }
-    
+
     public CarD getCardPrincipal() {
         return this.pokemonPrincipal;
     }
@@ -57,97 +57,97 @@ public class Jogador {
     public void setDeckPokemon(List<CarD> deckPokemon) {
         this.deckPokemon = deckPokemon;
     }
-    
-    
+
     public String getNome() {
         return this.nome;
     }
 
     public CarD getDeckPokemon(int id) {
-        
+
         CarD aux = null;
-        
+
         for (CarD carD : deckPokemon) {
-            
-            if(carD.getIdCard() == id)
-            {
+
+            if (carD.getIdCard() == id) {
                 aux = carD;
                 break;
             }
         }
-        
+
         return aux;
     }
-    
-    public int getIndexOfDeck(int id){
-        
+
+    /**
+     * Metodo responsavel retornar a posicao de um pokemon na lista com base em
+     * seu N#(id inicial)
+     */
+    public int getIndexOfDeck(int id) {
+
         int indexOfCardID = -1;
-        
+
         for (CarD carta : this.deckPokemon) {
-            
-            
-            if(carta.getIdCard() == id)
+
+            if (carta.getIdCard() == id) {
                 indexOfCardID = this.deckPokemon.indexOf(carta);
-                
+            }
+
         }
 
         return indexOfCardID;
-        
+
     }
-    
-    
-    public int getSizeDeckPokemon()
-    {
+
+    public int getSizeDeckPokemon() {
         return this.deckPokemon.size();
     }
-    
 
-
+    /**
+     * Metodo responsavel por alterar o pokemon principal do jogador com base em
+     * seu N#(id inicial)
+     */
     public void setPokemonPrincipal(int idCard) {
-        
+
         int indexOf = this.getIndexOfDeck(idCard);
         boolean local = this.pokemonPrincipal.equals(this.deckPokemon.get(indexOf));
-        
-        if((indexOf >= 0 && indexOf < this.deckPokemon.size()))
-        {   
- 
-                this.pokemonPrincipal = this.deckPokemon.get(indexOf);
-                System.out.println("Seu novo pokemon principal e "+this.getPokemonPrincipal().getNome());
-                if(!local)
-                JOptionPane.showMessageDialog(null, "Seu novo pokemon principal e "+this.getPokemonPrincipal().getNome());
-            
+
+        if ((indexOf >= 0 && indexOf < this.deckPokemon.size())) {
+
+            this.pokemonPrincipal = this.deckPokemon.get(indexOf);
+            System.out.println("Seu novo pokemon principal e " + this.getPokemonPrincipal().getNome());
+            if (!local) {
+                JOptionPane.showMessageDialog(null, "Seu novo pokemon principal e " + this.getPokemonPrincipal().getNome());
+            }
+
             //Main.pausarAplicacao();
-            
+        } else {
+            System.out.println("Nao foi possivel encontrar o pokemon de id= " + idCard);
+            JOptionPane.showMessageDialog(null, ("Nao foi possivel encontrar o pokemon de id= " + idCard));
         }
-        
-        else
-        {
-            System.out.println("Nao foi possivel encontrar o pokemon de id= "+idCard);
-            JOptionPane.showMessageDialog(null, ("Nao foi possivel encontrar o pokemon de id= "+idCard));
-        }
-        
+
     }
-   
-   public boolean existsOfIdCarD(int idCard)
-   {
-       boolean a = false;
-       
-       for (CarD carD : deckPokemon) {
-           
-           if(carD.getIdCard() == idCard)
-               a= true;
-           
-       }
-       
-       return a;
-       
-   }
+
+    /**
+     * Metodo responsavel verificar se um determinado pokemon esta na lista com
+     * base em seu N#(id inicial)
+     */
+    public boolean existsOfIdCarD(int idCard) {
+        boolean a = false;
+
+        for (CarD carD : deckPokemon) {
+
+            if (carD.getIdCard() == idCard) {
+                a = true;
+            }
+
+        }
+
+        return a;
+
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
-     
-
 
     @Override
     public int hashCode() {
@@ -175,6 +175,5 @@ public class Jogador {
         }
         return true;
     }
-    
-    
+
 }

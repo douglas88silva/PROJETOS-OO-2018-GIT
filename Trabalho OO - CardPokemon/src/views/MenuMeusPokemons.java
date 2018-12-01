@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package views;
 
-import static View.TelaPrincipal.batalhaPokemon;
-import static View.TelaPrincipal.jPAreaTrabalho;
-import static View.TelaPrincipal.menu;
+import static views.TelaPrincipal.batalhaPokemon;
+import static views.TelaPrincipal.jPAreaTrabalho;
+import static views.TelaPrincipal.menu;
 import cardPokemon.CarD;
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -20,8 +20,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
+ * Classe que implementa a tela que representa o menu que exibe os pokemons do jogador
  *
- * @author douglas.silva
+ * @author Douglas
  */
 public class MenuMeusPokemons extends javax.swing.JInternalFrame {
 

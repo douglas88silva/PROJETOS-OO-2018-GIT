@@ -6,19 +6,21 @@
 package cardPokemon;
 
 /**
+ * Modelo abstrato Pokemon. Este modelo foi criado para representar as
+ * informações basicas de um pokemon para o Jogo.
  *
- * @author jessi
+ * @autor Douglas
+ *
  */
-public abstract class Pokemon implements Combate{
-    
+public abstract class Pokemon implements Combate {
+
     private String nome;
     private int sVida = 1000;
     private int sAtaque;
     private String tipo;
     private int evolucao = 0;
     private int hPCombate;
-    
-    
+
     public int getEvolucao() {
         return evolucao;
     }
@@ -27,8 +29,6 @@ public abstract class Pokemon implements Combate{
         this.evolucao = evolucao;
     }
 
-
-    
     public String getTipo() {
         return tipo;
     }
@@ -37,17 +37,15 @@ public abstract class Pokemon implements Combate{
         this.tipo = tipo;
     }
 
+    public Pokemon(String nome, int sAtaque, int evolucao) {
 
-    public Pokemon(String nome, int sAtaque,int evolucao) {
-        
         this.nome = nome;
         this.sAtaque = sAtaque;
-        this.sVida = sAtaque*10;
+        this.sVida = sAtaque * 10;
         this.hPCombate = this.sVida;
-        this.evolucao=evolucao;
+        this.evolucao = evolucao;
     }
-    
-    
+
     public String getNome() {
         return nome;
     }
@@ -71,10 +69,10 @@ public abstract class Pokemon implements Combate{
     public void setVida(int vida) {
         this.sVida = vida;
     }
-    public void bonusLevel(int percentual)
-    {
-        this.tipo+=percentual;
-        this.sAtaque+=percentual/2;
+
+    public void bonusLevel(int ataqueExtra) {
+        this.sVida = this.sVida + ataqueExtra*10;
+        this.sAtaque = this.sAtaque + ataqueExtra / 2;
     }
 
     public int getsAtaque() {
@@ -84,32 +82,31 @@ public abstract class Pokemon implements Combate{
     public void setsAtaque(int sAtaque) {
         this.sAtaque = sAtaque;
     }
-    public void receberAtaque(int dano)
-    {
-        if(this.hPCombate - dano <0)
-        {
+
+    public void receberAtaque(int dano) {
+        if (this.hPCombate - dano < 0) {
             this.hPCombate = 0;
-        }
-        else    
-        {
+        } else {
             this.hPCombate -= dano;
-        } 
+        }
     }
-   
-     public String getNomeAtaque() {
+
+    public String getNomeAtaque() {
         return null;
     }
 
     public void setNomeAtaque(String nomeAtaque) {
-       
+
     }
 
-    public void restaurarHp(){
-        
+    /**
+     * Metodo responsavel por voltar a vida do pokemon para cheia apos a
+     * batalha.
+     */
+    public void restaurarHp() {
+
         this.hPCombate = this.sVida;
         //this.sAtaque = this.sAtaque;
     }
-    
-    
-    
+
 }

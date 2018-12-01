@@ -1,34 +1,51 @@
-package View;
+package views;
 
-
-import cardPokemon.Jogador;
+import cardPokemon.CarD;
 import java.util.List;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 
-public class TabelaGinasio extends AbstractTableModel {
 
-    private String colunas[] = {"Treinador", "Pokemon", "Vida", "Ataque",};
-    private List<Jogador> treinadores;
-    private final int COLUNA_TREINADOR = 0;
-    private final int COLUNA_POKEMON_NOME = 1;
+
+/**
+ * Classe pela criacao do modele de tabela utilizado na tela que exibe todos os pokemons
+ *
+ * @author Douglas
+ */
+public class TabelaTodosPokemons extends AbstractTableModel {
+
+    private String colunas[] = {"N#", "Nome", "Vida", "Ataque",};
+    private List<CarD> cartasDisponivies;
+    private final int COLUNA_ID = 0;
+    private final int COLUNA_NOME = 1;
     private final int COLUNA_VIDA = 2;
     private final int COLUNA_ATAQUE = 3;
 
 
-    public TabelaGinasio(List<Jogador> cartasDisponiveis) {
-        this.treinadores = cartasDisponiveis;
-    }
+    public TabelaTodosPokemons(List<CarD> cartasDisponiveis) {
+        this.cartasDisponivies = cartasDisponiveis;
+        
+        
 
+    }
+    
+
+    
+    
     //retorna se a célula é editável ou não
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
+        
+        
         return false;
     }
 
     //retorna o total de itens(que virarão linhas) da nossa lista
     @Override
     public int getRowCount() {
-        return treinadores.size();
+        return cartasDisponivies.size();
     }
     //retorna o total de colunas da tabela
     @Override
@@ -45,10 +62,10 @@ public class TabelaGinasio extends AbstractTableModel {
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex) {
-            case COLUNA_TREINADOR:
-                return String.class;
-            case COLUNA_POKEMON_NOME:
-                return String.class;
+            case COLUNA_ID:
+                return Integer.class;
+            case COLUNA_NOME:
+                return Integer.class;
             case COLUNA_VIDA:
                 return Integer.class;
             case COLUNA_ATAQUE:
@@ -62,17 +79,17 @@ public class TabelaGinasio extends AbstractTableModel {
     //preenche cada célula da tabela
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Jogador treinador = this.treinadores.get(rowIndex);
+        CarD carta = this.cartasDisponivies.get(rowIndex);
 
         switch (columnIndex) {
-            case COLUNA_TREINADOR:
-                return treinador.getNome();
-            case COLUNA_POKEMON_NOME:
-                return treinador.getPokemonPrincipal().getNome();
+            case COLUNA_ID:
+                return carta.getIdCard();
+            case COLUNA_NOME:
+                return carta.getNome();
             case COLUNA_VIDA:
-                return treinador.getPokemonPrincipal().getVida();
+                return carta.getPk().getVida();
             case COLUNA_ATAQUE:
-               return treinador.getPokemonPrincipal().getsAtaque();
+               return carta.getPk().getsAtaque();
        
         }
         return null;

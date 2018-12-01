@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package views;
 
-import static View.TelaPrincipal.batalhaPokemon;
-import static View.TelaPrincipal.menu;
+import static views.TelaPrincipal.batalhaPokemon;
+import static views.TelaPrincipal.menu;
 import cardPokemon.CarD;
 import java.awt.Toolkit;
 import java.util.List;

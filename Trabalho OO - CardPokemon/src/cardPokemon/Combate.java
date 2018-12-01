@@ -6,13 +6,13 @@
 package cardPokemon;
 
 /**
+ * Interface criada para formar um contrato com os objetos que as implementam
+ * Caso o objeto deseja implementar o combate ele presisa do metodo atacar
  *
- * @author jessi
+ * @author Douglas
  */
 interface Combate {
-    
-    
+
     public void atacar(Pokemon adversario);
-    
-    //public void addExperiencia(int experiencia); 
+
 }

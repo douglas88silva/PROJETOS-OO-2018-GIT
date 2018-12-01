@@ -12,8 +12,10 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
+ * Classe responsavel por criar o modelo de um ginasio
+ * Todo ginasio tem um nome e uma lista de Jogadores adversarios. Cada adversario tem apenas um pokemon
  *
- * @author jessi
+ * @author Douglas
  */
 public class Ginasio {
     
@@ -23,6 +25,13 @@ public class Ginasio {
     private List<Jogador> adversarios;
     private boolean VENCIDO = false;
 
+    /**
+     * Metodo contrutor Instancia os jogadores do ginasio com base no nivel do
+     * mesmo. A quantidade de adversario e sempre igual o nivel do ginasio
+     * Cada adversario recebe um pokemon aleatorio dentre todos os pokemons disponiveis
+     *@param nome
+     * @param cartasDisponiveis
+     */
     public Ginasio(String nome, List<CarD> cartasDisponiveis) {
       
         id++;
@@ -60,6 +69,11 @@ public class Ginasio {
         return "Ginasio{" + "nome=" + nome + '}';
     }
 
+    
+     /**
+     * Metodo responsavel por atualizar os pokemons do ginasio de forma aleatoria
+     * @param cartasDisponiveis
+     */
     public void atualizaPokemonsGinasio(List<CarD> cartasDisponiveis)
     {
         Random r = new Random();
@@ -86,8 +100,12 @@ public class Ginasio {
         }
         
     }
-
-    public void exibirAdversarios(){
+   
+         /**
+     * Metodo responsavel por exibir os jogadores e os pokemons do ginasio
+     * 
+     */
+     public void exibirAdversarios(){
         
         Iterator adv = this.adversarios.iterator();
         System.out.println("---ADVERSARIO     ||    POKEMONS---");

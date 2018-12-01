@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package views;
 
-import static View.TelaPrincipal.batalhaPokemon;
-import static View.TelaPrincipal.exibirGinasios;
-import static View.TelaPrincipal.exibirMeusPokemons;
-import static View.TelaPrincipal.jPAreaTrabalho;
+import static views.TelaPrincipal.batalhaPokemon;
+import static views.TelaPrincipal.exibirGinasios;
+import static views.TelaPrincipal.exibirMeusPokemons;
+import static views.TelaPrincipal.jPAreaTrabalho;
 import javafx.application.Application;
-import static View.TelaPrincipal.exibirTodosPokemons;
+import static views.TelaPrincipal.exibirTodosPokemons;
 import java.awt.Toolkit;
 
 /**
+ * Classe que implementa a tela que representa o menu inicial
  *
- * @author douglas.silva
+ * @author Douglas
  */
 public class MenuInicial extends javax.swing.JInternalFrame {
 

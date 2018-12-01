@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package views;
 
-import static View.TelaPrincipal.batalhaPokemon;
-import static View.TelaPrincipal.jPAreaTrabalho;
-import static View.TelaPrincipal.menu;
+import static views.TelaPrincipal.batalhaPokemon;
+import static views.TelaPrincipal.jPAreaTrabalho;
+import static views.TelaPrincipal.menu;
 import cardPokemon.*;
 import java.awt.Toolkit;
 import java.awt.event.ItemListener;
@@ -19,8 +19,9 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
+ * Classe que implementa a tela de cadastro
  *
- * @author douglas.silva
+ * @author Douglas
  */
 public class Cadastro extends javax.swing.JInternalFrame {
 

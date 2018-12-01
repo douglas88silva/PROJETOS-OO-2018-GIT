@@ -1,11 +1,18 @@
-package View;
+package views;
 
-import static View.TelaPrincipal.batalhaPokemon;
+import static views.TelaPrincipal.batalhaPokemon;
 import cardPokemon.CarD;
 import java.util.List;
 import java.util.Objects;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
+
+
+/**
+ * Classe pela criacao do modele de tabela utilizado na tela que exibe os pokemons do jogador
+ *
+ * @author Douglas
+ */
 
 public class TabelaMeusPokemons extends AbstractTableModel {
 

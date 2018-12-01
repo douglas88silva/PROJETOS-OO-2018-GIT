@@ -10,7 +10,7 @@ import cardPokemon.CarD;
 import cardPokemon.Duelo;
 import cardPokemon.Ginasio;
 import cardPokemon.Jogador;
-import cardPokemon.Main;
+import controller.Main;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,8 +21,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
+ * Classe que controla todas as funcionalidades do Jogo, criando as instancias e
+ * objetos que o jogo precisa para ser executado.
  *
- * @author jessi
+ * @see CarD
+ * @see Jogador
+ * @see Ginasio
+ * @autor Douglas
+ * @throw Exception para leitura do arquivo com os dados dos pokemons e para os
+ * acessos as estruturas de armazenamentos
  */
 public class Jogo {
 
@@ -35,6 +42,13 @@ public class Jogo {
     Scanner ler = new Scanner(System.in);
     public int VENCEDOR;
 
+    /**
+     * Construtor da classe jogo, carrega a lista de pokemons contida no arquivo
+     * externo e cria os ginasios para batalhar
+     *
+     * @see CarregaDadosTXT.java
+     * @throw Exception
+     */
     public Jogo() throws Exception {
 
         ginasios = new ArrayList();
@@ -51,6 +65,12 @@ public class Jogo {
         this.totalCartas = cartasDisponiveis.size();
     }
 
+    /**
+     * Metodo responsavel por estartar o jogo via console, exibindo o primeiro
+     * menu do jogo
+     *
+     * @throw Exception
+     */
     public void iniciaJogoConsole() throws Exception {
         System.out.println("#### LOADING BATALHA CARTAS POKEMON ####");
         this.carregarJogadorConsole();
@@ -77,6 +97,10 @@ public class Jogo {
         }
     }
 
+    /**
+     * Metodo responsavel por exibir o todos os pokemons diponivies no jogo
+     * dentro do console
+     */
     public void exibirPokemonsDisponiveisConsole() {
         Iterator cartas = this.cartasDisponiveis.iterator();
         while (cartas.hasNext()) {
@@ -86,6 +110,9 @@ public class Jogo {
         Main.pausarAplicacao();
     }
 
+    /**
+     * Metodo responsavel por exibir os ginasios dentro do console
+     */
     public void exibirGinasiosConsole() {
         System.out.println("#### GINASIOS ABERTOS ####");
         Iterator gin = this.ginasios.iterator();
@@ -97,6 +124,17 @@ public class Jogo {
         }
     }
 
+    /**
+     * Metodo responsavel por batalhar dentro de um ginasio(utilizando o
+     * console), ele recebe como paramentro um Ginasio e inicia uma batalha ate
+     * que um treinador venca. Sempre que o jogador vencer todos os adversarios
+     * dentro do ginasio ele é premiado com um pokemon aleatorio Quando o
+     * jogador vence seu pokemon que batalhou ganha experiencia Quando tem mais
+     * de um adversario dentro do Ginasio o jogador pode escolher apos um duelo
+     * desafiar o proximo ou nao.
+     *
+     * @param g
+     */
     public void entrarGinasioConsole(Ginasio g) throws Exception {
         //INICIAR A BATALHA
         System.out.println("\ns#### ENTRANDO NO GINASIO " + g.getNome() + " ####");
@@ -155,6 +193,19 @@ public class Jogo {
         }
     }
 
+    /**
+     * Metodo responsavel por batalhar dentro de um ginasio(utilizando a
+     * interface grafica), ele recebe como paramentro um Ginasio e inicia uma
+     * batalha ate que um treinador venca. Sempre que o jogador vencer todos os
+     * adversarios dentro do ginasio ele é premiado com um pokemon aleatorio
+     * Quando o jogador vence seu pokemon que batalhou ganha experiencia Quando
+     * tem mais de um adversario dentro do Ginasio o jogador pode escolher apos
+     * um duelo desafiar o proximo ou nao. obs.: Foi necessário passar um
+     * componente da interface grafica(JTextArea) para poder imprimir toda a
+     * luta na tela.
+     *
+     * @param g
+     */
     public void batalharGinasio(Ginasio g, JTextArea jTextArea1) throws Exception {
         //INICIAR A BATALHA
 
@@ -174,21 +225,13 @@ public class Jogo {
 
             //Main.pausarAplicacao();
             Duelo combate = new Duelo(this.player, g.getAdversarios().get(i));
-            
-            
+
 //            new Thread(new Runnable() {
 //                @Override
 //                public void run() {
-
-                    VENCEDOR = combate.duelarInstantaneo(jTextArea1);
+            VENCEDOR = combate.duelarInstantaneo(jTextArea1);
 //                }
 //            }).start();
-
-            
-
-
-
-            //VENCEDOR = Jogo.VENCEDOR;//combate.getVencedor();
 
             if (VENCEDOR != -1) {
                 if (VENCEDOR == 1) {
@@ -249,6 +292,9 @@ public class Jogo {
         return "0" + i;
     }
 
+    /**
+     * Metodo responsavel por instanciar um jogador utilizando o console(simulando uma tela de cadastro do jogo)
+     */
     public void carregarJogadorConsole() {
 
         System.out.println("\n#### TELA DE CADASTRO ####");
@@ -283,6 +329,9 @@ public class Jogo {
         Main.pausarAplicacao();
     }
 
+    /**
+    Metodo responsavel por simular um menu com todos os ginaisos
+    */ 
     public void menuGinasioConsole() throws Exception {
         System.out.println("\n#### EM QUAL GINASIO VOCE DESEJA BATALHAR ####");
         this.exibirGinasiosConsole();
@@ -298,6 +347,9 @@ public class Jogo {
         }
     }
 
+    /**
+    Metodo responsavel por simular um menu para exibir os pokemons do jogador
+    */
     public void exibirMeusPokemonsConsole() {
         System.out.println("###MEUS POKEMONS###");
         System.out.println("N#\tNOME:\t\t\tLEVEL:\t\t\tEXP/EXP\t\tVIDA\t\tATAQUE");
@@ -322,6 +374,11 @@ public class Jogo {
         }
     }
 
+    /**
+    Metodo responsavel por simular um menu(console) que exibi os premios apos o jogador vencer um ginasio
+    * nesta implementação o jogador pode escolher um pokemon entre todos que ele venceu no ginasio para
+    * ser capturado
+    */
     public void premioVitoriaConsole(List<Jogador> adversarios) {
         System.out.println("Escolha um pokemon como premio");
         ArrayList opcoes = new ArrayList();
@@ -340,6 +397,11 @@ public class Jogo {
         }
     }
 
+     /**
+    Metodo responsavel por selecionar um pokemon de premio para o jogador que vence todos os ginasio
+    * O premio nunca pode ser a ultima evolucao de um pokemon
+    * Caso o treinado ja possua o pokemon sorteado, o pokemon do treinado ganha o dobro de experiencia como premio
+    */
     public void premioVitoriaInstatanea(List<Jogador> adversarios) throws Exception {
         Random r = new Random();
 
@@ -371,7 +433,9 @@ public class Jogo {
         }
 
     }
-
+    /**
+    Metodo responsavel retornar a posicao de um pokemon na lista com base em seu N#(id inicial)
+    */
     public int getIndexOfCardID(int id) throws Exception {
 
         int indexOfCardID = 0;
