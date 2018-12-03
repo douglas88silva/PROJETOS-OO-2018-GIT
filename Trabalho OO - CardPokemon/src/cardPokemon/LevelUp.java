@@ -8,7 +8,7 @@ package cardPokemon;
 /**
  * Modelo utilizado para criar as regras de level.
  *
- * @autor Douglas
+
  *
  */
 public class LevelUp {
@@ -22,6 +22,7 @@ public class LevelUp {
      * Metodo responsavel por adicionar experiencia. Sempre que a experiencia
      * atual supera a experiencia por level, o level é incrementado em uma
      * unidade, fazendo com que a experiencia por level seja dobrada.
+     * @param  experiencia Experiencia recebida pela pokemon
      */
     public void receberExperiencia(int experiencia) {
 

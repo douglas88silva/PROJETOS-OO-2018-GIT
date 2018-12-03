@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
 import DAO.CarregaDadosTXT;
@@ -27,9 +23,7 @@ import javax.swing.JTextArea;
  * @see CarD
  * @see Jogador
  * @see Ginasio
- * @autor Douglas
- * @throw Exception para leitura do arquivo com os dados dos pokemons e para os
- * acessos as estruturas de armazenamentos
+ 
  */
 public class Jogo {
 
@@ -45,9 +39,7 @@ public class Jogo {
     /**
      * Construtor da classe jogo, carrega a lista de pokemons contida no arquivo
      * externo e cria os ginasios para batalhar
-     *
-     * @see CarregaDadosTXT.java
-     * @throw Exception
+     * @throws Exception Excecoes
      */
     public Jogo() throws Exception {
 
@@ -69,7 +61,7 @@ public class Jogo {
      * Metodo responsavel por estartar o jogo via console, exibindo o primeiro
      * menu do jogo
      *
-     * @throw Exception
+     * @throws Exception Excessaos
      */
     public void iniciaJogoConsole() throws Exception {
         System.out.println("#### LOADING BATALHA CARTAS POKEMON ####");
@@ -133,7 +125,8 @@ public class Jogo {
      * de um adversario dentro do Ginasio o jogador pode escolher apos um duelo
      * desafiar o proximo ou nao.
      *
-     * @param g
+     * @param g Ginasio
+     * @throws Exception Exceção
      */
     public void entrarGinasioConsole(Ginasio g) throws Exception {
         //INICIAR A BATALHA
@@ -204,7 +197,9 @@ public class Jogo {
      * componente da interface grafica(JTextArea) para poder imprimir toda a
      * luta na tela.
      *
-     * @param g
+     * @param g Estrutura do tipo ginasio
+     * @param jTextArea1 Jtextarea responsavel por imprimir as informações da batalha na view
+     * @throws Exception Excecções
      */
     public void batalharGinasio(Ginasio g, JTextArea jTextArea1) throws Exception {
         //INICIAR A BATALHA
@@ -331,6 +326,7 @@ public class Jogo {
 
     /**
     Metodo responsavel por simular um menu com todos os ginaisos
+    * @throws Exception Exceção
     */ 
     public void menuGinasioConsole() throws Exception {
         System.out.println("\n#### EM QUAL GINASIO VOCE DESEJA BATALHAR ####");
@@ -378,6 +374,7 @@ public class Jogo {
     Metodo responsavel por simular um menu(console) que exibi os premios apos o jogador vencer um ginasio
     * nesta implementação o jogador pode escolher um pokemon entre todos que ele venceu no ginasio para
     * ser capturado
+    * @param adversarios Lista de jogadores adversarios
     */
     public void premioVitoriaConsole(List<Jogador> adversarios) {
         System.out.println("Escolha um pokemon como premio");
@@ -401,6 +398,8 @@ public class Jogo {
     Metodo responsavel por selecionar um pokemon de premio para o jogador que vence todos os ginasio
     * O premio nunca pode ser a ultima evolucao de um pokemon
     * Caso o treinado ja possua o pokemon sorteado, o pokemon do treinado ganha o dobro de experiencia como premio
+    * @param adversarios Lista de jogadores adversarios
+    * @throws Exception Exceções
     */
     public void premioVitoriaInstatanea(List<Jogador> adversarios) throws Exception {
         Random r = new Random();
@@ -435,7 +434,10 @@ public class Jogo {
     }
     /**
     Metodo responsavel retornar a posicao de um pokemon na lista com base em seu N#(id inicial)
-    */
+    * @param id N# do pokemons
+    * @return indexOfCardID Indece do pokemon na lista
+    * @throws Exception Exceções
+    */ 
     public int getIndexOfCardID(int id) throws Exception {
 
         int indexOfCardID = 0;

@@ -37,6 +37,8 @@ public class Duelo {
      * Metodo que implementa o combate entre dois pokemons. O duelo apenas
      * termina se o tempo de 30 segundos terminar ou se um pokemons ficar com o
      * hp_Combate menor que 0 Este metodo foi criado apenas para o console
+     *
+     * @return this.vencedor Retorna 1 caso o jogador venca e 0 caso contrario
      */
     public int duelar() {
 
@@ -105,6 +107,9 @@ public class Duelo {
      * Metodo que implementa o combate entre dois pokemons. O duelo apenas
      * termina se um dos pokemons ficarem com o hp_Combate menor que 0 Este
      * metodo foi criado apenas exibir o combate pela interface grafica
+     * @param jTextArea1 responsavel por imprimir na view o duelo
+     * @return this.vencedor Retorna 1 caso o jogador venca e 0 caso contrario
+
      */
     public int duelarInstantaneo(JTextArea jTextArea1) {
 

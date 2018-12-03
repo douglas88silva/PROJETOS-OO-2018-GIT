@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
  * não é um objeto é apenas um ponteiro para um pokemon da lista.
  *
  * @see CarD
- * @autor Douglas
  *
  */
 public class Jogador {
@@ -80,6 +79,8 @@ public class Jogador {
     /**
      * Metodo responsavel retornar a posicao de um pokemon na lista com base em
      * seu N#(id inicial)
+     * @param id Numero do pokemon N#
+     * @return indexOfCardID Indice do pokemon na List
      */
     public int getIndexOfDeck(int id) {
 
@@ -104,6 +105,8 @@ public class Jogador {
     /**
      * Metodo responsavel por alterar o pokemon principal do jogador com base em
      * seu N#(id inicial)
+     * @param idCard Numero do pokemon N#
+
      */
     public void setPokemonPrincipal(int idCard) {
 
@@ -129,6 +132,8 @@ public class Jogador {
     /**
      * Metodo responsavel verificar se um determinado pokemon esta na lista com
      * base em seu N#(id inicial)
+     *@param idCard Numero do pokemon N#
+     * @return a Boolean True e false
      */
     public boolean existsOfIdCarD(int idCard) {
         boolean a = false;

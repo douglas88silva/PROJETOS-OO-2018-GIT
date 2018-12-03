@@ -9,7 +9,7 @@ package cardPokemon;
  * Modelo abstrato Pokemon. Este modelo foi criado para representar as
  * informações basicas de um pokemon para o Jogo.
  *
- * @autor Douglas
+
  *
  */
 public abstract class Pokemon implements Combate {

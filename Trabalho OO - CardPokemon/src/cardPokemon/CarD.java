@@ -1,4 +1,3 @@
-
 package cardPokemon;
 
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import javax.swing.JOptionPane;
  * evoluir.
  *
  * @see Pokemon
- * @autor Douglas
+ *
  *
  */
 public class CarD extends LevelUp {
@@ -25,6 +24,11 @@ public class CarD extends LevelUp {
      * Contrutor que avalia o tipo de pokemon para poder instancia seu
      * respectivo tipo
      *
+     * @param idCard N# da carta
+     * @param nome Nome do pokemon
+     * @param tipo tipo do pokemon
+     * @param ataque Valor do ataque
+     * @param evolucao Quantidade de evoluções
      */
     public CarD(int idCard, String nome, String tipo, int ataque, int evolucao) {
 
@@ -52,9 +56,8 @@ public class CarD extends LevelUp {
      * uma possivel evolucao do pokemons O o pokemon evolui sempre que atinge o
      * level 5 e se exisitir uma evolucao
      *
-     * @param experiencia
-     * @param cartasDiponiveis
-     *
+     * @param experiencia Experiencia recebida
+     * @param cartasDiponiveis Cartas disponiveis no jogo
      */
     public void addExperiencia(int experiencia, ArrayList<CarD> cartasDiponiveis) {
 
@@ -98,9 +101,8 @@ public class CarD extends LevelUp {
      * efetuar uma possivel evolucao do pokemons O o pokemon evolui sempre que
      * atinge o level 5 e se exisitir uma evolucao
      *
-     * @param experiencia
-     * @param cartasDiponiveis
-     *
+     * @param experiencia Experiencia recebida
+     * @param cartasDiponiveis Cartas disponiveis no jogo
      */
     public void addExperienciaInterface(int experiencia, ArrayList<CarD> cartasDiponiveis) {
 
@@ -171,13 +173,14 @@ public class CarD extends LevelUp {
      * pokemon pode ficar mais forte ou mais fraco. Fiz uma reducao de forca dos
      * pokemons de acordo com o nivel que é recebido como parametro. Os niveis
      * variam de 1 ate 4 com reducao da forca do pokemon caso ele esteja na sua
-     * forma mais evoluida, 5 a 10 os pokemons não sofrem penalidades de ataque e
-     * vida, cima do nivel 10 o pokemons recebe nivel% a mais de bonus de
+     * forma mais evoluida, 5 a 10 os pokemons não sofrem penalidades de ataque
+     * e vida, cima do nivel 10 o pokemons recebe nivel% a mais de bonus de
      * ataque e vida. Este metodo é utilizado na hora de criar as cartas para os
      * adversarios, pois de acordo com o nivel do ginasio os pokemons precisam
      * ficar mais fortes ou mais fracos
      *
-     * @return CarD
+     * @param nivel Nivel do Ginasio, variavel que define a forca do pokemon
+     * @return CarD Carta do pokemon criada
      *
      */
     public CarD createNewCardPokemon(int nivel) {

@@ -128,7 +128,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+
         //ALTERANDO O PADRAO DE COR DO PROJETO
         //SkyBlue()
         //BrownSugar()

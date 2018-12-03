@@ -14,15 +14,32 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
+ * Classe responsavel pela leitura de arquivos
  *
- * @author jessi
+ * @see CarD
+
  */
 public class CarregaDadosTXT {
 
     Scanner ler = new Scanner(System.in);
     ArrayList retorno = new ArrayList();
 
-    public ArrayList<CarD> carregarPokemons() throws FileNotFoundException, IOException {
+    /**
+     * Metodo responsavel pela leitura de arquivos Lê um arquivo no seguinte
+     * modelo de linha (N# - NOME - TIPO - ATAQUE - EVOLUCAO) N#: Id do pokemon
+     * Nome: nome do pokemon Ataque: força do pokemon Evolucao: Os id dos
+     * pokemons são sequenciais, ou seja sua evolução é sempre id+1, caso o
+     * pokemon não tenha evolução eu a varavel evolução fica com o valor 0
+     * EXEMPLO:
+     * (1-Bulbasaur-Planta-118-2) TEM DUAS EVOLUÇÕES
+     * (2-Ivysaur-Planta-151-1)TEM UMA EVOLUÇÕES
+     * (3-Venusaur-Planta-198-0)NAO TEM EVOLUÇÃO
+     * @see CarD
+     * @return retorno
+     * @throws Exception para leitura do arquivo com os dados dos pokemons e para
+     * os acessos as estruturas de armazenamentos
+     */
+    public ArrayList<CarD> carregarPokemons() throws Exception {
 
         //System.out.printf("Informe o nome de arquivo texto:\n");
         String nome = "listaPokemon";//ler.nextLine();
@@ -56,14 +73,6 @@ public class CarregaDadosTXT {
 
         arq.close();
 
-//                } 
-//                catch (IOException e)
-//                {
-//                    System.err.printf("Erro na abertura do arquivo: %s.\n",
-//                      e.getMessage());
-//                    
-//                }
-       
         return retorno;
 
     }

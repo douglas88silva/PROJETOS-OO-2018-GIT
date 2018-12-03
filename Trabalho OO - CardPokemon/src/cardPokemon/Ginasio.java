@@ -29,8 +29,8 @@ public class Ginasio {
      * Metodo contrutor Instancia os jogadores do ginasio com base no nivel do
      * mesmo. A quantidade de adversario e sempre igual o nivel do ginasio
      * Cada adversario recebe um pokemon aleatorio dentre todos os pokemons disponiveis
-     *@param nome
-     * @param cartasDisponiveis
+     *@param nome Nome do ginasio
+     *@param cartasDisponiveis Cartas disponiveis no jogo
      */
     public Ginasio(String nome, List<CarD> cartasDisponiveis) {
       
@@ -72,7 +72,7 @@ public class Ginasio {
     
      /**
      * Metodo responsavel por atualizar os pokemons do ginasio de forma aleatoria
-     * @param cartasDisponiveis
+     * @param cartasDisponiveis Cartas disponiveis no jogo
      */
     public void atualizaPokemonsGinasio(List<CarD> cartasDisponiveis)
     {
